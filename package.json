@@ -1,0 +1,39 @@
+{
+  "name": "timelapse",
+  "version": "1.0.0",
+  "description": "A timesplitter app for speedrunning",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "webpack --inline --colors --progress --display-error-details --display-cached",
+    "server": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --content-base src",
+    "test": ""
+  },
+  "keywords": [],
+  "author": "Ivan Mrvelj <sk8raid@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.9.0",
+    "babel-eslint": "^6.0.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "electron-prebuilt": "^1.0.2",
+    "eslint": "^2.10.2",
+    "eslint-plugin-react": "^5.1.1",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0",
+    "webpack-merge": "^0.8.4"
+  },
+  "dependencies": {
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2"
+  }
+}
