@@ -2,27 +2,40 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-  entry: './src/app.js',
+    entry: './src/app.js',
 
-  output: {
-    path: path.join(__dirname, 'build'),
-    filename: 'bundle.js'
-  },
+    output: {
+        path: path.join(__dirname, 'build'),
+        filename: 'bundle.js'
+    },
 
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
+    target: 'electron-renderer',
 
-  devServer: {
-    port: 9090,
-    historyApiFallback: true,
-    watchOptions: {aggregateTimeout: 300, poll: 1000},
-  },
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
 
-  module: {
-    loaders: [
-        {test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/},
-        {test: /\.less$/, loader: 'style!css!less', exclude: /node_modules/}
-    ],
-  }
+    devServer: {
+        port: 9090,
+        historyApiFallback: true,
+        watchOptions: {
+            aggregateTimeout: 300,
+            poll: 1000
+        },
+    },
+
+    module: {
+        loaders: [{
+            test: /\.jsx?$/,
+            loader: 'babel',
+            exclude: /node_modules/
+        }, {
+            test: /\.less$/,
+            loader: 'style!css!less',
+            exclude: /node_modules/
+        }, {
+            test: /\.json$/,
+            loader: 'json'
+        }],
+    }
 };

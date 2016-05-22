@@ -18,7 +18,7 @@ switch (process.env.NODE_ENV) {
 }
 
 function createWindow() {
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+  mainWindow = new BrowserWindow({width: 1152, height: 648});
 
   mainWindow.loadURL(urlToLoad);
 
