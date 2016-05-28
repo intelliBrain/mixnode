@@ -1,0 +1,30 @@
+#sidebar-navigation {
+    height: 100%;
+    background-color: @white;
+    color: @black;
+    #mixnode-logo {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        background-color: @gray;
+    }
+    #sidebar-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .link {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid @gray;
+            cursor: pointer;
+            &:hover {
+                background-color: lighten(@blue, 10%);;
+            }
+        }
+    }
+}
