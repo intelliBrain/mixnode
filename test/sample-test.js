@@ -1,8 +1,10 @@
 import chai from 'chai';
-var expect = chai.expect;
+const expect = chai.expect;
+
+import AppContainer from '../src/containers/AppContainer';
 
 describe('sample', function () {
   it('should', function () {
-      expect(1 === 1);
+      expect(AppContainer).to.not.be.null;
   });
 });

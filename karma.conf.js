@@ -1,36 +1,49 @@
 var webpack = require('webpack');
 
-module.exports = function (config) {
-  config.set({
+module.exports = function(config) {
+    config.set({
 
-    browsers: [ 'Chrome' ],
+        browsers: ['Chrome'],
 
-    singleRun: true,
+        singleRun: true,
 
-    frameworks: [ 'mocha' ],
+        frameworks: ['mocha'],
 
-    files: [
-      './test/tests.webpack.js'
-    ],
+        files: [
+            './test/tests.webpack.js'
+        ],
 
-    preprocessors: {
-      './test/tests.webpack.js': [ 'webpack', 'sourcemap' ]
-    },
+        preprocessors: {
+            './test/tests.webpack.js': ['webpack', 'sourcemap']
+        },
 
-    reporters: [ 'dots' ],
+        reporters: ['dots'],
 
-    webpack: {
-      devtool: 'inline-source-map',
-      module: {
-        loaders: [
-          { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
-        ]
-      }
-    },
+        webpack: {
+            devtool: 'inline-source-map',
+            module: {
+                loaders: [{
+                    test: /\.js$/,
+                    loader: 'babel-loader',
+                    exclude: /node_modules/
+                }]
+            }
+        },
 
-    webpackServer: {
-      noInfo: true
-    }
+        webpackServer: {
+            noInfo: false,
+            quiet: false,
+            noInfo: false,
+            stats: {
+                assets: false,
+                colors: true,
+                version: false,
+                hash: false,
+                timings: false,
+                chunks: false,
+                chunkModules: false
+            }
+        }
 
-  });
+    });
 };
