@@ -6,11 +6,6 @@ import Player from '../components/Player';
 import BrowserContainer from '../containers/BrowserContainer';
 
 class AppContainer extends Component {
-    constructor(props) {
-        super(props);
-        console.log(this, props);
-    }
-
     render() {
         return (
             <div id='mixnode'>
