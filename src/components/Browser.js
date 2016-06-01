@@ -1,6 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import {getPopular} from '../actions/browserActions';
 
+import BrowserSearch from './BrowserSearch';
+
 const propTypes = {
     feeds: PropTypes.object
 }
@@ -20,8 +22,11 @@ class Browser extends Component {
         let {feeds} = this.props.browser || [];
         return (
            <div id="browser">
+               <BrowserSearch {...this.props}/>
                {feeds.map((feed) => {
-                   return <div className="browser-box" key={feed.key}>{feed.name}</div>
+                   return <div className="browser-box" key={feed.key}>
+                       <img src={feed.pictures.medium} />
+                   </div>
                })}
            </div>
        );
