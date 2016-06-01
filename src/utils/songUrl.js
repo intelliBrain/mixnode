@@ -1,5 +1,5 @@
 export default function(url) {
-    let tempUrl = 'https://www.mixcloud.com/widget/iframe/?feed=https://www.mixcloud.com/';
+    let tempUrl = '//www.mixcloud.com/widget/iframe/?feed=https://www.mixcloud.com/';
     if(!url && typeof url !== 'string'){
         return;
     }
