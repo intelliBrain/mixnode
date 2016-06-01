@@ -15,7 +15,7 @@ export function searchFeeds(query){
     let queryString = query.split(' ');
     queryString = queryString.join('+');
     return (dispatch) => {
-        return Axios.get('//api.mixcloud.com/search/?q=' + queryString + '&type=cloudcast').then(res => {
+        return Axios.get('//api.mixcloud.com/search/?q=' + queryString + '&type=cloudcast&limit=40').then(res => {
             dispatch(getFeeds(res.data.data));
         });
     }

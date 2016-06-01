@@ -12,7 +12,6 @@ class Browser extends Component {
         super(props);
     }
 
-
     componentWillMount() {
         const {dispatch} = this.props;
         dispatch(getPopular());
@@ -23,11 +22,14 @@ class Browser extends Component {
         return (
            <div id="browser">
                <BrowserSearch {...this.props}/>
-               {feeds.map((feed) => {
-                   return <div className="browser-box" key={feed.key}>
-                       <img src={feed.pictures.medium} />
-                   </div>
-               })}
+               <div id="feeds">
+                   {feeds.map((feed) => {
+                       return <div className="browser-box" key={feed.key}>
+                           <img src={feed.pictures.medium} />
+                           <span>{feed.user.name} - {feed.name}</span>
+                       </div>
+                   })}
+               </div>
            </div>
        );
     }
