@@ -1,7 +1,7 @@
-export default function(url) {
-    let tempUrl = '//www.mixcloud.com/widget/iframe/?feed=https://www.mixcloud.com/';
-    if(!url && typeof url !== 'string'){
+export default function (url) {
+    let tempUrl = '//www.mixcloud.com/widget/iframe/?feed=https://www.mixcloud.com';
+    if (!url && typeof url !== 'string') {
         return;
     }
-    return tempUrl + url + '/&hide_cover=1&light=1';
+    return tempUrl + url + '&hide_cover=1&light=1';
 }

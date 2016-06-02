@@ -10,45 +10,45 @@ let urlToLoad = '';
 
 console.log('process.node', process.env.NODE_ENV);
 switch (process.env.NODE_ENV) {
-  case 'prod':
-    urlToLoad = 'file://' + __dirname + '/build/index.html';
+case 'prod':
+    urlToLoad = path.join('file://', __dirname, '/build/index.html');
     break;
-  default:
+default:
     urlToLoad = 'http://localhost:9090';
 }
 
-function createWindow() {
-  mainWindow = new BrowserWindow({width: 1152, height: 648});
+function createWindow () {
+    mainWindow = new BrowserWindow({width: 1152, height: 648});
 
-  mainWindow.loadURL(urlToLoad);
+    mainWindow.loadURL(urlToLoad);
 
-  mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 
-  mainWindow.on('closed', function () {
-    mainWindow = null;
-  })
+    mainWindow.on('closed', function () {
+        mainWindow = null;
+    });
 }
 
 app.on('ready', createWindow);
 
 app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
 });
 
 app.on('activate', function () {
-  if (mainWindow === null) {
-    createWindow();
-  }
+    if (mainWindow === null) {
+        createWindow();
+    }
 });
 
 ipcMain.on('load-split', (evt, args) => {
-  console.log(args);
-  fs.readFile(path.join(__dirname, 'src/split_examples/gtaIII.json'), (err, data) => {
-    if (err) throw err;
-    console.log(data);
-    console.log(JSON.parse(data));
-    evt.sender.send('loaded-split', JSON.parse(data));
-  });
+    console.log(args);
+    fs.readFile(path.join(__dirname, 'src/split_examples/gtaIII.json'), (err, data) => {
+        if (err) throw err;
+        console.log(data);
+        console.log(JSON.parse(data));
+        evt.sender.send('loaded-split', JSON.parse(data));
+    });
 });

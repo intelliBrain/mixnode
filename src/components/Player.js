@@ -1,24 +1,24 @@
 import React, {Component} from 'react';
+import {loadSong} from '../actions/playerActions';
 
-import makeSongUrl from '../utils/songUrl';
-
-//Mixcloud widget
+// Mixcloud widget
 require('../vendor/widgetPlayer.js');
 
 class Player extends Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
-        this.loadSong.bind(this);
+        console.log(props);
     }
 
-    loadSong() {
-        return makeSongUrl('spartacus/party-time');
+    componentDidMount () {
+        const {dispatch} = this.props;
+        dispatch(loadSong('/spartacus/party-time/'));
     }
 
-    render() {
+    render () {
         return (
-            <div id="player">
-                <iframe id="player-widget" src={this.loadSong()} frameborder="0"></iframe>
+            <div id='player'>
+                <iframe id='player-widget' src={this.props.player.playingSong} frameborder='0'></iframe>
             </div>
         );
     }

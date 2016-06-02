@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 
 class Navigation extends Component {
-    constructor(props){
-        super(props);
-    }
-
-    render() {
+    render () {
         return (
             <nav id='sidebar-navigation'>
                 <div id='mixnode-logo'>Mixnode</div>
@@ -17,7 +13,7 @@ class Navigation extends Component {
                     <div className='link'>Trending</div>
                 </div>
             </nav>
-        )
+        );
     }
 }
 
