@@ -1,9 +1,7 @@
 const electron = require('electron');
-const fs = require('fs');
 const path = require('path');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
-const ipcMain = electron.ipcMain;
 
 let mainWindow = null;
 let urlToLoad = '';
@@ -18,7 +16,14 @@ default:
 }
 
 function createWindow () {
-    mainWindow = new BrowserWindow({width: 1152, height: 648});
+    mainWindow = new BrowserWindow(
+        {
+            width: 1280, height: 720,
+            'webPreferences': {
+                'allowDisplayingInsecureContent': true
+            }
+        }
+    );
 
     mainWindow.loadURL(urlToLoad);
 
@@ -41,14 +46,4 @@ app.on('activate', function () {
     if (mainWindow === null) {
         createWindow();
     }
-});
-
-ipcMain.on('load-split', (evt, args) => {
-    console.log(args);
-    fs.readFile(path.join(__dirname, 'src/split_examples/gtaIII.json'), (err, data) => {
-        if (err) throw err;
-        console.log(data);
-        console.log(JSON.parse(data));
-        evt.sender.send('loaded-split', JSON.parse(data));
-    });
 });

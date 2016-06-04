@@ -9,6 +9,9 @@
         "node": true
     },
     "parser": "babel-eslint",
+    "globals": {
+        "Mixcloud": true
+    },
     "rules": {
         "semi": ["error", "always"],
         "indent": ["error", 4],

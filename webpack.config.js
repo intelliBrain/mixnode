@@ -1,4 +1,3 @@
-var webpack = require('webpack');
 var path = require('path');
 module.exports = {
     entry: './src/app.js',
@@ -21,7 +20,7 @@ module.exports = {
         watchOptions: {
             aggregateTimeout: 300,
             poll: 1000
-        },
+        }
     },
 
     module: {
@@ -36,6 +35,6 @@ module.exports = {
         }, {
             test: /\.json$/,
             loader: 'json'
-        }],
+        }]
     }
 };

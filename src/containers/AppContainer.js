@@ -6,6 +6,9 @@ import PlayerContainer from '../containers/PlayerContainer';
 import BrowserContainer from '../containers/BrowserContainer';
 
 class AppContainer extends Component {
+    constructor (props) {
+        super(props);
+    }
     render () {
         return (
             <div id='mixnode'>
