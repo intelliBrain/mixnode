@@ -15,13 +15,13 @@ class Player extends Component {
     componentDidMount () {
         const {dispatch} = this.props;
         dispatch(loadSong('/spartacus/party-time/'));
-        let iframer = document.getElementById('player-widget').contentDocument;
-        if (iframer.readyState === 'complete') {
-            let widget = Mixcloud.PlayerWidget(document.getElementById('player-widget'));
-            widget.ready.then(() => {
-                // Put code that interacts with the widget here
-            });
-        }
+        // let iframer = document.getElementById('player-widget').contentDocument;
+        // if (iframer.readyState === 'complete') {
+        //     let widget = Mixcloud.PlayerWidget(document.getElementById('player-widget'));
+        //     widget.ready.then(() => {
+        //         // Put code that interacts with the widget here
+        //     });
+        // }
     }
 
     render () {
