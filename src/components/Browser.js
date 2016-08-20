@@ -20,9 +20,10 @@ class Browser extends Component {
         dispatch(getPopular());
     }
 
-    componentDidMount () {
-    }
-
+    /**
+     * Loads the song into the player with autoplay
+     * @param {string} key - classic mixcloud key
+     */
     loadSong (key) {
         console.log(key);
         const {dispatch} = this.props;
