@@ -18,10 +18,7 @@ default:
 function createWindow () {
     mainWindow = new BrowserWindow(
         {
-            width: 1280, height: 720,
-            'webPreferences': {
-                'allowDisplayingInsecureContent': true
-            }
+            width: 1280, height: 720
         }
     );
 

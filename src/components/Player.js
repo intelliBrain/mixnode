@@ -1,34 +1,51 @@
 import React, {Component} from 'react';
-import {loadSong} from '../actions/playerActions';
 
-// Mixcloud widget
-require('../vendor/widgetPlayer.js');
+import {initPlayer} from '../actions/playerActions';
 
 class Player extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            player: null
+            widget: null
         };
+        this.addWidget = this.addWidget.bind(this);
+
+        this.addWidget();
     }
 
-    componentDidMount () {
+    registerPlayer () {
         const {dispatch} = this.props;
-        dispatch(loadSong('/spartacus/party-time/'));
-        // let iframer = document.getElementById('player-widget').contentDocument;
-        // if (iframer.readyState === 'complete') {
-        //     let widget = Mixcloud.PlayerWidget(document.getElementById('player-widget'));
-        //     widget.ready.then(() => {
-        //         // Put code that interacts with the widget here
-        //     });
-        // }
+        let playerContainer = document.querySelector('#player');
+        React.createElement('iframe');
+
+        let playerWidget = document.createElement('iframe');
+        playerWidget.id = 'player-widget';
+        playerWidget.name = 'player-widget';
+        playerWidget.src = 'https://www.mixcloud.com/widget/iframe/?feed=https://www.mixcloud.com/spartacus/party-time/&hide_cover=1&light=1';
+
+        playerContainer.appendChild(playerWidget);
+        let widget = window.Mixcloud.PlayerWidget(playerWidget);
+
+        widget.ready.then(() => {
+            dispatch(initPlayer(widget));
+            widget.load('/spartacus/lambiance/');
+        });
+    }
+
+    addWidget () {
+        let script = document.createElement('script');
+
+        script.src = 'http://widget.mixcloud.com/media/js/widgetApi.js';
+        document.body.appendChild(script);
+
+        script.onload = () => {
+            this.registerPlayer();
+        };
     }
 
     render () {
         return (
-            <div id='player'>
-                <iframe id='player-widget' name='player-widget' src={this.props.player.playingSong} frameborder='0'></iframe>
-            </div>
+            <div id='player'></div>
         );
     }
 }

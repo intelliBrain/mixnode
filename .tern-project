@@ -5,6 +5,7 @@
     "jquery"
   ],
   "loadEagerly": [
+      "src/**/*.js"
   ],
   "dontLoad": [
   ],

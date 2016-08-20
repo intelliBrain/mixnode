@@ -36,10 +36,12 @@ class Browser extends Component {
                <BrowserSearch {...this.props}/>
                <div id='feeds'>
                    {feeds.map((feed) => {
-                       return <div className='browser-box' key={feed.key} onClick={() => this.loadSong(feed.key)}>
-                               <img src={feed.pictures.medium} />
-                               <span>{feed.user.name} - {feed.name}</span>
-                           </div>;
+                       return (
+                            <div className='browser-box' key={feed.key} onClick={() => this.loadSong(feed.key)}>
+                                   <img src={feed.pictures.medium} />
+                                   <span>{feed.user.name} - {feed.name}</span>
+                            </div>
+                       );
                    })}
                </div>
            </div>
