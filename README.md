@@ -10,4 +10,4 @@ npm run start
 
 
 ## 0.0.1 version screenshot
-![screenshot](http://imgur.com/FlqHxiQ)
+![screenshot](http://i.imgur.com/FlqHxiQ.png)
