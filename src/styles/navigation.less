@@ -1,9 +1,10 @@
-#sidebar-navigation {
-    height: 10vh;
+#header-navigation {
+    height: 8vh;
     width: 100%;
     display: flex;
     background-color: @white;
     color: @black;
+    border-bottom: 1px solid @gray;
     #mixnode-logo {
         width: 200px;
         height: 100%;
@@ -13,15 +14,14 @@
         background-color: @white;
         color: @black;
         border-right: 1px solid @gray;
-        border-bottom: 1px solid @gray;
         img {
-            height: 50%;
+            height: 33%;
         }
         span {
             margin-left: 10px;
         }
     }
-    #sidebar-links {
+    #header-links {
         display: flex;
         align-items: center;
         justify-content: space-around;
@@ -30,12 +30,40 @@
             width: 100%;
             height: 100%;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            border-bottom: 1px solid @gray;
             cursor: pointer;
+            color: darken(@gray, 40%);
             &:hover {
                 background-color: lighten(@blue, 10%);;
+                color: @white;
+            }
+
+            span {
+                font-size: 16px;
+            }
+
+            .material-icons {
+                font-size: 1.333334em;
+            }
+        }
+    }
+    #header-login-settings {
+        display: flex;
+        width: 20%;
+        border-left: 1px solid @gray;
+        .material-icons {
+            height: 100%;
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            font-size: 2em;
+            cursor: pointer;
+
+            &:hover {
+                background-color: @blue;
                 color: @white;
             }
         }

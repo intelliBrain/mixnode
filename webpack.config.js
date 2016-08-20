@@ -35,6 +35,9 @@ module.exports = {
         }, {
             test: /\.json$/,
             loader: 'json'
+        }, {
+            test: /\.(woff2?|ttf|eot|svg|otf).*$/,
+            loader: 'file?hash=sha512&digest=hex&name=fonts/[name]-[hash].[ext]'
         }]
     }
 };

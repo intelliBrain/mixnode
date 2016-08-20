@@ -9,7 +9,7 @@ class AppContainer extends Component {
     render () {
         return (
             <div id='mixnode'>
-                <div id='sidebar'>
+                <div id='header'>
                     <Navigation />
                 </div>
                 <div id='main'>
