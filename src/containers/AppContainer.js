@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 
 import Navigation from '../components/Navigation';
 import PlayerContainer from '../containers/PlayerContainer';
-import BrowserContainer from '../containers/BrowserContainer';
 
 class AppContainer extends Component {
     render () {
@@ -13,7 +12,7 @@ class AppContainer extends Component {
                     <Navigation />
                 </div>
                 <div id='main'>
-                    <BrowserContainer />
+                    {this.props.children}
                     <PlayerContainer />
                 </div>
             </div>
