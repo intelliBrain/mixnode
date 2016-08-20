@@ -25,7 +25,6 @@ class Browser extends Component {
      * @param {string} key - classic mixcloud key
      */
     loadSong (key) {
-        console.log(key);
         const {dispatch} = this.props;
         dispatch(loadSong(key));
     }

@@ -4,7 +4,10 @@ class Navigation extends Component {
     render () {
         return (
             <nav id='sidebar-navigation'>
-                <div id='mixnode-logo'>Mixnode</div>
+                <div id='mixnode-logo'>
+                    <img src='images/logo.png' />
+                    <span>Mixnode</span>
+                </div>
                 <div id='sidebar-links'>
                     <div className='link'>Your Feed</div>
                     <div className='link'>Popular</div>

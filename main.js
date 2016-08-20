@@ -6,13 +6,12 @@ const BrowserWindow = electron.BrowserWindow;
 let mainWindow = null;
 let urlToLoad = '';
 
-console.log('process.node', process.env.NODE_ENV);
 switch (process.env.NODE_ENV) {
-case 'prod':
-    urlToLoad = path.join('file://', __dirname, '/build/index.html');
-    break;
-default:
-    urlToLoad = 'http://localhost:9090';
+    case 'prod':
+        urlToLoad = path.join('file://', __dirname, '/build/index.html');
+        break;
+    default:
+        urlToLoad = 'http://localhost:9090';
 }
 
 function createWindow () {
