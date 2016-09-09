@@ -1,4 +1,5 @@
 const electron = require('electron');
+const {ipcMain} = require('electron');
 const path = require('path');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
@@ -42,4 +43,31 @@ app.on('activate', function () {
     if (mainWindow === null) {
         createWindow();
     }
+});
+
+ipcMain.on('user-auth', () => {
+    const clientId = require('./.config.json').client_id || '';
+    let userAuth = new BrowserWindow({
+        width: 500,
+        height: 720,
+        webPreferences: {
+            webSecurity: false,
+            nodeIntegration: false
+        }
+    });
+
+    const redirectUrl = 'file://' + path.resolve(__dirname, 'callback.html');
+
+    userAuth.webContents.on('did-get-redirect-request', (event, oldUrl, newUrl) => {
+        if (newUrl.split('code=')[1]) {
+            mainWindow.webContents.send('user-log-in', newUrl.split('code=')[1]);
+            userAuth.close();
+        }
+    });
+
+    userAuth.loadURL('https://www.mixcloud.com/oauth/authorize?client_id=' + clientId + '&redirect_uri=' + redirectUrl);
+
+    userAuth.on('closed', function () {
+        userAuth = null;
+    });
 });

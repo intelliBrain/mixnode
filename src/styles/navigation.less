@@ -2,11 +2,13 @@
     height: 8vh;
     width: 100%;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: @white;
     color: @black;
     border-bottom: 1px solid @gray;
     #mixnode-logo {
-        width: 200px;
+        width: 20%;
         height: 100%;
         display: flex;
         align-items: center;
@@ -25,7 +27,7 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
-        width: 100%;
+        width: 80%;
         .link {
             width: 100%;
             height: 100%;
@@ -36,7 +38,7 @@
             cursor: pointer;
             color: darken(@gray, 40%);
             &:hover {
-                background-color: lighten(@blue, 10%);;
+                background-color: lighten(@blue, 10%);
                 color: @white;
             }
 
@@ -50,21 +52,29 @@
         }
     }
     #header-login-settings {
-        display: flex;
         width: 20%;
-        border-left: 1px solid @gray;
-        .material-icons {
-            height: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .header-icon {
             width: 50%;
+            height: 100%;
+            position: relative;
             display: flex;
-            align-items: center;
-            justify-content: space-around;
-            font-size: 2em;
-            cursor: pointer;
+            .material-icons {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                font-size: 2em;
+                cursor: pointer;
 
-            &:hover {
-                background-color: @blue;
-                color: @white;
+                &:hover {
+                    background-color: @blue;
+                    color: @white;
+                }
             }
         }
     }

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "build": "webpack --inline --colors --progress --display-error-details --display-cached",
-    "server": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --content-base src",
+    "serve": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --content-base src",
     "test": "karma start"
   },
   "keywords": [],

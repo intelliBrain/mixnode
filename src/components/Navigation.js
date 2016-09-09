@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import User from './User';
+import Settings from './Settings';
 
 class Navigation extends Component {
     render () {
@@ -20,8 +22,8 @@ class Navigation extends Component {
                     </div>
                 </div>
                 <div id='header-login-settings'>
-                    <div className='material-icons'>account_circle</div>
-                    <div className='material-icons'>settings</div>
+                    <User />
+                    <Settings />
                 </div>
             </nav>
         );

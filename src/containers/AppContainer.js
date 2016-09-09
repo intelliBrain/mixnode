@@ -5,6 +5,9 @@ import Navigation from '../components/Navigation';
 import PlayerContainer from '../containers/PlayerContainer';
 
 class AppContainer extends Component {
+    componentDidMount () {
+    }
+
     render () {
         return (
             <div id='mixnode'>
@@ -21,8 +24,8 @@ class AppContainer extends Component {
 }
 
 function mapState (state) {
-    const {browser, player} = state;
-    return {browser, player};
+    const {browser, player, user} = state;
+    return {browser, player, user};
 }
 
 export default connect(mapState)(AppContainer);

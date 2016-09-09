@@ -5,18 +5,29 @@
     "jquery"
   ],
   "loadEagerly": [
-      "src/**/*.js"
-  ],
-  "dontLoad": [
+    "src/**/*.js",
+    "main.js"
   ],
   "plugins": {
-    "complete_strings": {},
-    "node": {},
-    "lint": {},
-    "modules": {},
+    "complete_strings": {
+      "maxLength": 15
+    },
+    "node": {
+      "dontLoad": "",
+      "load": "",
+      "modules": ""
+    },
+    "modules": {
+      "dontLoad": "",
+      "load": "",
+      "modules": ""
+    },
     "es_modules": {},
     "doc_comment": {
-      "fullDocs": true
-    }
+      "fullDocs": true,
+      "strong": false
+    },
+    "node_resolve": {},
+    "commonjs": {}
   }
 }
