@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import Browser from '../components/Browser';
+import Browser from './browser.component';
 
 class BrowserContainer extends Component {
     render () {

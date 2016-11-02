@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import Navigation from '../components/Navigation';
-import PlayerContainer from '../containers/PlayerContainer';
+import Navigation from './navigation/navigation.component';
+import PlayerContainer from './player/player.container';
 
 class AppContainer extends Component {
     componentDidMount () {

@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {searchFeeds} from '../actions/browserActions';
+import {searchFeeds} from '../browser/browser.actions';
 
 const propTypes = {
     feeds: PropTypes.object

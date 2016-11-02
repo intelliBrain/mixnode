@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import User from './User';
-import Settings from './Settings';
+import User from '../user/user.component';
+import Settings from '../settings/settings.component';
 
 class Navigation extends Component {
     render () {

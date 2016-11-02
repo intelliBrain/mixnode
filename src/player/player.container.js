@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import Player from '../components/Player';
+import Player from './player.component';
 
 class PlayerContainer extends Component {
     render () {

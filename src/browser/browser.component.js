@@ -1,8 +1,8 @@
 import React, {Component, PropTypes} from 'react';
-import {getPopular} from '../actions/browserActions';
-import {loadSong} from '../actions/playerActions';
+import {getPopular} from './browser.actions';
+import {loadSong} from '../player/player.actions';
 
-import BrowserSearch from './BrowserSearch';
+import BrowserSearch from './browser-search.component';
 
 const propTypes = {
     feeds: PropTypes.object

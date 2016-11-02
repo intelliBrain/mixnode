@@ -3,9 +3,9 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 
-import createStore from './store/createStore';
-import AppContainer from './containers/AppContainer';
-import BrowserContainer from './containers/BrowserContainer';
+import createStore from './store';
+import AppContainer from './app.container';
+import BrowserContainer from './browser/browser.container';
 import './styles/main.less';
 
 const store = createStore();

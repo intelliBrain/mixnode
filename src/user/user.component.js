@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import UserNav from './UserNav';
+import UserNav from './user-navigation.component';
 
 class User extends Component {
     constructor () {

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {initPlayer} from '../actions/playerActions';
+import {initPlayer} from './player.actions';
 
 class Player extends Component {
     constructor (props) {
