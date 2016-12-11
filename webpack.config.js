@@ -1,11 +1,19 @@
-var path = require('path');
+require('dotenv').load();
+
+const path = require('path');
+const HtmlWebpack = require('html-webpack-plugin');
+const dotenvWebpack = require('webpack-dotenv-plugin');
+
 module.exports = {
-    entry: './src/app.js',
-    devtool: 'source-map',
+    entry: {
+        app: './src/app.js',
+        vendor: ['react', 'react-dom', 'react-router']
+    },
+    devtool: 'cheap-module-source-map',
 
     output: {
         path: path.join(__dirname, 'build'),
-        filename: 'bundle.js'
+        filename: '[name].js'
     },
 
     target: 'electron-renderer',
@@ -17,6 +25,7 @@ module.exports = {
     devServer: {
         port: 9090,
         historyApiFallback: true,
+        contentBase: './src',
         watchOptions: {
             aggregateTimeout: 300,
             poll: 1000
@@ -39,5 +48,12 @@ module.exports = {
             test: /\.(woff2?|ttf|eot|svg|otf).*$/,
             loader: 'file?hash=sha512&digest=hex&name=fonts/[name]-[hash].[ext]'
         }]
-    }
+    },
+    plugins: [
+        new dotenvWebpack(),
+        new HtmlWebpack({
+            template: './src/index.html',
+            inject: true
+        })
+    ]
 };

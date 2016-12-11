@@ -6,7 +6,7 @@ class UserNav extends Component {
         super();
         this.logIn = this.logIn.bind(this);
         ipcRenderer.on('user-log-in', (event, args) => {
-            console.log('omg user login', args);
+            localStorage.setItem('token', args);
         });
     }
 

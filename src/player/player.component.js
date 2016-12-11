@@ -29,13 +29,14 @@ class Player extends Component {
         widget.ready.then(() => {
             dispatch(initPlayer(widget));
             widget.load('/spartacus/lambiance/');
+            widget.mini = true;
         });
     }
 
     addWidget () {
         let script = document.createElement('script');
 
-        script.src = 'http://widget.mixcloud.com/media/js/widgetApi.js';
+        script.src = '//widget.mixcloud.com/media/js/widgetApi.js';
         document.body.appendChild(script);
 
         script.onload = () => {

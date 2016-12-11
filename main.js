@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const electron = require('electron');
 const {ipcMain} = require('electron');
 const path = require('path');
@@ -5,6 +7,7 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 
 let mainWindow = null;
+let authWindow = null;
 let urlToLoad = '';
 
 switch (process.env.NODE_ENV) {
@@ -12,13 +15,14 @@ switch (process.env.NODE_ENV) {
         urlToLoad = path.join('file://', __dirname, '/build/index.html');
         break;
     default:
-        urlToLoad = 'http://localhost:9090';
+        urlToLoad = 'http://localhost:9090/';
 }
 
 function createWindow () {
     mainWindow = new BrowserWindow(
         {
-            width: 1280, height: 720
+            width: 1280,
+            height: 720
         }
     );
 
@@ -46,28 +50,26 @@ app.on('activate', function () {
 });
 
 ipcMain.on('user-auth', () => {
-    const clientId = require('./.config.json').client_id || '';
-    let userAuth = new BrowserWindow({
+    const clientId = process.env.MIXNODE_ID || null;
+    authWindow = new BrowserWindow({
         width: 500,
         height: 720,
         webPreferences: {
             webSecurity: false,
-            nodeIntegration: false
+            nodeIntegration: true
         }
     });
+    authWindow.webContents.openDevTools();
 
-    const redirectUrl = 'file://' + path.resolve(__dirname, 'callback.html');
+    const redirectUrl = 'http://localhost:9090/callback';
+    authWindow.loadURL('https://www.mixcloud.com/oauth/authorize?client_id=' + clientId + '&redirect_uri=' + redirectUrl);
 
-    userAuth.webContents.on('did-get-redirect-request', (event, oldUrl, newUrl) => {
-        if (newUrl.split('code=')[1]) {
-            mainWindow.webContents.send('user-log-in', newUrl.split('code=')[1]);
-            userAuth.close();
-        }
+    authWindow.on('closed', function () {
+        authWindow = null;
     });
+});
 
-    userAuth.loadURL('https://www.mixcloud.com/oauth/authorize?client_id=' + clientId + '&redirect_uri=' + redirectUrl);
-
-    userAuth.on('closed', function () {
-        userAuth = null;
-    });
+ipcMain.on('oauth-token', (event, arg) => {
+    mainWindow.webContents.send('user-log-in', arg);
+    authWindow.close();
 });
