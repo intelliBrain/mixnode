@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import browser from './browser/browser.reducer';
+import explore from './explore/explore.reducer';
 import player from './player/player.reducer';
 
 const rootReducer = combineReducers({
-    browser,
+    explore,
     player
 });
 

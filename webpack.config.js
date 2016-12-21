@@ -6,7 +6,7 @@ const dotenvWebpack = require('webpack-dotenv-plugin');
 
 module.exports = {
     entry: {
-        app: './src/app.js',
+        app: './src/main.js',
         vendor: ['react', 'react-dom', 'react-router']
     },
     devtool: 'cheap-module-source-map',
@@ -34,8 +34,8 @@ module.exports = {
             loader: 'babel',
             exclude: /node_modules/
         }, {
-            test: /\.less$/,
-            loader: 'style!css!less',
+            test: /\.scss$/,
+            loader: 'style!css!sass',
             exclude: /node_modules/
         }, {
             test: /\.json$/,

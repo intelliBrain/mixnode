@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import Navigation from './navigation/navigation.component';
+import Header from './header/header.component';
 import PlayerContainer from './player/player.container';
 
 class AppContainer extends Component {
@@ -11,21 +11,19 @@ class AppContainer extends Component {
     render () {
         return (
             <div id='mixnode'>
-                <div id='header'>
-                    <Navigation />
-                </div>
-                <div id='main'>
+                <Header />
+                <div className='content-wrapper'>
                     {this.props.children}
-                    <PlayerContainer />
                 </div>
+                <PlayerContainer />
             </div>
         );
     }
 }
 
 function mapState (state) {
-    const {browser, player, user} = state;
-    return {browser, player, user};
+    const {explore, player, user} = state;
+    return {explore, player, user};
 }
 
 export default connect(mapState)(AppContainer);

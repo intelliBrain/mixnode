@@ -1,14 +1,12 @@
 import React, {Component, PropTypes} from 'react';
-import {getPopular} from './browser.actions';
+import {getPopular} from './explore.actions';
 import {loadSong} from '../player/player.actions';
-
-import BrowserSearch from './browser-search.component';
 
 const propTypes = {
     feeds: PropTypes.object
 };
 
-class Browser extends Component {
+class Explore extends Component {
 
     constructor (props) {
         super(props);
@@ -30,10 +28,9 @@ class Browser extends Component {
     }
 
     render () {
-        let {feeds} = this.props.browser || [];
+        let {feeds} = this.props.explore || [];
         return (
            <div id='browser'>
-               <BrowserSearch {...this.props}/>
                <div id='feeds'>
                    {feeds.map((feed) => {
                        return (
@@ -49,6 +46,6 @@ class Browser extends Component {
     }
 }
 
-Browser.propTypes = propTypes;
+Explore.propTypes = propTypes;
 
-export default Browser;
+export default Explore;

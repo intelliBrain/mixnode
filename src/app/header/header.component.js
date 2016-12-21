@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import React, {Component} from 'react';
 import User from '../user/user.component';
-import Settings from '../settings/settings.component';
 
 class Navigation extends Component {
     render () {
@@ -22,10 +21,7 @@ class Navigation extends Component {
                         <span>Discover</span>
                     </div>
                 </div>
-                <div id='header-login-settings'>
-                    <User {...this.props} />
-                    <Settings />
-                </div>
+                <User {...this.props} />
             </nav>
         );
     }
