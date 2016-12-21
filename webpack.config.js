@@ -12,15 +12,11 @@ module.exports = {
     devtool: 'cheap-module-source-map',
 
     output: {
-        path: path.join(__dirname, 'build'),
+        path: path.join(__dirname, 'dist'),
         filename: '[name].js'
     },
 
     target: 'electron-renderer',
-
-    resolve: {
-        extensions: ['', '.js', '.jsx']
-    },
 
     devServer: {
         port: 9090,

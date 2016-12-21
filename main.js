@@ -12,7 +12,7 @@ let urlToLoad = '';
 
 switch (process.env.NODE_ENV) {
     case 'prod':
-        urlToLoad = path.join('file://', __dirname, '/build/index.html');
+        urlToLoad = path.join('file://', __dirname, '/dist/index.html');
         break;
     default:
         urlToLoad = 'http://localhost:9090/';
