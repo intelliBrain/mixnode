@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import React, {Component} from 'react';
 import User from '../user/user.component';
 import Settings from '../settings/settings.component';
@@ -22,7 +23,7 @@ class Navigation extends Component {
                     </div>
                 </div>
                 <div id='header-login-settings'>
-                    <User />
+                    <User {...this.props} />
                     <Settings />
                 </div>
             </nav>
@@ -30,4 +31,9 @@ class Navigation extends Component {
     }
 }
 
-export default Navigation;
+function mapState (state) {
+    const {user} = state;
+    return {user};
+}
+
+export default connect(mapState)(Navigation);

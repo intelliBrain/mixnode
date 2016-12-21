@@ -8,10 +8,10 @@ import IndexRoute from 'react-router/lib/IndexRoute';
 import history from 'react-router/lib/browserHistory';
 
 
-import createStore from './store';
-import AppContainer from './app.container';
-import BrowserContainer from './browser/browser.container';
-import CallbackComponent from './auth-callback/auth-callback.component';
+import createStore from './app/store';
+import AppContainer from './app/app.container';
+import BrowserContainer from './app/browser/browser.container';
+import CallbackComponent from './app/auth-callback/auth-callback.component';
 import './styles/main.less';
 const store = createStore();
 
