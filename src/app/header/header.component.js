@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import React, {Component} from 'react';
+import Link from 'react-router/lib/Link';
 import SearchBar from './components/search-bar.component';
 
 class Navigation extends Component {
@@ -12,13 +13,10 @@ class Navigation extends Component {
                 <SearchBar {...this.props} />
                 <div className='header-links'>
                     <div className='link'>
-                        <span>Your feed</span>
+                        <span>Feed</span>
                     </div>
                     <div className='link'>
-                        <span>Playlist</span>
-                    </div>
-                    <div className='link'>
-                        <span>Discover</span>
+                        <Link to='/explore'>Explore</Link>
                     </div>
                 </div>
             </header>

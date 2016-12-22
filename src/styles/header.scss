@@ -46,6 +46,10 @@
             &:hover {
                 background: lighten($darkblue, 20%)
             }
+
+            .material-icons {
+                font-size: 1.33em;
+            }
         }
     }
 }

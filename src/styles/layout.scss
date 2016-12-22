@@ -8,5 +8,6 @@
     .content-wrapper {
         height: calc(100% - 140px);
         margin-top: 80px;
+        overflow-y: scroll;
     }
 }
