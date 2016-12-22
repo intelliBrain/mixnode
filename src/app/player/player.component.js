@@ -15,7 +15,7 @@ class Player extends Component {
 
     registerPlayer () {
         const {dispatch} = this.props;
-        let playerContainer = document.querySelector('#player');
+        let playerContainer = document.querySelector('.player-wrapper');
         React.createElement('iframe');
 
         let playerWidget = document.createElement('iframe');
@@ -46,7 +46,7 @@ class Player extends Component {
 
     render () {
         return (
-            <div id='player'></div>
+            <div className='player-wrapper'></div>
         );
     }
 }

@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
 import React, {Component} from 'react';
+import SearchBar from './components/search-bar.component';
 import User from '../user/user.component';
 
 class Navigation extends Component {
     render () {
         return (
-            <nav id='header-navigation'>
-                <div id='mixnode-logo'>
-                    <img src='images/logo.png' />
-                    <span>Mixnode</span>
+            <header className='header-wrapper'>
+                <div className='header-logo-wrapper'>
+                    <span className='header-logo-text'>Mixnode</span>
                 </div>
-                <div id='header-links'>
+                <SearchBar />
+                <div className='header-links'>
                     <div className='link'>
                         <span>Your feed</span>
                     </div>
@@ -22,7 +23,7 @@ class Navigation extends Component {
                     </div>
                 </div>
                 <User {...this.props} />
-            </nav>
+            </header>
         );
     }
 }
