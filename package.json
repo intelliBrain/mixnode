@@ -5,8 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "webpack --inline -p",
-    "serve": "webpack-dev-server --inline",
+    "build": "webpack --progress -p",
+    "serve": "webpack-dev-server --progress --inline",
     "test": "karma start"
   },
   "keywords": [],

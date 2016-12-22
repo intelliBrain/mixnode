@@ -22,10 +22,30 @@
         }
     }
 
+    .search-bar-wrapper {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
     .header-links {
+        height: 100%;
         margin-right: auto;
         margin-left: 30px;
         display: flex;
-        
+        justify-content: center;
+        align-items: center;
+        .link {
+            height: 100%;
+            width: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover {
+                background: lighten($darkblue, 20%)
+            }
+        }
     }
 }
