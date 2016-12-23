@@ -23,7 +23,7 @@ export function searchFeeds (query) {
 
 export function loadSongInPlayer (song) {
     return {
-        type: 'LOAD_SONG',
+        type: 'PLAYER_LOAD',
         song
     };
 }

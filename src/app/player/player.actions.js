@@ -6,7 +6,7 @@ export const initPlayer = (playerWidget) => ({
 export const loadSong = (song) => {
     if (song.length) {
         return {
-            type: 'LOAD_SONG',
+            type: 'PLAYER_LOAD',
             song
         };
     }
