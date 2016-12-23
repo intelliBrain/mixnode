@@ -1,54 +1,44 @@
-import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { Component } from 'react';
 
-import {initPlayer} from './player.actions';
+import { initPlayer } from './player.actions';
 
 class Player extends Component {
     constructor (props) {
         super(props);
-        this.state = {
-            widget: null
-        };
-        this.addWidget = this.addWidget.bind(this);
-
-        this.addWidget();
+        this.addWidgetScript = this.addWidgetScript.bind(this);
+        this.initPlayer = this.initPlayer.bind(this);
     }
 
-    registerPlayer () {
-        const {dispatch} = this.props;
-        let playerContainer = document.querySelector('.player-wrapper');
-        React.createElement('iframe');
-
-        let playerWidget = document.createElement('iframe');
-        playerWidget.id = 'player-widget';
-        playerWidget.name = 'player-widget';
-        playerWidget.src = 'https://www.mixcloud.com/widget/iframe/?feed=https://www.mixcloud.com/spartacus/party-time/&hide_cover=1&light=1';
-
-        playerContainer.appendChild(playerWidget);
-        let widget = window.Mixcloud.PlayerWidget(playerWidget);
-
-        widget.ready.then(() => {
-            dispatch(initPlayer(widget));
-            widget.load('/spartacus/lambiance/');
-            widget.mini = true;
-        });
+    componentDidMount() {
+        this.initPlayer();
     }
 
-    addWidget () {
+    initPlayer() {
+        this.addWidgetScript().onload = () => 
+            Mixcloud.FooterWidget('/spartacus/lambiance/', { disablePushstate: true, light: false }).then(
+                (widget) => {
+                    const {dispatch} = this.props;
+                    dispatch(initPlayer(widget));
+                }
+            );
+    }
+
+    addWidgetScript () {
         let script = document.createElement('script');
-
-        script.src = '//widget.mixcloud.com/media/js/widgetApi.js';
+        script.src = '//widget.mixcloud.com/media/js/footerWidgetApi.js';
         document.body.appendChild(script);
-
-        script.onload = () => {
-            this.registerPlayer();
-        };
+        return script;
     }
 
     render () {
-        return (
-            <div className='player-wrapper'></div>
-        );
+        return null;
     }
 }
 
-export default Player;
+function mapState (state) {
+    const {player} = state;
+    return {player};
+}
+
+export default connect(mapState)(Player);

@@ -22,7 +22,8 @@ function createWindow () {
     mainWindow = new BrowserWindow(
         {
             width: 1280,
-            height: 720
+            height: 720,
+            autoHideMenuBar: true
         }
     );
 
@@ -54,12 +55,14 @@ ipcMain.on('user-auth', () => {
     authWindow = new BrowserWindow({
         width: 500,
         height: 720,
+        parent: mainWindow,
+        modal: true,
+        autoHideMenuBar: true,
         webPreferences: {
             webSecurity: false,
             nodeIntegration: true
         }
     });
-    authWindow.webContents.openDevTools();
 
     const redirectUrl = 'http://localhost:9090/callback';
     authWindow.loadURL('https://www.mixcloud.com/oauth/authorize?client_id=' + clientId + '&redirect_uri=' + redirectUrl);

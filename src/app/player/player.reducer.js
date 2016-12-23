@@ -5,11 +5,26 @@ const initialState = {
 
 export default function player (state = initialState, action) {
     switch (action.type) {
-        case 'INIT_PLAYER':
-            return Object.assign({}, state, {playerWidget: action.playerWidget});
-        case 'LOAD_SONG':
+        case 'PLAYER_INIT':
+            return {
+                ...state,
+                playerWidget: action.playerWidget
+            };
+        case 'PLAYER_LOAD':
             state.playerWidget.load(action.song, true);
-            return Object.assign({}, state, {playingSong: action.song});
+            return {
+                ...state,
+                playingSong: action.song
+            };
+        case 'PLAYER_PAUSE': 
+            state.playerWidget.pause();
+            return state;
+        case 'PLAYER_TOGGLE': 
+            state.playerWidget.togglePlay();
+            return state;
+        case 'PLAYER_SEEK': 
+            state.playerWidget.seek(action.seekTo);
+            return state;
         default:
             return state;
     }

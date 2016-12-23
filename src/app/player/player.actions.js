@@ -1,19 +1,26 @@
-
 export const initPlayer = (playerWidget) => ({
-    type: 'INIT_PLAYER',
+    type: 'PLAYER_INIT',
     playerWidget
 });
 
-/**
- * Loads a song into a Mixcloud widget
- * @param {string} song - String of type '/artist-name/song-name/'
- */
 export const loadSong = (song) => {
-    if (!song) {
-        return {};
+    if (song.length) {
+        return {
+            type: 'LOAD_SONG',
+            song
+        };
     }
-    return {
-        type: 'LOAD_SONG',
-        song
-    };
 };
+
+export const pausePlayer = () => ({
+    type: 'PLAYER_PAUSE'
+});
+
+export const togglePlayer = () => ({
+    type: 'PLAYER_TOGGLE'
+});
+
+export const seekPlayer = (seekTo) => ({
+    type: 'PLAYER_SEEK',
+    seekTo
+});

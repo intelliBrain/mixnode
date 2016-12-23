@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: $darkblue;
+    background: $dark;
     color: white;
     .header-logo-wrapper {
         width: 150px;
@@ -44,11 +44,45 @@
             justify-content: center;
             align-items: center;
             &:hover {
-                background: lighten($darkblue, 20%)
+                background: lighten($dark, 20%);
             }
 
-            .material-icons {
-                font-size: 1.33em;
+        }
+
+    }
+
+    .user-menu-icon {
+        position: relative;
+        height: 100%;
+        width: 70px;
+        margin-right: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        .material-icons {
+            font-size: 1.5rem;
+        }
+        .account-icon {
+            font-size: 2em;
+        }
+
+        .menu-list {
+            position: absolute;
+            top: 80%;
+            right: 0;
+            width: 200px;
+            background: #efefef;
+            color: black;
+            box-shadow: 0 7px 30px rgba(0, 0, 0, 0.32);
+            .menu-list-item {
+                height: 40px;
+                padding: 0 20px;
+                display: flex;
+                align-items: center;
+                &:hover {
+                    background: lighten($dark, 20%);
+                    color: white;
+                }
             }
         }
     }

@@ -14,8 +14,8 @@ class authCallback extends Component {
     render () {
 
         return (
-            <div>
-                Callback
+            <div className='auth-callback-wrapper'>
+                <div className="loader-spinner"></div>
             </div>
         );
     }

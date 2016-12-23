@@ -1,12 +1,12 @@
 #mixnode {
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 60px);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     background: #f9f9f9;
     .content-wrapper {
-        height: calc(100% - 140px);
+        height: 100%;
         margin-top: 80px;
         overflow-y: scroll;
     }

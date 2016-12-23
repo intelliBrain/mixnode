@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 import React, {Component} from 'react';
 import Link from 'react-router/lib/Link';
+
 import SearchBar from './components/search-bar.component';
+import UserMenu from './components/user-menu.component';
 
 class Navigation extends Component {
     render () {
@@ -19,6 +21,7 @@ class Navigation extends Component {
                         <Link to='/explore'>Explore</Link>
                     </div>
                 </div>
+                <UserMenu />
             </header>
         );
     }
