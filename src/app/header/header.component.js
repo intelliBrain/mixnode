@@ -21,15 +21,15 @@ class Navigation extends Component {
                         <Link to='/explore'>Explore</Link>
                     </div>
                 </div>
-                <UserMenu />
+                <UserMenu {...this.props} />
             </header>
         );
     }
 }
 
 function mapState (state) {
-    const {user} = state;
-    return {user};
+    const { user } = state;
+    return { user };
 }
 
 export default connect(mapState)(Navigation);

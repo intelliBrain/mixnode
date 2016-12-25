@@ -2,12 +2,11 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import {getPopular} from './explore.actions';
-import {loadSong} from '../player/player.actions';
+import Feed from '../common/feed.component';
 
 class ExploreContainer extends Component {
     constructor (props) {
         super(props);
-        this.loadSong = this.loadSong.bind(this);
     }
 
     componentWillMount () {
@@ -15,47 +14,25 @@ class ExploreContainer extends Component {
         dispatch(getPopular());
     }
 
-    /**
-     * Loads the song into the player with autoplay
-     * @param {string} key - classic mixcloud key
-     */
-    loadSong (key) {
-        const {dispatch} = this.props;
-        dispatch(loadSong(key));
-    }
-
-
-    render () {
+    render() {
         let {feeds} = this.props.explore || [];
         return (
            <div className='explore-wrapper'>
-                {feeds.map(
-                    (feed) => 
-                        <div
-                            className='card-info-wrapper --explore-card'
-                            key={feed.key}
-                            onClick={() => this.loadSong(feed.key)}>
-                                <img 
-                                    className='card-cover-img'
-                                    src={feed.pictures.medium} />
-                                <div className="card-text">
-                                    <div className='card-title-text' >
-                                        {feed.name}
-                                    </div>
-                                    <div className='card-subtitle-text' >
-                                        {feed.user.name}
-                                    </div>
-                                </div>
-                        </div>
-                )}
+                <h2 className='explore-view-title'>Popular</h2>
+                {
+                    feeds.map(
+                        (feed) => <Feed data={feed} key={feed.key} dispatch={this.props.dispatch} />
+                    )
+                }
            </div>
-       );
+        );
     }
+
 }
 
 function mapState (state) {
-    const {explore, player} = state;
-    return {explore, player};
+    const {explore} = state;
+    return {explore};
 }
 
 export default connect(mapState)(ExploreContainer);

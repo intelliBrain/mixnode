@@ -1,4 +1,5 @@
-export const addUserInfo = (data) => ({
-    type: 'ADD_USER',
-    data
+export const logIn = (data, token) => ({
+    type: 'LOG_IN',
+    data,
+    token
 });

@@ -1,6 +1,7 @@
 require('dotenv').load();
 
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpack = require('html-webpack-plugin');
 const dotenvWebpack = require('webpack-dotenv-plugin');
 
@@ -47,6 +48,7 @@ module.exports = {
     },
     plugins: [
         new dotenvWebpack(),
+        new webpack.optimize.CommonsChunkPlugin('vendor'),
         new HtmlWebpack({
             template: './src/index.html',
             inject: true

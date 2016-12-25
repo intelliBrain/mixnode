@@ -1,7 +1,7 @@
 const initialState = {
     loggedIn: false,
     token: null,
-    user: null
+    data: null
 };
 
 export default function user (state = initialState, action) {
@@ -9,13 +9,9 @@ export default function user (state = initialState, action) {
         case 'LOG_IN':
             return {
                 ...state,
-                loggedIn: true,
-                token: action.payload.token
-            };
-        case 'ADD_USER':
-            return {
-                ...state,
-                user: action.data
+                data: action.data,
+                token: action.token,
+                loggedIn: true
             };
         default:
             return state;

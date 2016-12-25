@@ -51,7 +51,7 @@
 
     }
 
-    .user-menu-icon {
+    .user-menu-wrapper {
         position: relative;
         height: 100%;
         width: 70px;
@@ -59,11 +59,17 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
-        .material-icons {
-            font-size: 1.5rem;
+        .anon-account-icon {
+            font-size: 36px;
         }
-        .account-icon {
-            font-size: 2em;
+
+        .user-account-icon {
+            height: 36px;
+            border-radius: 50%;
+        }
+        
+        .user-menu-arrow-down {
+            font-size: 1.5rem;
         }
 
         .menu-list {

@@ -3,22 +3,21 @@ import Axios from 'axios';
 export function getPopular () {
     return (dispatch) => {
         return Axios.get('//api.mixcloud.com/popular/?limit=40').then(res => {
-            dispatch(getFeeds(res.data.data));
+            dispatch(addFeeds(res.data.data));
         });
     };
 }
 
 export function searchFeeds (query) {
-    if (!query) {
-        return {};
+    if (query) {
+        let queryString = query.split(' ');
+        queryString = queryString.join('+');
+        return (dispatch) => {
+            return Axios.get('//api.mixcloud.com/search/?q=' + queryString + '&type=cloudcast&limit=40').then(res => {
+                dispatch(addFeeds(res.data.data));
+            });
+        };
     }
-    let queryString = query.split(' ');
-    queryString = queryString.join('+');
-    return (dispatch) => {
-        return Axios.get('//api.mixcloud.com/search/?q=' + queryString + '&type=cloudcast&limit=40').then(res => {
-            dispatch(getFeeds(res.data.data));
-        });
-    };
 }
 
 export function loadSongInPlayer (song) {
@@ -28,9 +27,9 @@ export function loadSongInPlayer (song) {
     };
 }
 
-export function getFeeds (data) {
+export function addFeeds (data) {
     return {
-        type: 'GET_FEEDS',
+        type: 'ADD_FEEDS',
         data
     };
 }

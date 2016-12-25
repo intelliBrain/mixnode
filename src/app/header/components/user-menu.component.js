@@ -1,18 +1,16 @@
 const {ipcRenderer} = require('electron');
 import React, {Component} from 'react';
-// import Axios from 'axios';
-
-// import {addUserInfo} from './user.actions';
 
 class UserMenu extends Component {
-    constructor () {
-        super();
+    constructor (props) {
+        super(props);
         this.state = {
             isMenuOpen: false
         };
 
         this.logIn = this.logIn.bind(this);
         this.renderList = this.renderList.bind(this);
+        this.renderUserIcon = this.renderUserIcon.bind(this);
 
     }
 
@@ -22,6 +20,22 @@ class UserMenu extends Component {
 
     logIn () {
         ipcRenderer.send('user-auth');
+    }
+
+    renderUserIcon() {
+        if(this.props.user.loggedIn) {
+            return (
+                <img
+                    className='user-account-icon'
+                    src={this.props.user.data.pictures.medium}/>
+            );
+        } else {
+            return (
+                <div className='material-icons anon-account-icon'>
+                        account_circle
+                </div>
+            );
+        }
     }
 
     renderList() {
@@ -40,13 +54,10 @@ class UserMenu extends Component {
 
     render () {
         return (
-            <div className='user-menu-icon'
+            <div className='user-menu-wrapper'
                 onClick={() => this.toggleMenu()} >
-                <div
-                    className='material-icons account-icon'>
-                        account_circle
-                </div>
-                <div className='material-icons'>
+                {this.renderUserIcon()}
+                <div className='material-icons user-menu-arrow-down'>
                     keyboard_arrow_down
                 </div>
                 {this.renderList()}
