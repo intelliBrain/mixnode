@@ -1,14 +1,13 @@
 const initialState = {
-    feeds: [],
-    page: 1
+    data: []
 };
 
 export default function explore (state = initialState, action) {
     switch (action.type) {
-        case 'ADD_FEEDS':
+        case 'EXPLORE_ADD_DATA':
             return {
                 ...state,
-                feeds: action.data
+                data: action.data
             };
         default:
             return state;

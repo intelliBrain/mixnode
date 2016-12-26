@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import Axios from 'axios';
 
-import Feed from '../common/feed.component';
+import Stream from '../common/stream.component';
 
 class UserContainer extends Component {
     constructor(props) {
@@ -59,7 +59,7 @@ class UserContainer extends Component {
                     <div className='user-data-list'>
                         {
                             this.state.userCloudcasts.map(cast => 
-                                <Feed
+                                <Stream
                                     key={cast.key}
                                     data={cast} 
                                     dispatch={this.props.dispatch} />

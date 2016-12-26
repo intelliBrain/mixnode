@@ -3,6 +3,7 @@
 
 // COMPONENTS
 @import './components/spinner';
+@import './components/stream';
 
 // MAIN
 @import 'layout';
@@ -10,4 +11,5 @@
 @import 'player';
 @import 'explore';
 @import 'user';
+@import 'search';
 @import 'auth-callback';

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import React, {Component} from 'react';
 import Link from 'react-router/lib/Link';
 
-import SearchBar from './components/search-bar.component';
+import Search from '../search/search.container';
 import UserMenu from './components/user-menu.component';
 
 class Navigation extends Component {
@@ -12,7 +12,7 @@ class Navigation extends Component {
                 <div className='header-logo-wrapper'>
                     <span className='header-logo-text'>Mixnode</span>
                 </div>
-                <SearchBar {...this.props} />
+                <Search />
                 <div className='header-links'>
                     <Link className='link' to='/'>
                         Explore

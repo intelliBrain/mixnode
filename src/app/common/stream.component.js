@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Link from 'react-router/lib/Link';
 import {loadSong} from '../player/player.actions';
 
-class Feed extends Component {
+class Stream extends Component {
     constructor (props) {
         super(props);
         this.loadSong = this.loadSong.bind(this);
@@ -26,10 +26,10 @@ class Feed extends Component {
         const userLink = `/user/${this.props.data.user.username}`;
         return (
             <div
-                className='card-info-wrapper --explore-card'>
+                className='stream-wrapper'>
                     <div 
-                        className='card-cover-img'>
-                        <div className='card-cover-img-overlay'>
+                        className='stream-cover-img'>
+                        <div className='stream-cover-img-overlay'>
                             <span className="material-icons"
                                 onClick={() => this.loadSong(this.props.data.key)}>
                                 play_circle_outline
@@ -37,11 +37,11 @@ class Feed extends Component {
                         </div>
                         <img src={this.resizeImg(this.props.data.pictures.medium)} />
                     </div>
-                    <div className="card-text">
-                        <div className='card-title-text' >
+                    <div className="stream-text">
+                        <div className='stream-title-text' >
                             {this.props.data.name}
                         </div>
-                        <div className='card-subtitle-text' >
+                        <div className='stream-subtitle-text' >
                             by <Link to={userLink}>{this.props.data.user.name}</Link>
                         </div>
                     </div>
@@ -50,4 +50,4 @@ class Feed extends Component {
     }
 }
 
-export default Feed;
+export default Stream;
