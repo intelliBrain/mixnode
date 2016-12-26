@@ -11,6 +11,8 @@ Pre-alpha / Under heavy development
 1. Cloning and installing dependecies
 ```
 // clone the repo
+
+// cd
 cd mixnode
 
 // install dependencies
