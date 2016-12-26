@@ -22,6 +22,12 @@ class UserContainer extends Component {
         }
     }
 
+    componentWillReceiveProps(next) {
+        if(next.params.username !== this.props.params.username) {
+            this.getUserData(next.params.username);
+        }
+    }
+
     getUserData(username) {
         Axios.get(`//api.mixcloud.com/${username}/`).then(
             (res) => {
@@ -35,14 +41,36 @@ class UserContainer extends Component {
     }
 
     render () {
-        return (
-            <div className='user-wrapper'>
-                {this.state.userData ? `Cloudcasts from ${this.state.userData.username}` : null }
-                {
-                    this.state.userCloudcasts.map(cast => <Feed key={cast.key} data={cast} dispatch={this.props.dispatch} />)
-                }
-            </div>
-        );
+        let user = this.state.userData ? { ...this.state.userData } : null;
+        if(user) {
+            return (
+                <div className='user-wrapper'>
+                    <div className='user-bio-block'>
+                        <img className='user-bio-img' src={user.pictures.large} />
+                        <div className='user-bio-biog'>
+                            <div className='biog-title'>
+                                { user.name }
+                            </div>
+                            <div className='biog-text'>
+                                { user.biog }
+                            </div>
+                        </div>
+                    </div>
+                    <div className='user-data-list'>
+                        {
+                            this.state.userCloudcasts.map(cast => 
+                                <Feed
+                                    key={cast.key}
+                                    data={cast} 
+                                    dispatch={this.props.dispatch} />
+                            )
+                        }
+                    </div>
+                </div>
+            );
+        } else {
+            return null;
+        }
     }
 }
 
