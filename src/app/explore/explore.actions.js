@@ -20,13 +20,6 @@ export function searchFeeds (query) {
     }
 }
 
-export function loadSongInPlayer (song) {
-    return {
-        type: 'PLAYER_LOAD',
-        song
-    };
-}
-
 export function addFeeds (data) {
     return {
         type: 'ADD_FEEDS',

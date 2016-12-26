@@ -14,12 +14,9 @@ class Navigation extends Component {
                 </div>
                 <SearchBar {...this.props} />
                 <div className='header-links'>
-                    <div className='link'>
-                        <span>Feed</span>
-                    </div>
-                    <div className='link'>
-                        <Link to='/explore'>Explore</Link>
-                    </div>
+                    <Link className='link' to='/'>
+                        Explore
+                    </Link>
                 </div>
                 <UserMenu {...this.props} />
             </header>

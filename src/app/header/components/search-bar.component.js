@@ -19,13 +19,24 @@ class SearchBar extends Component {
             clearTimeout(this.state.debouncer);
         }
 
-        this.state.debouncer = setTimeout(() => searcher(event.target.value), 1000);
+        this.setState({
+            debouncer : setTimeout(() => {
+                searcher(event.target.value);
+                this.setState({ debouncer: null });
+            }, 1000)
+        });
+
     }
 
     render () {
         return (
             <div className='search-bar-wrapper'>
-                <input type='text' onChange={ this.searchFeeds } placeholder='Search' />
+                { this.state.debouncer ? <div className='loader-spinner'></div> : null}
+                <input
+                    type='text'
+                    className='search-bar-input'
+                    onChange={ this.searchFeeds }
+                    placeholder='Search' />
             </div>
         );
     }

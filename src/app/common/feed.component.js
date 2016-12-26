@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Link from 'react-router/lib/Link';
 import {loadSong} from '../player/player.actions';
 
 class Feed extends Component {
@@ -22,6 +23,7 @@ class Feed extends Component {
     }
 
     render () {
+        const userLink = `/user/${this.props.data.user.username}`;
         return (
             <div
                 className='card-info-wrapper --explore-card'>
@@ -40,7 +42,7 @@ class Feed extends Component {
                             {this.props.data.name}
                         </div>
                         <div className='card-subtitle-text' >
-                            by {this.props.data.user.name}
+                            by <Link to={userLink}>{this.props.data.user.name}</Link>
                         </div>
                     </div>
             </div>

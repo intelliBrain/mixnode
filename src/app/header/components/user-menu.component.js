@@ -1,5 +1,6 @@
 const {ipcRenderer} = require('electron');
 import React, {Component} from 'react';
+import Link from 'react-router/lib/Link';
 
 class UserMenu extends Component {
     constructor (props) {
@@ -11,6 +12,7 @@ class UserMenu extends Component {
         this.logIn = this.logIn.bind(this);
         this.renderList = this.renderList.bind(this);
         this.renderUserIcon = this.renderUserIcon.bind(this);
+        this.renderAuthList = this.renderAuthList.bind(this);
 
     }
 
@@ -38,17 +40,42 @@ class UserMenu extends Component {
         }
     }
 
+    renderAuthList() {
+        const userLink = `/user/${this.props.user.data.username}`;
+        return (
+            <div className='menu-list'>
+                <div className='menu-list-item'>
+                    <Link to={userLink}>Profile</Link>
+                </div>
+                <div
+                    className='menu-list-item'
+                    onClick={() => window.close()} >
+                        Quit
+                </div>
+            </div>
+        );
+    }
+
     renderList() {
         if(this.state.isMenuOpen) {
-            return (
-                <div className='menu-list'>
-                    <div
-                        className='menu-list-item'
-                        onClick={this.logIn} >
-                            Log in
+            if(!this.props.user.loggedIn){
+                return (
+                    <div className='menu-list'>
+                        <div
+                            className='menu-list-item'
+                            onClick={this.logIn} >
+                                Log in
+                        </div>
+                        <div
+                            className='menu-list-item'
+                            onClick={() => window.close()} >
+                                Quit (Ctrl + Q)
+                        </div>
                     </div>
-                </div>
-            );
+                );
+            } else {
+                return this.renderAuthList();
+            }
         }
     }
 
