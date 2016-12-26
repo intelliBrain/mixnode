@@ -6,32 +6,39 @@
 }		
 
 .material-icons {		
-    font-family: 'Material Icons';		
-    font-weight: normal;		
-    font-style: normal;		
-    font-size: 1em;		
-    display: inline-block;		
-    width: 1em;		
-    height: 1em;		
-    line-height: 1;		
-    text-transform: none;		
-    letter-spacing: normal;		
-    word-wrap: normal;		
-    white-space: nowrap;		
-    direction: ltr;		
-            
-    /* Support for all WebKit browsers. */		
-    -webkit-font-smoothing: antialiased;		
-    /* Support for Safari and Chrome. */		
-    text-rendering: optimizeLegibility;		
-            
-    /* Support for Firefox. */		
-    -moz-osx-font-smoothing: grayscale;		
-            
-    /* Support for IE. */		
-    font-feature-settings: 'liga';		
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1em;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga';
 }
 
 $light: #f5f9fc;
-$background: #e5e5e5;
-$dark: #25292C;
+$lightgray: #e3e5e6;
+$white: #ffffff;
+$abyss: #1a2732;
+
+$red: #d93024;
+$orange: #e2584e;
+$yellow: #e79e35;
+$green: #50b348;
+$darkgreen: #408f39;
+$purple: #a27ed5;
+$lightblue: #4fa6d3;
+$blue: #308ebf;
+$dark: #34495e;
+$darker: #273a4b;
+$header: #25292c;
+$darkheader: #1b1e21;
