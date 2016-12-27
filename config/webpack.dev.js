@@ -10,6 +10,7 @@ module.exports = {
         app: './src/main.js',
         vendor: ['react', 'react-dom', 'react-router']
     },
+    debug: true,
     devtool: 'cheap-module-source-map',
 
     output: {

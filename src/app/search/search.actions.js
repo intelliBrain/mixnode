@@ -1,8 +1,8 @@
 import Axios from 'axios';
 
 export const searchAction = (query) => {
-    let getUsers = () => Axios.get(`//api.mixcloud.com/search/?q=${query}&type=user`);
-    let getShows = () => Axios.get(`//api.mixcloud.com/search/?q=${query}&type=cloudcast`);
+    let getUsers = () => Axios.get(`https://api.mixcloud.com/search/?q=${query}&type=user`);
+    let getShows = () => Axios.get(`https://api.mixcloud.com/search/?q=${query}&type=cloudcast`);
     if (query) {
         let queryString = query.split(' ');
         queryString = queryString.join('+');

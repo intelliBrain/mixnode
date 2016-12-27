@@ -5,7 +5,7 @@ import ReactDom from 'react-dom';
 import Router from 'react-router/lib/Router';
 import Route from 'react-router/lib/Route';
 import IndexRoute from 'react-router/lib/IndexRoute';
-import history from 'react-router/lib/browserHistory';
+import history from 'react-router/lib/hashHistory';
 
 import createStore from './app/store';
 import App from './app/app';

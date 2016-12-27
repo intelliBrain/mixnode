@@ -2,12 +2,13 @@
   "name": "mixnode",
   "version": "1.0.0",
   "description": "A timesplitter app for speedrunning",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
-    "start": "electron .",
-    "build": "webpack --progress -p",
-    "serve": "webpack-dev-server --progress --inline",
-    "test": "karma start"
+    "start": "electron ./index",
+    "build": "rm -rf build/ && webpack --progress -p --config ./config/webpack.prod.js",
+    "build-linux": "node ./config/build",
+    "serve": "webpack-dev-server --progress --inline --config ./config/webpack.dev.js",
+    "test": ""
   },
   "keywords": [],
   "author": "Ivan Mrvelj <sk8raid@gmail.com>",
@@ -23,6 +24,7 @@
     "css-loader": "^0.23.1",
     "devtron": "^1.4.0",
     "electron": "^1.4.13",
+    "electron-packager": "^8.4.0",
     "eslint": "^2.10.2",
     "eslint-plugin-react": "^5.1.1",
     "file-loader": "^0.9.0",

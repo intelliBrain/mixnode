@@ -2,8 +2,8 @@ require('dotenv').config();
 
 const electron = require('electron');
 const {ipcMain} = require('electron');
-const path = require('path');
 const app = electron.app;
+const Axios = require('axios');
 const BrowserWindow = electron.BrowserWindow;
 
 let mainWindow = null;
@@ -11,11 +11,11 @@ let authWindow = null;
 let urlToLoad = '';
 
 switch (process.env.NODE_ENV) {
-    case 'prod':
-        urlToLoad = path.join('file://', __dirname, '/dist/index.html');
+    case 'development':
+        urlToLoad = 'http://localhost:9090/';
         break;
     default:
-        urlToLoad = 'http://localhost:9090/';
+        urlToLoad = `file://${__dirname}/dist/index.html`;
 }
 
 function createWindow () {
@@ -28,8 +28,6 @@ function createWindow () {
     );
 
     mainWindow.loadURL(urlToLoad);
-
-    mainWindow.webContents.openDevTools();
 
     mainWindow.on('closed', function () {
         mainWindow = null;
@@ -64,15 +62,20 @@ ipcMain.on('user-auth', () => {
         }
     });
 
-    const redirectUrl = 'http://localhost:9090/callback';
+    const redirectUrl = `${urlToLoad}/`;
     authWindow.loadURL('https://www.mixcloud.com/oauth/authorize?client_id=' + clientId + '&redirect_uri=' + redirectUrl);
 
     authWindow.on('closed', function () {
         authWindow = null;
     });
-});
 
-ipcMain.on('oauth-token', (event, arg) => {
-    mainWindow.webContents.send('user-log-in', arg);
-    authWindow.close();
+    authWindow.webContents.on('did-get-redirect-request', (e, oldUrl, newUrl) => {
+        let redirectUrl = oldUrl.split('redirect_uri=')[1];
+        let code = newUrl.split('code=')[1];
+        let url = `https://beta.mixcloud.com/oauth/access_token?client_id=${process.env.MIXNODE_ID}&redirect_uri=${redirectUrl}&client_secret=${process.env.MIXNODE_SECRET}&code=${code}`;
+        Axios.get(url).then((res) => {
+            mainWindow.webContents.send('user-log-in', res.data.access_token);
+            authWindow.close();
+        });
+    });
 });

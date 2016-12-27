@@ -15,7 +15,7 @@ class UserContainer extends Component {
     }
 
     componentDidMount() {
-        if(this.props.params.username === this.props.user.data.username) {
+        if(this.props.routeParams.username === this.props.user.data.username) {
             this.setState({ userData: this.props.user.data });
         } else {
             this.getUserData(this.props.params.username);
@@ -29,7 +29,7 @@ class UserContainer extends Component {
     }
 
     getUserData(username) {
-        Axios.get(`//api.mixcloud.com/${username}/`).then(
+        Axios.get(`https://api.mixcloud.com/${username}/`).then(
             (res) => {
                 this.setState({ userData: res.data });
                 this.getUserCloudcasts(username);
@@ -37,7 +37,7 @@ class UserContainer extends Component {
     }
 
     getUserCloudcasts(username) {
-        Axios.get(`//api.mixcloud.com/${username}/cloudcasts/`).then((res) => this.setState({ userCloudcasts: res.data.data }));
+        Axios.get(`https://api.mixcloud.com/${username}/cloudcasts/`).then((res) => this.setState({ userCloudcasts: res.data.data }));
     }
 
     render () {

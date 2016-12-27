@@ -26,7 +26,7 @@ class Player extends Component {
 
     addWidgetScript () {
         let script = document.createElement('script');
-        script.src = '//widget.mixcloud.com/media/js/footerWidgetApi.js';
+        script.src = 'https://widget.mixcloud.com/media/js/footerWidgetApi.js';
         document.body.appendChild(script);
         return script;
     }

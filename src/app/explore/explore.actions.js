@@ -2,7 +2,7 @@ import Axios from 'axios';
 
 export function getPopular () {
     return (dispatch) => {
-        return Axios.get('//api.mixcloud.com/popular/?limit=40').then(res => {
+        return Axios.get('https://api.mixcloud.com/popular/?limit=40').then(res => {
             dispatch(addData(res.data.data));
         });
     };

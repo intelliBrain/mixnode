@@ -3,6 +3,7 @@
 .env.dev
 /node_modules/
 /dist/
+/package/
 /npm-debug.log
 /.idea/
 .config.json
