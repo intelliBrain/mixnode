@@ -11,7 +11,6 @@ import createStore from './app/store';
 import App from './app/app';
 import Explore from './app/explore/explore.container';
 import User from './app/user/user.container';
-import CallbackComponent from './app/common/auth-callback.component';
 import './styles/main.scss';
 
 const store = createStore();
@@ -23,7 +22,6 @@ ReactDom.render(
                 <IndexRoute component={Explore}></IndexRoute>
                 <Route path='user/:username' component={User}></Route>
             </Route>
-            <Route path="/callback" component={CallbackComponent} ></Route>
         </Router>
     </Provider>,
     document.getElementById('app')
