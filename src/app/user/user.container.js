@@ -15,7 +15,8 @@ class UserContainer extends Component {
     }
 
     componentDidMount() {
-        if(this.props.routeParams.username === this.props.user.data.username) {
+        const { get } = require('lodash');
+        if(this.props.routeParams.username === get(this.props.user, 'data.username')) {
             this.setState({ userData: this.props.user.data });
         } else {
             this.getUserData(this.props.params.username);
