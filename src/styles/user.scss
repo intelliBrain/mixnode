@@ -10,12 +10,27 @@
             height: 200px;
         }
         .user-bio-biog {
-            margin-left: 30px;
             width: 80%;
+            margin-left: 30px;
+            display: flex;
+            flex-direction: column;
             .biog-title {
                 margin-bottom: 10px;
                 font-size: 2em;
                 color: $blue;
+            }
+            .biog-statistics {
+                margin-top: auto;
+                display: flex;
+                .biog-stat {
+                    margin-right: 10px;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    i {
+                        font-size: 1.3em;
+                    }
+                }
             }
         }
     }

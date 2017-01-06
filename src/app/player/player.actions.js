@@ -5,6 +5,7 @@ export const initPlayer = (playerWidget) => ({
 
 export const loadSong = (song) => {
     if (song.length) {
+        localStorage.setItem('lastPlayed', song);
         return {
             type: 'PLAYER_LOAD',
             song

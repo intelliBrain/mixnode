@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Component } from 'react';
 
-import { initPlayer, pausePlayer } from './player.actions';
+import { initPlayer } from './player.actions';
 
 class Player extends Component {
     constructor (props) {
@@ -15,8 +15,9 @@ class Player extends Component {
     }
 
     initPlayer() {
+        let song = localStorage.getItem('lastPlayed') || '/spartacus/lambiance/';
         this.addWidgetScript().onload = () => 
-            Mixcloud.FooterWidget('/spartacus/lambiance/', { disablePushstate: true, disableUnloadWarning: false, light: false }).then(
+            Mixcloud.FooterWidget(song, { disablePushstate: true, disableUnloadWarning: false, light: false }).then(
                 (widget) => {
                     const {dispatch} = this.props;
                     dispatch(initPlayer(widget));

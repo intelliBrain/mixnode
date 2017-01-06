@@ -55,6 +55,16 @@ class UserContainer extends Component {
                             <div className='biog-text'>
                                 { user.biog }
                             </div>
+                            <div className='biog-statistics'>
+                                <div className='biog-stat'>
+                                    <i className='material-icons'>cloud_queue</i>
+                                    <span>{ user.cloudcast_count }</span>
+                                </div>
+                                <div className='biog-stat'>
+                                    <i className='material-icons'>group</i>
+                                    <span>{ user.follower_count }</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className='user-data-list'>
