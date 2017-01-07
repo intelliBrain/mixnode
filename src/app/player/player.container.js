@@ -17,7 +17,7 @@ class Player extends Component {
     initPlayer() {
         let song = localStorage.getItem('lastPlayed') || '/spartacus/lambiance/';
         this.addWidgetScript().onload = () => 
-            Mixcloud.FooterWidget(song, { disablePushstate: true, disableUnloadWarning: false, light: false }).then(
+            Mixcloud.FooterWidget(song, { disablePushstate: true, disableUnloadWarning: true, light: false }).then(
                 (widget) => {
                     const {dispatch} = this.props;
                     dispatch(initPlayer(widget));

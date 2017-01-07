@@ -22,6 +22,13 @@ class Stream extends Component {
         return tmp[0] + '150x150' + tmp[1];
     }
 
+    wrapText(text) {
+        if(text.length > 50) {
+            return `${text.slice(0, 50)}...`;
+        }
+        return text;
+    }
+
     render () {
         const { data } = this.props;
         const userLink = `/user/${data.user.username}`;
@@ -40,7 +47,7 @@ class Stream extends Component {
                     </div>
                     <div className="stream-info">
                         <div className='stream-title' >
-                            {data.name}
+                            {this.wrapText(data.name)}
                         </div>
                         <div className='stream-subtitle' >
                             by <Link to={userLink}>{data.user.name}</Link>
