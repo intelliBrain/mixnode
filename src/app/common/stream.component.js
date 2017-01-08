@@ -29,6 +29,17 @@ class Stream extends Component {
         return text;
     }
 
+    getTime(time) {
+        const formatHours = (value) => {
+            const hours = Math.floor(value / 3600);
+            const minutes = Math.floor((value - (hours * 3600)) / 60);
+
+            return minutes ? `${hours}h${minutes}m` : `${hours}h`;
+        };
+
+        return time >= 3600 ? formatHours(time) : `${Math.floor(time / 60)}m`;
+    }
+
     render () {
         const { data } = this.props;
         const userLink = `/user/${data.user.username}`;
@@ -53,6 +64,10 @@ class Stream extends Component {
                             by <Link to={userLink}>{data.user.name}</Link>
                         </div>
                         <div className='stream-stats-block'>
+                            <div className='stream-stat'>
+                                <i className='material-icons'>access_time</i>
+                                <span>{this.getTime(data.audio_length)}</span>
+                            </div>
                             <div className='stream-stat'>
                                 <i className='material-icons'>play_arrow</i>
                                 <span>{data.play_count}</span>

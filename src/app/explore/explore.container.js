@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import {getPopular} from './explore.actions';
+import {getExplore} from './explore.actions';
 import Stream from '../common/stream.component';
 
 class ExploreContainer extends Component {
@@ -10,15 +10,22 @@ class ExploreContainer extends Component {
     }
 
     componentWillMount () {
+        const {dispatch, routeParams} = this.props;
+        let type = routeParams.type || 'popular';
+        dispatch(getExplore(type));
+    }
+
+    componentWillReceiveProps(next) {
         const {dispatch} = this.props;
-        dispatch(getPopular());
+        if(next.params.type !== this.props.params.type) {
+            dispatch(getExplore(next.params.type));
+        }
     }
 
     render() {
         let streams = this.props.explore.data || [];
         return (
            <div className='explore-wrapper'>
-                <h2 className='explore-view-title'>Popular</h2>
                 {
                     streams.map(
                         (stream) => <Stream data={stream} key={stream.key} dispatch={this.props.dispatch} />

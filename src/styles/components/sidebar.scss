@@ -1,0 +1,29 @@
+.sidebar-wrapper {
+    width: 200px;
+    height: 100%;
+    padding-left: 30px;
+    padding-top: 40px;
+    font-size: 12px;
+    background: lighten($darkheader, 5%);
+    color: $light;
+    .sidebar-list {
+        margin-bottom: 20px;
+        .sidebar-list-title {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .sidebar-list-body {
+            display: flex;
+            flex-direction: column;
+            .sidebar-list-item {
+                height: 30px;
+                padding-left: 10px;
+                display: flex;
+                align-items: center;
+                &.active, &:hover {
+                    background: lighten($darkheader, 10%);
+                }
+            }
+        }
+    }
+}

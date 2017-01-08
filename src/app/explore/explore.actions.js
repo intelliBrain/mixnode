@@ -1,8 +1,8 @@
 import Axios from 'axios';
 
-export function getPopular () {
+export function getExplore (type) {
     return (dispatch) => {
-        return Axios.get('https://api.mixcloud.com/popular/?limit=40').then(res => {
+        return Axios.get(`https://api.mixcloud.com/${type}/?limit=40`).then(res => {
             dispatch(addData(res.data.data));
         });
     };

@@ -7,14 +7,13 @@
     height: 80px;
     z-index: 1000;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background: $header;
     color: white;
     box-shadow: 0 7px 32px rgba(0, 0, 0, 0.23);
     .header-logo-wrapper {
         width: 150px;
-        margin-right: auto;
         display: flex;
         justify-content: center;
         align-items: center;
