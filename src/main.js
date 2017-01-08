@@ -17,9 +17,9 @@ const store = createStore();
 ReactDom.render(
     <Provider store={store}>
         <Router history={history}>
-            <Route path="/" component={App}>
-                <Route path="/explore/:type" component={Explore}></Route>
-                <Route path='user/:username' component={User}></Route>
+            <Route path='/' component={App}>
+                <Route path='/explore/:type' component={Explore}></Route>
+                <Route path='/user/:username' component={User}></Route>
             </Route>
         </Router>
     </Provider>,
