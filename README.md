@@ -40,6 +40,8 @@ npm start
 
 
 ## Screenshots
-![popular](http://i.imgur.com/IPBmxOH.png)
+![search](http://i.imgur.com/JeqwVrI.png)
 ---
-![user](http://i.imgur.com/AbiT1p9.png)
+![user](http://i.imgur.com/U6MDxMl.png)
+---
+![popular](http://i.imgur.com/xfOJqLe.png)
