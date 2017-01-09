@@ -8,8 +8,12 @@ webpackConfig.node = {
 };
 
 webpackConfig.plugins.push(
-    new webpack.DefinePlugin({
-        'process.env.NODE_ENV': '"production"'
+    new webpack.optimize.UglifyJsPlugin({
+        compress: {
+            warnings: false
+        },
+        sourceMap: false,
+        mangle: false
     }),
     new webpack.optimize.CommonsChunkPlugin('vendor'),
     new webpack.optimize.DedupePlugin()

@@ -37,7 +37,7 @@ class AppContainer extends Component {
         ipcRenderer.on('user-log-in', (event, args) => {
             const token = args;
             localStorage.setItem('token', token);
-            this.mixcloudLogIn(token);
+            this.bootstrapUser(token);
         });
     }
 
