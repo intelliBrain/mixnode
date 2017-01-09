@@ -8,22 +8,27 @@
 }
 
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 5px;
+    height: 5px;
 }
  
 ::-webkit-scrollbar-track {
-    background: $lightgray;    
+    background: transparent;    
 }
  
 ::-webkit-scrollbar-thumb {
-    background: $header;
+    background: $lightblue;
     border-radius: 2px;
+    &:hover {
+        width: 10px;
+    }
 }
 
 body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
+    background: $header;
 }
 
 input {

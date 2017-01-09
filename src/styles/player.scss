@@ -1,0 +1,58 @@
+.player-wrapper {
+    .player-queue-wrapper {
+        position: fixed;
+        bottom: 60px;
+        width: 100%;
+        height: 60px;
+        background: $header;
+        border-top: 1px solid #101218;
+        border-left: 1px solid #101218;
+        border-right: 1px solid #101218;
+        .player-queue-list {
+            display: flex;
+            overflow-x: auto;
+            overflow-y: hidden;
+            height: 100%;
+            .player-queue-stream-wrapper {
+                flex: none;
+            }
+        }
+    }
+
+    .player-queue-controls-wrapper {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: $footer-widget-padding;
+        height: 60px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-top: 1px solid #101218;
+        border-bottom: 1px solid #101218;
+        .player-queue-cover {
+            height: 50px;
+            width: 50px;
+            img {
+                margin: auto;
+            }
+        }
+        .player-queue-control {
+            height: 100%;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $light;
+            .material-icons {
+                font-size: 1.3em;
+            }
+        }
+    }
+}
+
+
+.mixcloud-footer-widget-container {
+    width: calc(100% - $footer-widget-padding);
+    left: $footer-widget-padding !important;
+}

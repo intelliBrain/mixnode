@@ -13,9 +13,6 @@ class Sidebar extends Component {
                     </div>
                     <div className='sidebar-list-body'>
                         <div className='sidebar-list-item'>
-                            QUEUE
-                        </div>
-                        <div className='sidebar-list-item'>
                             FAVORITES
                         </div>
                         <div className='sidebar-list-item'>
@@ -37,16 +34,6 @@ class Sidebar extends Component {
                         <Link className='sidebar-list-item' to='/explore/popular'>
                             DISCOVER
                         </Link>
-                    </div>
-                </div>
-                <div className='sidebar-list'>
-                    <div className='sidebar-list-title'>
-                        PLAYLISTS
-                    </div>
-                    <div className='sidebar-list-body'>
-                        <div className='sidebar-list-item'>
-                            GROOVE
-                        </div>
                     </div>
                 </div>
             </div>

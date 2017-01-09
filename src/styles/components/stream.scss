@@ -22,10 +22,11 @@
             opacity: 0;
             transition: opacity ease 0.33s;
             .material-icons {
-                font-size: 46px;
+                margin: 0 5px;
+                font-size: 2em;
                 color: $light;
                 &:hover {
-                    color: cyan;
+                    color: $lightblue;
                 }
             }
         }
@@ -41,7 +42,7 @@
         padding-left: 20px;
         display: flex;
         flex-direction: column;
-        color: #636363;
+        color: $darker;
         .stream-title {
             height: 32px;
             width: 100%;
@@ -57,9 +58,9 @@
             height: 16px;
             font-size: 75%;
             a {
-                color: $blue;
+                color: $lightblue;
                 &:hover {
-                    color: darken($blue, 30%)
+                    color: darken($lightblue, 30%)
                 }
             }
         }

@@ -1,0 +1,46 @@
+.player-queue-stream-wrapper {
+    position: relative;
+    width: 200px;
+    height: 100%;
+    display: flex;
+    flex: 1;
+    border-right: 1px solid #101218;
+    &.active {
+        background: $lightblue;
+    }
+
+    &:hover {
+        .remove-queue-stream {
+            visibility: visible;
+        }
+    }
+
+    .remove-queue-stream {
+        position: absolute;
+        bottom: 3px;
+        right: 3px;
+        font-size: 18px;
+        border-radius: 50%;
+        color: $light;
+        visibility: hidden;
+        &:hover {
+            color: $orange;
+        }
+    }
+
+    .queue-stream-cover {
+        height: 50px;
+        width: auto;
+        margin: auto;
+    }
+    .queue-stream-info {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        color: $light;
+        font-size: 12px;
+        .queue-stream-info-title {
+            font-weight: bold;
+        }
+    }
+}

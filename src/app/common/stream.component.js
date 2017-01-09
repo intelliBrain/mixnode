@@ -1,20 +1,38 @@
 import React, {Component} from 'react';
 import Link from 'react-router/lib/Link';
-import {loadSong} from '../player/player.actions';
+import {loadStream, addToQueue} from '../player/player.actions';
 
 class Stream extends Component {
     constructor (props) {
         super(props);
-        this.loadSong = this.loadSong.bind(this);
+        this.addToQueue = this.addToQueue.bind(this);
     }
 
-    /**
-     * Loads the song into the player with autoplay
-     * @param {string} key - classic mixcloud key
-     */
-    loadSong (key) {
+
+    formatStream(stream, id) {
+        return {
+            id,
+            key: stream.key,
+            user: stream.user.name,
+            cover: stream.pictures.thumbnail,
+            title: stream.name
+        };
+    }
+
+    addToQueue (stream, play) {
         const {dispatch} = this.props;
-        dispatch(loadSong(key));
+
+        let queueStorage = JSON.parse(localStorage.getItem('queueData'));
+        stream = this.formatStream(stream, queueStorage.length + 1);
+
+        queueStorage = [...queueStorage, stream];
+        localStorage.setItem('queueData', JSON.stringify(queueStorage));
+
+        dispatch(addToQueue(stream));
+
+        if(play) {
+            dispatch(loadStream(stream, true));
+        }
     }
 
     resizeImg(url) {
@@ -49,10 +67,16 @@ class Stream extends Component {
                     <div 
                         className='stream-cover-img'>
                         <div className='stream-cover-img-overlay'>
-                            <span className="material-icons"
-                                onClick={() => this.loadSong(data.key)}>
-                                play_circle_outline
-                        </span>
+                            <span
+                                className="material-icons"
+                                onClick={() => this.addToQueue(data, true)}>
+                                    play_circle_outline
+                            </span>
+                            <span
+                                className="material-icons"
+                                onClick={() => this.addToQueue(data)}>
+                                    playlist_add
+                            </span>
                         </div>
                         <img src={this.resizeImg(data.pictures.medium)} />
                     </div>

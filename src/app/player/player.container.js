@@ -1,13 +1,18 @@
 import { connect } from 'react-redux';
-import { Component } from 'react';
+import React, { Component } from 'react';
 
-import { initPlayer } from './player.actions';
+import { initPlayer, loadQueue, loadStream, playerNext } from './player.actions';
+import Queue from './components/queue.component';
+import QueueControls from './components/queue-controls.component';
 
 class Player extends Component {
     constructor (props) {
         super(props);
+
         this.addWidgetScript = this.addWidgetScript.bind(this);
         this.initPlayer = this.initPlayer.bind(this);
+        this.widgetPostInitHook = this.widgetPostInitHook.bind(this);
+        this.getInitialQueueData = this.getInitialQueueData.bind(this);
     }
 
     componentDidMount() {
@@ -15,14 +20,40 @@ class Player extends Component {
     }
 
     initPlayer() {
-        let song = localStorage.getItem('lastPlayed') || '/spartacus/lambiance/';
-        this.addWidgetScript().onload = () => 
-            Mixcloud.FooterWidget(song, { disablePushstate: true, disableUnloadWarning: true, light: false }).then(
-                (widget) => {
-                    const {dispatch} = this.props;
-                    dispatch(initPlayer(widget));
-                }
+        let initStream = this.props.player.currentStream;
+
+        const widgetOptions = {
+            disablePushstate: true,
+            disableUnloadWarning: true,
+            light: false,
+            hide_artwork: true
+        };
+
+        const playerWidget = this.addWidgetScript(initStream.key, widgetOptions);
+        playerWidget.onload = () =>
+            Mixcloud.FooterWidget(initStream.key, widgetOptions).then(
+                (widget) => this.widgetPostInitHook(widget)
             );
+    }
+
+    widgetPostInitHook(widget) {
+        const { dispatch } = this.props;
+
+        widget.events.ended.on(() => dispatch(playerNext()));
+        dispatch(initPlayer(widget));
+        this.getInitialQueueData();
+    }
+
+    getInitialQueueData() {
+        let queueData = localStorage.getItem('queueData') || [];
+        if(queueData.length > 0) {
+            queueData = JSON.parse(queueData);
+            const { dispatch } = this.props;
+            dispatch(loadQueue(queueData));
+            dispatch(loadStream(queueData[0]));
+        } else {
+            localStorage.setItem('queueData', '[]');
+        }
     }
 
     addWidgetScript () {
@@ -33,7 +64,12 @@ class Player extends Component {
     }
 
     render () {
-        return null;
+        return (
+            <div className='player-wrapper'>
+                <Queue {...this.props} />
+                <QueueControls {...this.props} />
+            </div>
+        );
     }
 }
 

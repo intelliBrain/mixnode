@@ -21,7 +21,7 @@
         position: absolute;
         top: 100%;
         left: -250px;
-        height: 700px;
+        height: 75vh;
         width: 900px;
         z-index: 1000;
         display: flex;
@@ -30,6 +30,7 @@
         border-bottom-right-radius: 4px;
         background: $header;
         overflow-y: auto;
+        color: $light;
         .search-column {
             width: 50%;
             padding: 30px;
@@ -42,12 +43,12 @@
             .stream-wrapper {
                 height: 100px;
                 margin-bottom: 20px;
-                .stream-text {
+                .stream-info {
                     width: 190px;
-                    .stream-title-text, .stream-subtitle-text {
+                    color: $light;
+                    .stream-title, .stream-subtitle{
                         display: block;
                         margin: 0;
-                        color: white;
                         overflow: hidden;
                         text-overflow: ellipsis;
                         white-space: nowrap;
