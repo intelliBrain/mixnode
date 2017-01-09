@@ -1,3 +1,5 @@
+/* eslint no-console: 0 */
+
 const packager = require('electron-packager');
 const path = require('path');
 

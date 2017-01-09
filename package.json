@@ -11,13 +11,13 @@
     "test": "jest"
   },
   "keywords": [
-      "mixnode",
-      "mixcloud",
-      "music",
-      "electron",
-      "react",
-      "redux",
-      "player"
+    "mixnode",
+    "mixcloud",
+    "music",
+    "electron",
+    "react",
+    "redux",
+    "player"
   ],
   "author": "Ivan Mrvelj <sk8raid@gmail.com>",
   "license": "MIT",
