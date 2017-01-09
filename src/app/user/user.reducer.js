@@ -13,6 +13,9 @@ export default function user (state = initialState, action) {
                 token: action.token,
                 loggedIn: true
             };
+        case 'LOG_OUT': 
+            localStorage.removeItem('token');
+            return initialState;
         default:
             return state;
     }

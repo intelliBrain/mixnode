@@ -3,3 +3,7 @@ export const logIn = (data, token) => ({
     data,
     token
 });
+
+export const logOut = () => ({
+    type: 'LOG_OUT'
+});
