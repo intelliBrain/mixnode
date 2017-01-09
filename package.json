@@ -10,7 +10,7 @@
     "serve": "webpack-dev-server --progress --inline --config ./config/webpack.dev.js",
     "test": "jest"
   },
-  "keywords": [],
+  "keywords": ["mixcloud", "music", "react", "redux"],
   "author": "Ivan Mrvelj <sk8raid@gmail.com>",
   "license": "MIT",
   "jest": {
