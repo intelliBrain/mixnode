@@ -9,9 +9,8 @@ class Stream extends Component {
     }
 
 
-    formatStream(stream, id) {
+    formatStream(stream) {
         return {
-            id,
             key: stream.key,
             user: stream.user.name,
             cover: stream.pictures.thumbnail,
@@ -21,15 +20,9 @@ class Stream extends Component {
 
     addToQueue (stream, play) {
         const {dispatch} = this.props;
-
-        let queueStorage = JSON.parse(localStorage.getItem('queueData'));
-        stream = this.formatStream(stream, queueStorage.length + 1);
-
-        queueStorage = [...queueStorage, stream];
-        localStorage.setItem('queueData', JSON.stringify(queueStorage));
+        stream = this.formatStream(stream);
 
         dispatch(addToQueue(stream));
-
         if(play) {
             dispatch(loadStream(stream, true));
         }
@@ -68,12 +61,12 @@ class Stream extends Component {
                         className='stream-cover-img'>
                         <div className='stream-cover-img-overlay'>
                             <span
-                                className="material-icons"
+                                className='material-icons'
                                 onClick={() => this.addToQueue(data, true)}>
                                     play_circle_outline
                             </span>
                             <span
-                                className="material-icons"
+                                className='material-icons'
                                 onClick={() => this.addToQueue(data)}>
                                     playlist_add
                             </span>
@@ -87,22 +80,38 @@ class Stream extends Component {
                         <div className='stream-subtitle' >
                             by <Link to={userLink}>{data.user.name}</Link>
                         </div>
-                        <div className='stream-stats-block'>
-                            <div className='stream-stat'>
-                                <i className='material-icons'>access_time</i>
-                                <span>{this.getTime(data.audio_length)}</span>
-                            </div>
-                            <div className='stream-stat'>
-                                <i className='material-icons'>play_arrow</i>
-                                <span>{data.play_count}</span>
-                            </div>
-                            <div className='stream-stat'>
-                                <i className='material-icons'>favorite</i>
-                                <span>{data.favorite_count}</span>
-                            </div>
-                            <div className='stream-stat'>
-                                <i className='material-icons'>repeat</i>
-                                <span>{data.repost_count}</span>
+                        <div className='stream-footer'>
+                            {
+                                this.props.mini ?
+                                null :
+                                <div className='stream-controls-wrapper'>
+                                    <div className='stream-control'>
+                                        <i className='material-icons'>favorite_border</i>
+                                        Favorite
+                                    </div>
+                                    <div className='stream-control'>
+                                        <i className='material-icons'>repeat</i>
+                                        Repost
+                                    </div>
+                                </div>
+                            }
+                            <div className='stream-stats-block'>
+                                <div className='stream-stat'>
+                                    <i className='material-icons'>access_time</i>
+                                    <span>{this.getTime(data.audio_length)}</span>
+                                </div>
+                                <div className='stream-stat'>
+                                    <i className='material-icons'>play_arrow</i>
+                                    <span>{data.play_count}</span>
+                                </div>
+                                <div className='stream-stat'>
+                                    <i className='material-icons'>favorite_border</i>
+                                    <span>{data.favorite_count}</span>
+                                </div>
+                                <div className='stream-stat'>
+                                    <i className='material-icons'>repeat</i>
+                                    <span>{data.repost_count}</span>
+                                </div>
                             </div>
                         </div>
                     </div>

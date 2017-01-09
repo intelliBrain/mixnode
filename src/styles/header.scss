@@ -10,16 +10,23 @@
     justify-content: space-between;
     align-items: center;
     background: $header;
-    color: white;
+    color: $light;
     box-shadow: 0 7px 32px rgba(0, 0, 0, 0.23);
     .header-logo-wrapper {
         width: 150px;
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 14px;
+        font-weight: bold;
         .header-logo {
             height: 100%;
             width: auto;
+            margin-right: 5px;
+            font-size: 1.33em;
+        }
+        .header-logo-text {
+            margin-top: 3px;
         }
     }
 
@@ -67,10 +74,10 @@
 
         .menu-list {
             position: absolute;
-            top: 80%;
+            top: 100%;
             right: 0;
-            width: 200px;
-            background: #efefef;
+            width: 150px;
+            background: $light;
             color: black;
             box-shadow: 0 7px 30px rgba(0, 0, 0, 0.32);
             .menu-list-item {
@@ -78,9 +85,16 @@
                 padding: 0 20px;
                 display: flex;
                 align-items: center;
+                border-bottom: 1px solid $lightgray;
+                &:last-child {
+                    border: none;
+                }
                 &:hover {
-                    background: lighten($dark, 20%);
-                    color: white;
+                    background: $lightblue;
+                    color: $light;
+                }
+                i {
+                    margin-right: 5px;
                 }
                 a {
                     width: 100%;

@@ -2,8 +2,8 @@
     position: relative;
     width: 200px;
     height: 100%;
+    padding-left: 10px;
     display: flex;
-    flex: 1;
     border-right: 1px solid #101218;
     &.active {
         background: $lightblue;
@@ -19,7 +19,7 @@
         position: absolute;
         bottom: 3px;
         right: 3px;
-        font-size: 18px;
+        font-size: 16px;
         border-radius: 50%;
         color: $light;
         visibility: hidden;
@@ -40,7 +40,15 @@
         color: $light;
         font-size: 12px;
         .queue-stream-info-title {
+            height: 50%;
+            width: 120px;
             font-weight: bold;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .queue-stream-info-user {
+            height: 50%;
         }
     }
 }

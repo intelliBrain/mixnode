@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
 
-import {loadStream} from '../player.actions';
+import { loadStream, removeFromQueue } from '../player.actions';
 import QueueStream from './queue-stream.component';
 
 class Queue extends Component {
@@ -22,6 +22,11 @@ class Queue extends Component {
         return e;
     }
 
+    removeStream(id) {
+        const { dispatch } = this.props;
+        dispatch(removeFromQueue(id));
+    }
+
     render () {
         const { queue } = this.props.player;
         return (
@@ -34,6 +39,7 @@ class Queue extends Component {
                                 key={i}
                                 active={this.props.player.currentStream.id === stream.id}
                                 load={this.handleClick}
+                                remove={() => this.removeStream(stream.id)}
                                 stream={stream} />
                     )
                 }

@@ -64,16 +64,25 @@ export default function player (state = initialState, action) {
             return state;
         }
         // QUEUE
-        case 'QUEUE_ADD':
+        case 'QUEUE_ADD': {
+            let { queue } = state;
+            action.stream.id = Date.now();
+            queue = [...queue, action.stream];
+            localStorage.setItem('queueData', JSON.stringify(queue));
+
             return {
                 ...state,
-                queue : [...state.queue, action.stream]
+                queue
             };
-        case 'QUEUE_REMOVE':
+        }
+        case 'QUEUE_REMOVE': {
+            const newQueue = lodash.filter(state.queue, (stream) => stream.id !== action.id);
+            localStorage.setItem('queueData', newQueue);
             return {
                 ...state,
-                queue: lodash.remove(state.queue, (stream) => stream.id === action.id)
+                queue: newQueue
             };
+        }
         case 'QUEUE_LOAD':
             return {
                 ...state,

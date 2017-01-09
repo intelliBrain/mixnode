@@ -65,20 +65,46 @@
             }
         }
 
-        .stream-stats-block {
+        .stream-footer {
             margin-top: auto;
-            margin-bottom: 10px;
             display: flex;
-            .stream-stat {
-                margin-right: 12px;
+            justify-content: space-between;
+            .stream-controls-wrapper {
                 display: flex;
-                align-items: center;
-                i {
-                    margin-right: 2px;
-                    font-size: 1em;
+                .stream-control {
+                    margin-right: 5px;
+                    padding: 2px 4px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    line-height: 1;
+                    border: 1px solid $dark;
+                    color: $dark;
+                    border-radius: 4px;
+                    font-size: 11px;
+                    .material-icons {
+                        font-size: 1.1em;
+                        margin-right: 2px;
+                    }
                 }
-                span {
-                    font-size: 0.8rem;
+            }
+            .stream-stats-block {
+                margin-bottom: 10px;
+                display: flex;
+                .stream-stat {
+                    margin-right: 12px;
+                    padding: 2px 4px;
+                    display: flex;
+                    align-items: center;
+                    border: 1px solid $darker;
+                    border-radius: 2px;
+                    i {
+                        margin-right: 2px;
+                        font-size: 1em;
+                    }
+                    span {
+                        font-size: 0.8rem;
+                    }
                 }
             }
         }

@@ -9,6 +9,7 @@ class Navigation extends Component {
         return (
             <header className='header-wrapper'>
                 <div className='header-logo-wrapper'>
+                    <span className='header-logo material-icons'>radio</span>
                     <span className='header-logo-text'>Mixnode</span>
                 </div>
                 <Search />

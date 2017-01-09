@@ -28,7 +28,8 @@ class ExploreContainer extends Component {
            <div className='explore-wrapper'>
                 {
                     streams.map(
-                        (stream) => <Stream data={stream} key={stream.key} dispatch={this.props.dispatch} />
+                        (stream) =>
+                            <Stream data={stream} key={stream.key} dispatch={this.props.dispatch} />
                     )
                 }
            </div>

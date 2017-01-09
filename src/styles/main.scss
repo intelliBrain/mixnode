@@ -1,5 +1,7 @@
-@import 'variables';
-@import 'defaults';
+@import './icons/material';
+@import './general/variables';
+@import './general/defaults';
+@import './general/layout';
 
 // COMPONENTS
 @import './components/spinner';
@@ -8,7 +10,6 @@
 @import './components/queue-stream';
 
 // MAIN
-@import 'layout';
 @import 'header';
 @import 'player';
 @import 'explore';

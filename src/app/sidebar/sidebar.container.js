@@ -7,19 +7,24 @@ class Sidebar extends Component {
     render() {
         return (
             <div className='sidebar-wrapper'>
-                <div className='sidebar-list'>
-                    <div className='sidebar-list-title'>
-                        MUSIC
-                    </div>
-                    <div className='sidebar-list-body'>
-                        <div className='sidebar-list-item'>
-                            FAVORITES
+                {
+                    this.props.user.loggedIn ?
+                    <div className='sidebar-list'>
+                        <div className='sidebar-list-title'>
+                            MUSIC
                         </div>
-                        <div className='sidebar-list-item'>
-                            LISTEN LATER
+                        <div className='sidebar-list-body'>
+                            <div className='sidebar-list-item'>
+                                FAVORITES
+                            </div>
+                            <div className='sidebar-list-item'>
+                                LISTEN LATER
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </div> :
+                    null
+
+                }
                 <div className='sidebar-list'>
                     <div className='sidebar-list-title'>
                         EXPLORE

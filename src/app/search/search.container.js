@@ -89,7 +89,7 @@ class Search extends Component {
                             <div className='column-title'>Streams</div>
                             {
                                 this.props.search.streams.map(
-                                    (stream) => <Stream data={stream} key={stream.key} dispatch={this.props.dispatch} />
+                                    (stream) => <Stream data={stream} key={stream.key} dispatch={this.props.dispatch} mini={true} />
                                 )
                             }
                         </div>

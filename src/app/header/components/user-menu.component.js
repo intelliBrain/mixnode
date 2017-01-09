@@ -52,16 +52,19 @@ class UserMenu extends Component {
         return (
             <div className='menu-list'>
                 <div className='menu-list-item'>
+                    <i className='material-icons'>person</i>
                     <Link to={userLink}>Profile</Link>
                 </div>
                 <div
                     className='menu-list-item'
                     onClick={this.logOut} >
+                        <i className='material-icons'>highlight_off</i>
                         Log out
                 </div>
                 <div
                     className='menu-list-item'
                     onClick={() => window.close()} >
+                        <i className='material-icons'>power_settings_new</i>
                         Quit
                 </div>
             </div>
@@ -76,12 +79,14 @@ class UserMenu extends Component {
                         <div
                             className='menu-list-item'
                             onClick={this.logIn} >
+                                <i className='material-icons'>person_add</i>
                                 Log in
                         </div>
                         <div
                             className='menu-list-item'
                             onClick={() => window.close()} >
-                                Quit (Ctrl + Q)
+                                <i className='material-icons'>power_settings_new</i>
+                                Quit
                         </div>
                     </div>
                 );
