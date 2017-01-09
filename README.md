@@ -35,6 +35,9 @@ npm run serve
 
 // To start the electron app
 npm start
+
+// To start the electron app in development mode NODE_ENV must be 'development'
+NODE_ENV=development npm run start
 ```
 
 
