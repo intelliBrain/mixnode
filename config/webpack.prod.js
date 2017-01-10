@@ -1,22 +1,40 @@
 const webpack = require('webpack');
+const validate = require('webpack-validator');
+const merge = require('webpack-merge');
+const path = require('path');
 
-let webpackConfig = require('./webpack.common');
+const baseConfig = require('./webpack.base');
+const HtmlWebpack = require('html-webpack-plugin');
 
-webpackConfig.node = {
-    __dirname: false,
-    __filename: false
-};
 
-webpackConfig.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false
-        },
-        sourceMap: false,
-        mangle: false
-    }),
-    new webpack.optimize.CommonsChunkPlugin('vendor'),
-    new webpack.optimize.DedupePlugin()
-);
+module.exports = validate(merge(baseConfig, {
+    target: 'electron-renderer',
 
-module.exports = webpackConfig;
+    devtool: 'cheap-module-source-map',
+
+    entry: [
+        'babel-polyfill',
+        './src/main.js'
+    ],
+
+    output: {
+        path: path.join(__dirname, '../src/dist'),
+        publicPath: '../dist/'
+    },
+
+    node: {
+        __dirname: false,
+        __filename: false
+    },
+
+    plugins: [
+        new HtmlWebpack({
+            filename: './app.html',
+            template: 'src/app.html',
+            inject: false
+        }),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.DedupePlugin()
+    ]
+
+}));

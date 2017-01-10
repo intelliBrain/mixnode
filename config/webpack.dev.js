@@ -1,21 +1,37 @@
-let webpackConfig = require('./webpack.common');
+const webpack = require('webpack');
+const validate = require('webpack-validator');
+const merge = require('webpack-merge');
 
-webpackConfig.debug = true;
-webpackConfig.devtool = 'cheap-module-source-map';
-webpackConfig.devServer = {
-    port: 9090,
-    historyApiFallback: true,
-    contentBase: './src',
-    watchOptions: {
-        aggregateTimeout: 300,
-        poll: 1000
-    }
-};
+const port = process.env.PORT || 3000;
+const baseConfig = require('./webpack.base');
 
-webpackConfig.module.preloaders = [{
-    test: /\.jsx?$/,
-    loader: 'eslint',
-    exclude: /node_modules/
-}];
+module.exports = validate(merge(baseConfig, {
+    debug: true,
+    devtool: 'inline-source-map',
+    target: 'electron-renderer',
 
-module.exports = webpackConfig;
+    entry: [
+        `webpack-hot-middleware/client?path=http://localhost:${port}/__webpack_hmr`,
+        'babel-polyfill',
+        './src/main.js'
+    ],
+
+    output: {
+        publicPath: `http://localhost:${port}/dist/`
+    },
+
+    module: {
+        preLoaders: [{
+            test: /\.jsx?$/,
+            loader: 'eslint',
+            exclude: /node_modules/
+        }]
+    },
+
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
+    ]
+
+}));
+

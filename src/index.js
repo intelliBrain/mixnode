@@ -8,15 +8,6 @@ const BrowserWindow = electron.BrowserWindow;
 
 let mainWindow = null;
 let authWindow = null;
-let urlToLoad = '';
-
-switch (process.env.NODE_ENV) {
-    case 'development':
-        urlToLoad = 'http://localhost:9090/';
-        break;
-    default:
-        urlToLoad = `file://${__dirname}/dist/index.html`;
-}
 
 function createWindow () {
     mainWindow = new BrowserWindow(
@@ -27,7 +18,7 @@ function createWindow () {
         }
     );
 
-    mainWindow.loadURL(urlToLoad);
+    mainWindow.loadURL(`file://${__dirname}/app.html`);
 
     mainWindow.on('closed', function () {
         mainWindow = null;

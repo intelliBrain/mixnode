@@ -1,0 +1,14 @@
+{
+    "name": "mixnode",
+    "productName": "mixnode",
+    "version": "0.1.0",
+    "description": "Unofficial Mixcloud desktop application made with Electron & React.js",
+    "main": "./main.js",
+    "author": {
+        "name": "Ivan Mrvelj",
+        "email": "sk8raid@gmail.com",
+        "url": "https://github.com/imrvelj"
+    },
+    "license": "MIT",
+    "dependencies": {}
+}

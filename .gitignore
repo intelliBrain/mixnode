@@ -2,8 +2,9 @@
 .env.prod
 .env.dev
 /node_modules/
-/dist/
-/package/
+/src/dist/
+/src/mixnode.js
+/release/
 /npm-debug.log
 /.idea/
 .config.json

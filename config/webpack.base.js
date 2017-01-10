@@ -1,21 +1,19 @@
 require('dotenv').load();
 
 const path = require('path');
-const HtmlWebpack = require('html-webpack-plugin');
-const dotenvWebpack = require('webpack-dotenv-plugin');
+const validate = require('webpack-validator');
 
-module.exports = {
+module.exports = validate({
     entry: {
         app: './src/main.js',
         vendor: ['react', 'react-dom', 'react-router']
     },
 
     output: {
-        path: path.join(__dirname, '../dist'),
-        filename: '[name].js'
+        path: path.join(__dirname, '../src'),
+        filename: 'bundle.js',
+        libraryTarget: 'commonjs2'
     },
-
-    target: 'electron-renderer',
 
     module: {
         loaders: [{
@@ -35,12 +33,13 @@ module.exports = {
         }]
     },
 
-    plugins: [
-        new dotenvWebpack(),
-        new HtmlWebpack({
-            template: './src/index.html',
-            inject: true
-        })
-    ]
-};
+    resolve: {
+        extensions: ['', '.js', '.jsx', '.json'],
+        packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main']
+    },
+
+    plugins: [],
+
+    externals: Object.keys(require('../package.json').dependencies) || {}
+});
 

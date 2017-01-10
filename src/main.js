@@ -7,7 +7,7 @@ import Route from 'react-router/lib/Route';
 import history from 'react-router/lib/hashHistory';
 
 import createStore from './app/store';
-import App from './app/app';
+import App from './app/app.container';
 import Explore from './app/explore/explore.container';
 import User from './app/user/user.container';
 import './styles/main.scss';
