@@ -19,7 +19,7 @@ module.exports = validate(merge(baseConfig, {
 
     output: {
         path: path.join(__dirname, '../src/dist'),
-        publicPath: '../dist/'
+        publicPath: './dist/'
     },
 
     node: {

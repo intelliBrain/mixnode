@@ -38,7 +38,6 @@
         },
         "files": [
             "dist/",
-            "app.html",
             "mixnode.js",
             "package.json"
         ],

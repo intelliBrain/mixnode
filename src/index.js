@@ -1,5 +1,3 @@
-require('dotenv').load();
-
 const electron = require('electron');
 const {ipcMain} = require('electron');
 const app = electron.app;
