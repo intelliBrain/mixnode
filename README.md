@@ -26,18 +26,19 @@ cp .env.example .env
 // open .env in your favorite editor and fill out necessary fields
 ```
 
-3. Running in development environment
+3. Building the app
 ```
-// Consists of: webpack-dev-server + electron
+npm run build
+```
 
-// To run the client web-server
-npm run serve
-
-// To start the electron app
+4. Starting the app
+```
 npm start
+```
 
-// To start the electron app in development mode NODE_ENV must be 'development'
-NODE_ENV=development npm run start
+5. Development mode
+```
+npm run dev
 ```
 
 
