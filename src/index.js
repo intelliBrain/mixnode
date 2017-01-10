@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').load();
 
 const electron = require('electron');
 const {ipcMain} = require('electron');
@@ -8,8 +8,9 @@ const BrowserWindow = electron.BrowserWindow;
 
 let mainWindow = null;
 let authWindow = null;
+const urlToLoad = `file://${__dirname}/app.html`;
 
-function createWindow () {
+const createWindow = () => {
     mainWindow = new BrowserWindow(
         {
             width: 1280,
@@ -18,29 +19,28 @@ function createWindow () {
         }
     );
 
-    mainWindow.loadURL(`file://${__dirname}/app.html`);
-
-    mainWindow.on('closed', function () {
-        mainWindow = null;
-    });
-}
+    mainWindow.loadURL(urlToLoad);
+    mainWindow.on('closed', () => mainWindow = null);
+};
 
 app.on('ready', createWindow);
 
-app.on('window-all-closed', function () {
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
-});
-
-app.on('activate', function () {
+app.on('activate', () => {
     if (mainWindow === null) {
         createWindow();
     }
 });
 
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
+});
+
+
 ipcMain.on('user-auth', () => {
     const clientId = process.env.MIXNODE_ID || null;
+
     authWindow = new BrowserWindow({
         width: 500,
         height: 720,
@@ -53,12 +53,9 @@ ipcMain.on('user-auth', () => {
         }
     });
 
-    const redirectUrl = `${urlToLoad}/`;
-    authWindow.loadURL('https://www.mixcloud.com/oauth/authorize?client_id=' + clientId + '&redirect_uri=' + redirectUrl);
+    authWindow.loadURL(`https://www.mixcloud.com/oauth/authorize?client_id=${clientId}&redirect_uri=${urlToLoad}`);
 
-    authWindow.on('closed', function () {
-        authWindow = null;
-    });
+    authWindow.on('closed', () => authWindow = null);
 
     authWindow.webContents.on('did-get-redirect-request', (e, oldUrl, newUrl) => {
         let redirectUrl = oldUrl.split('redirect_uri=')[1];
