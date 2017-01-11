@@ -8,8 +8,9 @@ class QueueStream extends Component {
         return (
             <div className={className} > 
                 <span
-                    className='remove-queue-stream ss-delete'
+                    className='material-icons remove-queue-stream'
                     onClick={() => this.props.remove(stream.id)}>
+                    remove_circle
                 </span>
                 <img
                     className='queue-stream-cover'

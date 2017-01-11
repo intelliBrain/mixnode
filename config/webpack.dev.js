@@ -11,7 +11,7 @@ module.exports = validate(merge(baseConfig, {
     target: 'electron-renderer',
 
     entry: [
-        `webpack-hot-middleware/client?path=http://localhost:${port}/__webpack_hmr`,
+        `webpack-hot-middleware/client?path=http://localhost:${port}/__webpack_hmr&reload=true`,
         'babel-polyfill',
         './src/main.js'
     ],
