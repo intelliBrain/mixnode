@@ -28,7 +28,7 @@
         align-items: flex-start;
         border-bottom-left-radius: 4px;
         border-bottom-right-radius: 4px;
-        background: $header;
+        background: $dark;
         overflow-y: auto;
         color: $light;
         .search-column {
@@ -45,6 +45,7 @@
             .stream-wrapper {
                 height: 100px;
                 margin-bottom: 20px;
+                background: transparent;
                 .stream-info {
                     width: 190px;
                     color: $light;

@@ -54,9 +54,10 @@ class Stream extends Component {
     render () {
         const { data } = this.props;
         const userLink = `/user/${data.user.username}`;
+        const className = `stream-wrapper ${this.props.cls}`;
         return (
             <div
-                className='stream-wrapper'>
+                className={className}>
                     <div 
                         className='stream-cover-img'>
                         <div className='stream-cover-img-overlay'>
@@ -81,20 +82,6 @@ class Stream extends Component {
                             by <Link to={userLink}>{data.user.name}</Link>
                         </div>
                         <div className='stream-footer'>
-                            {
-                                this.props.mini ?
-                                null :
-                                <div className='stream-controls-wrapper'>
-                                    <div className='stream-control'>
-                                        <i className='material-icons'>favorite_border</i>
-                                        Favorite
-                                    </div>
-                                    <div className='stream-control'>
-                                        <i className='material-icons'>repeat</i>
-                                        Repost
-                                    </div>
-                                </div>
-                            }
                             <div className='stream-stats-block'>
                                 <div className='stream-stat'>
                                     <i className='material-icons'>access_time</i>

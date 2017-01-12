@@ -6,7 +6,7 @@
     display: flex;
     border-right: 1px solid #101218;
     &.active {
-        background: $lightblue;
+        background: $blue;
     }
 
     &:hover {
@@ -24,7 +24,7 @@
         color: $light;
         visibility: hidden;
         &:hover {
-            color: $orange;
+            color: $red;
         }
     }
 
