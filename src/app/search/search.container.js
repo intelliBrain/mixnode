@@ -45,6 +45,7 @@ class Search extends Component {
             });
         } else {
             this.setClosed();
+            this.setState({ debouncer: null, active: true });
         }
     }
 
@@ -75,10 +76,15 @@ class Search extends Component {
     render () {
         return (
             <div className='search-wrapper'>
-                { this.state.debouncer ? <div className='loader-spinner'></div> : null}
+                <div className='search-bar-icon-wrapper'>
+                    { this.state.debouncer ? 
+                        <div className='loader-spinner'></div> :
+                        <span className='material-icons search-bar-icon'>search</span>
+                    }
+                </div>
                 <input
                     type='text'
-                    className='search-input'
+                    className={'search-input' + ` ${this.state.active ? 'active' : ''}`}
                     onChange={ this.search }
                     onClick={ this.setActive }
                     placeholder='Search' />
