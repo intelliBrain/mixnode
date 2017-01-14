@@ -9,7 +9,7 @@ import Header from './header/header.component';
 import Sidebar from './sidebar/sidebar.container';
 import PlayerContainer from './player/player.container';
 
-class AppContainer extends Component {
+export class AppContainer extends Component {
     constructor(props) {
         super(props);
         this.registerAuthListener = this.registerAuthListener.bind(this);

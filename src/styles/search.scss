@@ -6,7 +6,7 @@
     justify-content: center;
     .search-input {
         height: 40px;
-        width: 300px;
+        width: 330px;
         font-size: 15px;
         background: lighten($dark, 10%);
         color: $light;
@@ -17,27 +17,28 @@
         }
     }
 
-    .loader-spinner {
-        font-size: 3px;
-    }
-
     .search-bar-icon-wrapper {
         width: $header-height;
         height: $header-height;
         display: flex;
         align-items: center;
         justify-content: center;
+        .loader-spinner {
+            font-size: 3px;
+        }
+
         .search-bar-icon {
             font-size: 2rem;
         }
     }
 
+
     .search-results {
         position: absolute;
         top: 100%;
-        left: -250px;
+        left: -70%;
         height: 75vh;
-        width: 900px;
+        width: 250%;
         z-index: 1000;
         display: flex;
         align-items: flex-start;
@@ -46,6 +47,7 @@
         background: darken($dark, 1.5%);
         overflow-y: auto;
         color: $light;
+        
         .search-column {
             width: 50%;
             padding: 30px;

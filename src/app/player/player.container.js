@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
@@ -40,6 +41,7 @@ class Player extends Component {
         const { dispatch } = this.props;
 
         widget.events.ended.on(() => dispatch(playerNext()));
+        widget.events.progress.on((p, d) => console.log(`Progress: ${p} - Duration: ${d}`));
         dispatch(initPlayer(widget));
         this.getInitialQueueData();
     }
