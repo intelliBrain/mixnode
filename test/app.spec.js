@@ -1,5 +1,11 @@
-import App from '../src/app/app.js';
+import test from 'ava';
+import React from 'react';
+import {AppContainer} from '../src/app/app.container';
+import { shallow } from 'enzyme';
 
-it('should', () => {
-    expect(App).toBeDefined();
+test('should', (t) => {
+    const comp = shallow(
+        <AppContainer />
+    );
+    t.is(comp.find('.content-wrapper').length, 1);
 });
