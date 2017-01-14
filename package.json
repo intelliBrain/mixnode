@@ -13,7 +13,7 @@
         "package": "build --linux",
         "server": "node ./server",
         "dev": "npm run server -- --hot",
-        "test": "NODE_PATH=src ava",
+        "test": "NODE_PATH=src nyc ava",
         "test:watch": ""
     },
     "build": {
@@ -102,6 +102,7 @@
         "json-loader": "^0.5.4",
         "minimist": "^1.2.0",
         "node-sass": "^4.1.1",
+        "nyc": "^10.0.0",
         "react-addons-test-utils": "^15.4.2",
         "sass-loader": "^4.1.1",
         "sinon": "^1.17.7",

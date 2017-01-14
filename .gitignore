@@ -9,3 +9,5 @@
 /.idea/
 .config.json
 yarn-error.log
+coverage
+.nyc_output
