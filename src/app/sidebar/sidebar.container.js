@@ -10,36 +10,23 @@ class Sidebar extends Component {
                 {
                     this.props.user.loggedIn ?
                     <div className='sidebar-list'>
-                        <div className='sidebar-list-title'>
-                            MUSIC
-                        </div>
-                        <div className='sidebar-list-body'>
-                            <div className='sidebar-list-item'>
-                                FAVORITES
-                            </div>
-                            <div className='sidebar-list-item'>
-                                LISTEN LATER
-                            </div>
-                        </div>
                     </div> :
                     null
 
                 }
                 <div className='sidebar-list'>
-                    <div className='sidebar-list-title'>
-                        EXPLORE
-                    </div>
-                    <div className='sidebar-list-body'>
-                        <Link className='sidebar-list-item' to='/explore/popular' activeClassName='active'>
-                            POPULAR
-                        </Link>
-                        <Link className='sidebar-list-item' to='/explore/new' activeClassName='active'>
-                            NEW
-                        </Link>
-                        <Link className='sidebar-list-item' to='/explore/popular'>
-                            DISCOVER
-                        </Link>
-                    </div>
+                    <Link className='sidebar-icon-wrapper' to='/explore/popular' activeClassName='active' >
+                        <span className='material-icons sidebar-icon'>whatshot</span>
+                    </Link>
+                    <Link className='sidebar-icon-wrapper'>
+                        <span className='material-icons sidebar-icon'>explore</span>
+                    </Link>
+                    <Link className='sidebar-icon-wrapper'>
+                        <span className='material-icons sidebar-icon'>favorite_border</span>
+                    </Link>
+                    <Link className='sidebar-icon-wrapper'>
+                        <span className='material-icons sidebar-icon'>watch_later</span>
+                    </Link>
                 </div>
             </div>
         );

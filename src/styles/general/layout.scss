@@ -6,12 +6,12 @@
     justify-content: flex-start;
     background: $light;
     .content-wrapper {
-        height: calc(100% - 140px);
-        margin-top: 80px;
+        height: calc(100% - 130px);
+        margin-top: $header-height;
         display: flex;
         .content-view {
             height: 100%;
-            width: calc(100% - 200px);
+            width: calc(100% - 70px);
             overflow-y: scroll;
         }
     }

@@ -4,7 +4,7 @@
     height: 100%;
     padding-left: 10px;
     display: flex;
-    border-right: 1px solid #101218;
+    border-right: 1px solid $abyss;
     &.active {
         background: $blue;
     }

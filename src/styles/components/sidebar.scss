@@ -1,28 +1,30 @@
 .sidebar-wrapper {
-    width: 200px;
+    width: $sidebar-width;
     height: 100%;
-    padding-left: 30px;
-    padding-top: 40px;
     font-size: 12px;
-    background: lighten($dark, 5%);
-    color: $light;
+    background: $dark;
     .sidebar-list {
-        margin-bottom: 20px;
-        .sidebar-list-title {
-            margin: 10px 0;
-            font-weight: bold;
-        }
-        .sidebar-list-body {
+        display: flex;
+        flex-direction: column;
+        .sidebar-icon-wrapper {
+            width: 100%;
+            height: $sidebar-width;
             display: flex;
-            flex-direction: column;
-            .sidebar-list-item {
-                height: 30px;
-                padding-left: 10px;
-                display: flex;
-                align-items: center;
-                &.active, &:hover {
-                    background: lighten($dark, 10%);
+            align-items: center;
+            justify-content: center;
+            border-right: 4px solid transparent;
+            &:hover, &.active {
+                border-color: $blue;
+                .sidebar-icon {
+                    color: $blue;
                 }
+            }
+            &.active {
+                background: darken($dark, 3%);
+            }
+            .sidebar-icon {
+                font-size: 32px;
+                color: $light;
             }
         }
     }
