@@ -16,6 +16,12 @@ export const addToQueue = (stream) => ({
     stream
 });
 
+export const playerProgress = (progress, duration) => ({
+    type: 'PLAYER_PROGRESS',
+    progress,
+    duration
+});
+
 export const playerNext = () => ({
     type: 'PLAYER_NEXT'
 });

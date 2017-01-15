@@ -3,6 +3,10 @@ import lodash from 'lodash';
 const initialState = {
     playerWidget: null,
     currentStream: { id: null, key: '/spartacus/party-time/'},
+    status: {
+        volume: 1,
+        progress: 0
+    },
     queue: []
 };
 
@@ -32,6 +36,16 @@ export default function player (state = initialState, action) {
         }
         case 'PLAYER_SEEK':  {
             state.playerWidget.seek(action.seekTo);
+            return {
+                ...state,
+                status: {
+                    ...state.status,
+                    progress: action.seekTo
+                }
+            };
+        }
+        case 'PLAYER_SET_VOLUME': {
+            state.playerWidget.setVolume(action.volume);
             return state;
         }
         case 'PLAYER_NEXT':  {

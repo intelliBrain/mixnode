@@ -1,47 +1,17 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
-import { initPlayer, loadQueue, loadStream, playerNext } from './player.actions';
+import { loadQueue, loadStream } from './player.actions';
+import MixcloudWidget from './components/mixcloud-widget.component';
+import StreamPlayer from './components/stream-player.component';
 import Queue from './components/queue.component';
-import QueueControls from './components/queue-controls.component';
 
 class Player extends Component {
     constructor (props) {
         super(props);
 
-        this.addWidgetScript = this.addWidgetScript.bind(this);
-        this.initPlayer = this.initPlayer.bind(this);
-        this.widgetPostInitHook = this.widgetPostInitHook.bind(this);
         this.getInitialQueueData = this.getInitialQueueData.bind(this);
-    }
-
-    componentDidMount() {
-        this.initPlayer();
-    }
-
-    initPlayer() {
-        let initStream = this.props.player.currentStream;
-
-        const widgetOptions = {
-            disablePushstate: true,
-            disableUnloadWarning: true,
-            light: false,
-            hide_artwork: true
-        };
-
-        const playerWidget = this.addWidgetScript(initStream.key, widgetOptions);
-        playerWidget.onload = () =>
-            Mixcloud.FooterWidget(initStream.key, widgetOptions).then(
-                (widget) => this.widgetPostInitHook(widget)
-            );
-    }
-
-    widgetPostInitHook(widget) {
-        const { dispatch } = this.props;
-
-        widget.events.ended.on(() => dispatch(playerNext()));
-        dispatch(initPlayer(widget));
-        this.getInitialQueueData();
+        this.postWidgetMount = this.postWidgetMount.bind(this);
     }
 
     getInitialQueueData() {
@@ -49,25 +19,28 @@ class Player extends Component {
         if(queueData.length > 0) {
             queueData = JSON.parse(queueData);
             const { dispatch } = this.props;
-            dispatch(loadQueue(queueData));
-            dispatch(loadStream(queueData[0]));
+            if(queueData.length) {
+                dispatch(loadQueue(queueData));
+                dispatch(loadStream(queueData[0]));
+            } else {
+                dispatch(loadStream({ key: '/spartacus/party-time/'}));
+            }
         } else {
             localStorage.setItem('queueData', '[]');
         }
     }
 
-    addWidgetScript () {
-        let script = document.createElement('script');
-        script.src = 'https://widget.mixcloud.com/media/js/footerWidgetApi.js';
-        document.body.appendChild(script);
-        return script;
+    postWidgetMount(player) {
+        player.initPlayer().then(this.getInitialQueueData);
     }
+
 
     render () {
         return (
             <div className='player-wrapper'>
                 <Queue {...this.props} />
-                <QueueControls {...this.props} />
+                <StreamPlayer {...this.props} />
+                <MixcloudWidget ref={this.postWidgetMount} {...this.props} />
             </div>
         );
     }

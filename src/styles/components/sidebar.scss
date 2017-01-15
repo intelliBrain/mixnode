@@ -2,7 +2,7 @@
     width: $sidebar-width;
     height: 100%;
     font-size: 12px;
-    background: $dark;
+    background: $blue-dark;
     .sidebar-list {
         display: flex;
         flex-direction: column;
@@ -20,7 +20,7 @@
                 }
             }
             &.active {
-                background: darken($dark, 3%);
+                background: darken($blue-dark, 3%);
             }
             .sidebar-icon {
                 font-size: 32px;

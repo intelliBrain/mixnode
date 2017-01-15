@@ -16,7 +16,7 @@ class Sidebar extends Component {
                 }
                 <div className='sidebar-list'>
                     <Link className='sidebar-icon-wrapper' to='/explore/popular' activeClassName='active' >
-                        <span className='material-icons sidebar-icon'>whatshot</span>
+                        <span className='material-icons sidebar-icon'>home</span>
                     </Link>
                     <Link className='sidebar-icon-wrapper'>
                         <span className='material-icons sidebar-icon'>explore</span>
