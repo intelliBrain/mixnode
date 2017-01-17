@@ -1,6 +1,6 @@
 import { Component } from 'react';
 
-import { playerNext, initPlayer, playerProgress } from '../player.actions';
+import { playerNext, initPlayer, playerProgress, playerVolume } from '../player.actions';
 
 export default class PlayerWidget extends Component {
     constructor(props) {
@@ -8,7 +8,7 @@ export default class PlayerWidget extends Component {
 
         this.initPlayer = this.initPlayer.bind(this);
         this.addWidgetScript = this.addWidgetScript.bind(this);
-        this.registerEvents = this.registerEvents.bind(this);
+        this.postInitHook = this.postInitHook.bind(this);
     }
 
     initPlayer() {
@@ -23,7 +23,7 @@ export default class PlayerWidget extends Component {
             const playerWidget = this.addWidgetScript(initStream.key, widgetOptions);
             playerWidget.onload = () =>
                 Mixcloud.FooterWidget(initStream.key, widgetOptions).then(
-                    (widget) => resolve(this.registerEvents(widget)),
+                    (widget) => resolve(this.postInitHook(widget)),
                     (e) => reject(e)
                 );
         });
@@ -37,11 +37,12 @@ export default class PlayerWidget extends Component {
         return script;
     }
 
-    registerEvents(widget) {
+    postInitHook(widget) {
         const { dispatch } = this.props;
 
         widget.events.ended.on(() => dispatch(playerNext()));
         widget.events.progress.on((p) => dispatch(playerProgress(p)));
+        widget.getVolume().then((vol) => dispatch(playerVolume(vol)));
 
         dispatch(initPlayer(widget));
         return widget;

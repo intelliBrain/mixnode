@@ -11,7 +11,6 @@ export const loadStream = (stream, autoplay) => {
     };
 };
 
-
 export const playerProgress = (progress) => ({
     type: 'PLAYER_PROGRESS',
     progress
@@ -42,7 +41,6 @@ export const playerVolume = (volume) => ({
     type: 'PLAYER_SET_VOLUME',
     volume
 });
-
 
 export const loadQueue = (queueData) => ({
     type: 'QUEUE_LOAD',

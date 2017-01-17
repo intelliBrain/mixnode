@@ -22,7 +22,10 @@ export default class Seekbar extends Component {
         dispatch(playerSeek(seekTo));
     }
 
-    handleHover(offset, elWidth) {
+    handleHover(event) {
+        const offset = event.nativeEvent.offsetX;
+        const elWidth = event.target.offsetWidth;
+
         let hours, minutes, seconds;
 
         const hoverValue = duration(1000 * (offset * this.props.duration) / elWidth);
@@ -47,7 +50,7 @@ export default class Seekbar extends Component {
                 className='seekbar-wrapper'
                 onClick={(e) => this.seek(e.nativeEvent.offsetX, e.target.offsetWidth)}
                 onMouseOut={this.handleHoverOut}
-                onMouseMove={(e) => this.handleHover(e.nativeEvent.offsetX, e.target.offsetWidth)}>
+                onMouseMove={this.handleHover}>
                 {
                     this.state.hovered ?
                     <span className='seekbar-info' style={style}>

@@ -7,13 +7,6 @@ class Sidebar extends Component {
     render() {
         return (
             <div className='sidebar-wrapper'>
-                {
-                    this.props.user.loggedIn ?
-                    <div className='sidebar-list'>
-                    </div> :
-                    null
-
-                }
                 <div className='sidebar-list'>
                     <Link className='sidebar-icon-wrapper' to='/explore/popular' activeClassName='active' >
                         <span className='material-icons sidebar-icon'>home</span>
@@ -35,7 +28,7 @@ class Sidebar extends Component {
 
 const mapState = (state) => {
     const { user } = state;
-    return {user};
+    return { user };
 };
 
 export default connect(mapState)(Sidebar);

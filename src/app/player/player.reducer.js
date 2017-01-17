@@ -53,11 +53,13 @@ export default function player (state = initialState, action) {
         }
         case 'PLAYER_SEEK':  {
             state.playerWidget.seek(action.seekTo);
+            state.playerWidget.play();
             return {
                 ...state,
                 status: {
                     ...state.status,
-                    progress: action.seekTo
+                    progress: action.seekTo,
+                    playing: true
                 }
             };
         }
