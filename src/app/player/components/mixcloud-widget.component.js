@@ -41,7 +41,7 @@ export default class PlayerWidget extends Component {
         const { dispatch } = this.props;
 
         widget.events.ended.on(() => dispatch(playerNext()));
-        widget.events.progress.on((p, d) => dispatch(playerProgress(p, d)));
+        widget.events.progress.on((p) => dispatch(playerProgress(p)));
 
         dispatch(initPlayer(widget));
         return widget;

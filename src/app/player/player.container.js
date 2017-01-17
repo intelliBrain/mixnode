@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 
 import { loadQueue, loadStream } from './player.actions';
 import MixcloudWidget from './components/mixcloud-widget.component';
-import StreamPlayer from './components/stream-player.component';
-import Queue from './components/queue.component';
+import StreamPlayer from './stream-player/stream-player.component';
+import Queue from './queue/queue.component';
 
 class Player extends Component {
     constructor (props) {

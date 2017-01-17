@@ -14,6 +14,7 @@ class Stream extends Component {
             key: stream.key,
             user: stream.user.name,
             cover: stream.pictures.thumbnail,
+            duration: stream.audio_length,
             title: stream.name
         };
     }
