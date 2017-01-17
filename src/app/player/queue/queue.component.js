@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {findDOMNode} from 'react-dom';
 
 import { loadStream, removeFromQueue } from '../player.actions';
-import QueueStream from './queue-stream.component';
+import QueueStream from './components/queue-stream.component';
 
 class Queue extends Component {
     constructor(props) {

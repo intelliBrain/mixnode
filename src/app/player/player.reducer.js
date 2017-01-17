@@ -3,6 +3,11 @@ import lodash from 'lodash';
 const initialState = {
     playerWidget: null,
     currentStream: { id: null, key: '/spartacus/party-time/'},
+    status: {
+        playing: false,
+        volume: 1,
+        progress: 0
+    },
     queue: []
 };
 
@@ -19,20 +24,61 @@ export default function player (state = initialState, action) {
             state.playerWidget.load(action.stream.key, action.autoplay);
             return {
                 ...state,
-                currentStream: action.stream
+                currentStream: action.stream,
+                status: {
+                    ...state.status,
+                    playing: action.autoplay
+                }
             };
         }
         case 'PLAYER_PAUSE':  {
             state.playerWidget.pause();
-            return state;
+            return {
+                ...state,
+                status: {
+                    ...state.status,
+                    playing: false
+                }
+            };
         }
-        case 'PLAYER_TOGGLE':  {
-            state.playerWidget.togglePlay();
-            return state;
+        case 'PLAYER_PLAY':  {
+            state.playerWidget.play();
+            return {
+                ...state,
+                status: {
+                    ...state.status,
+                    playing: true
+                }
+            };
         }
         case 'PLAYER_SEEK':  {
             state.playerWidget.seek(action.seekTo);
-            return state;
+            return {
+                ...state,
+                status: {
+                    ...state.status,
+                    progress: action.seekTo
+                }
+            };
+        }
+        case 'PLAYER_PROGRESS': {
+            return {
+                ...state,
+                status: {
+                    ...state.status,
+                    progress: action.progress
+                }
+            };
+        }
+        case 'PLAYER_SET_VOLUME': {
+            state.playerWidget.setVolume(action.volume);
+            return {
+                ...state,
+                status: {
+                    ...state.status,
+                    volume: action.volume
+                }
+            };
         }
         case 'PLAYER_NEXT':  {
             const currentStreamIndex = lodash.findIndex(state.queue, (stream) => stream.id === state.currentStream.id);

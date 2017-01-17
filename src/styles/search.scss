@@ -8,7 +8,7 @@
         height: 40px;
         width: 330px;
         font-size: 15px;
-        background: lighten($dark, 10%);
+        background: lighten($blue-dark, 10%);
         color: $light;
         transition: background 0.3s ease;
         &.active {
