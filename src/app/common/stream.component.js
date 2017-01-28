@@ -57,52 +57,51 @@ class Stream extends Component {
         const userLink = `/user/${data.user.username}`;
         const className = `stream-wrapper ${this.props.cls}`;
         return (
-            <div
-                className={className}>
-                    <div 
-                        className='stream-cover-img'>
-                        <div className='stream-cover-img-overlay'>
-                            <span
-                                className='material-icons'
-                                onClick={() => this.addToQueue(data, true)}>
-                                    play_circle_outline
-                            </span>
-                            <span
-                                className='material-icons'
-                                onClick={() => this.addToQueue(data)}>
-                                    playlist_add
-                            </span>
-                        </div>
-                        <img src={this.resizeImg(data.pictures.medium)} />
+            <div className={className}>
+                <div 
+                    className='stream-cover-img'>
+                    <div className='stream-cover-img-overlay'>
+                        <span
+                            className='material-icons'
+                            onClick={() => this.addToQueue(data, true)}>
+                                play_circle_outline
+                        </span>
+                        <span
+                            className='material-icons'
+                            onClick={() => this.addToQueue(data)}>
+                                playlist_add
+                        </span>
                     </div>
-                    <div className="stream-info">
-                        <div className='stream-title' >
-                            {this.wrapText(data.name)}
-                        </div>
-                        <div className='stream-subtitle' >
-                            by <Link to={userLink}>{data.user.name}</Link>
-                        </div>
-                        <div className='stream-footer'>
-                            <div className='stream-stats-block'>
-                                <div className='stream-stat'>
-                                    <i className='material-icons'>access_time</i>
-                                    <span>{this.getTime(data.audio_length)}</span>
-                                </div>
-                                <div className='stream-stat'>
-                                    <i className='material-icons'>play_arrow</i>
-                                    <span>{data.play_count}</span>
-                                </div>
-                                <div className='stream-stat'>
-                                    <i className='material-icons'>favorite_border</i>
-                                    <span>{data.favorite_count}</span>
-                                </div>
-                                <div className='stream-stat'>
-                                    <i className='material-icons'>repeat</i>
-                                    <span>{data.repost_count}</span>
-                                </div>
+                    <img src={this.resizeImg(data.pictures.medium)} />
+                </div>
+                <div className="stream-info">
+                    <div className='stream-title' >
+                        {this.wrapText(data.name)}
+                    </div>
+                    <div className='stream-subtitle' >
+                        by <Link to={userLink}>{data.user.name}</Link>
+                    </div>
+                    <div className='stream-footer'>
+                        <div className='stream-stats-block'>
+                            <div className='stream-stat'>
+                                <i className='material-icons'>access_time</i>
+                                <span>{this.getTime(data.audio_length)}</span>
+                            </div>
+                            <div className='stream-stat'>
+                                <i className='material-icons'>play_arrow</i>
+                                <span>{data.play_count}</span>
+                            </div>
+                            <div className='stream-stat'>
+                                <i className='material-icons'>favorite_border</i>
+                                <span>{data.favorite_count}</span>
+                            </div>
+                            <div className='stream-stat'>
+                                <i className='material-icons'>repeat</i>
+                                <span>{data.repost_count}</span>
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
        );
     }
