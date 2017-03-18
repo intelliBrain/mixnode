@@ -5,8 +5,8 @@ export const searchAction = (query) => {
     let getShows = () => Axios.get(`https://api.mixcloud.com/search/?q=${query}&type=cloudcast`);
 
     if (query) {
-        let queryString = query.split(' ');
-        queryString = queryString.join('+');
+        // let queryString = query.split(' ');
+        // queryString = queryString.join('+');
         return (dispatch) => {
             Axios.all([getUsers(), getShows()]).then((res) => {
                 dispatch(searchResults({

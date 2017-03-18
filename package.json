@@ -20,21 +20,6 @@
         "productName": "Mixnode",
         "appId": "org.develar.Mixnode",
         "category": "public.app-category.tools",
-        "dmg": {
-            "contents": [
-                {
-                    "x": 410,
-                    "y": 150,
-                    "type": "link",
-                    "path": "/Applications"
-                },
-                {
-                    "x": 130,
-                    "y": 150,
-                    "type": "file"
-                }
-            ]
-        },
         "files": [
             "dist/",
             "mixnode.js",
@@ -45,7 +30,6 @@
         },
         "linux": {
             "target": [
-                "deb",
                 "AppImage"
             ]
         }
@@ -80,55 +64,54 @@
         "url": "https://github.com/imrvelj"
     },
     "devDependencies": {
-        "ava": "^0.17.0",
-        "babel-core": "^6.9.0",
-        "babel-eslint": "^6.0.4",
-        "babel-loader": "^6.2.4",
+        "ava": "^0.18.2",
+        "babel-core": "^6.23.1",
+        "babel-eslint": "^7.1.1",
+        "babel-loader": "^6.4.0",
         "babel-preset-es2015": "^6.9.0",
-        "babel-preset-react": "^6.5.0",
+        "babel-preset-react": "^6.23.0",
         "babel-preset-stage-2": "^6.18.0",
-        "babel-register": "^6.18.0",
-        "css-loader": "^0.23.1",
+        "babel-register": "^6.23.0",
+        "css-loader": "^0.27.1",
         "devtron": "^1.4.0",
-        "electron": "^1.5.0",
-        "electron-builder": "^11.2.3",
+        "electron": "^1.6.2",
+        "electron-builder": "^15.3.0",
         "enzyme": "^2.7.0",
-        "eslint": "^2.10.2",
-        "eslint-loader": "^1.6.1",
-        "eslint-plugin-react": "^5.1.1",
-        "file-loader": "^0.9.0",
-        "html-webpack-plugin": "^2.24.1",
+        "eslint": "^3.17.1",
+        "eslint-loader": "^1.6.3",
+        "eslint-plugin-react": "^6.10.0",
+        "file-loader": "^0.10.1",
+        "html-webpack-plugin": "^2.28.0",
         "ignore-styles": "^5.0.1",
         "json-loader": "^0.5.4",
         "minimist": "^1.2.0",
-        "node-sass": "^4.1.1",
+        "node-sass": "^4.5.0",
         "nyc": "^10.0.0",
         "react-addons-test-utils": "^15.4.2",
-        "sass-loader": "^4.1.1",
+        "sass-loader": "^6.0.3",
         "sinon": "^1.17.7",
-        "source-map-loader": "^0.1.5",
-        "style-loader": "^0.13.1",
-        "webpack": "^1.12.9",
-        "webpack-dev-server": "^1.14.0",
-        "webpack-dotenv-plugin": "^1.4.0",
-        "webpack-merge": "^2.3.1",
-        "webpack-validator": "^2.3.0"
+        "source-map-loader": "^0.2.0",
+        "style-loader": "^0.13.2",
+        "webpack": "^2.2.1",
+        "webpack-dev-server": "^2.4.1",
+        "webpack-dotenv-plugin": "^2.0.0",
+        "webpack-merge": "^4.0.0"
     },
     "dependencies": {
         "asar": "^0.13.0",
-        "axios": "^0.11.1",
-        "babel-polyfill": "^6.20.0",
-        "dotenv": "^2.0.0",
-        "history": "^4.4.1",
+        "axios": "^0.15.3",
+        "babel-polyfill": "^6.23.0",
+        "dotenv": "^4.0.0",
+        "history": "^4.6.0",
         "lodash": "^4.17.4",
         "moment": "^2.17.1",
         "react": "^15.4.2",
         "react-dom": "^15.4.2",
-        "react-redux": "^5.0.1",
-        "react-router": "^3.0.0",
+        "react-redux": "^5.0.3",
+        "react-router-dom": "^4.0.0",
         "redux": "^3.6.0",
         "redux-thunk": "^2.1.0",
-        "webpack-dev-middleware": "^1.9.0",
-        "webpack-hot-middleware": "^2.15.0"
+        "webpack-dev-middleware": "^1.10.1",
+        "webpack-hot-middleware": "^2.17.1"
     }
 }

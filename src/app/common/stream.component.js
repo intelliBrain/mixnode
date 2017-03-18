@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Link from 'react-router/lib/Link';
+import { Link } from 'react-router-dom';
 import {loadStream, addToQueue} from '../player/player.actions';
 
 class Stream extends Component {
@@ -103,7 +103,7 @@ class Stream extends Component {
                     </div>
                 </div>
             </div>
-       );
+        );
     }
 }
 

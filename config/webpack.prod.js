@@ -1,5 +1,3 @@
-const webpack = require('webpack');
-const validate = require('webpack-validator');
 const merge = require('webpack-merge');
 const path = require('path');
 
@@ -7,13 +5,12 @@ const baseConfig = require('./webpack.base');
 const HtmlWebpack = require('html-webpack-plugin');
 
 
-module.exports = validate(merge(baseConfig, {
+module.exports = merge(baseConfig, {
     target: 'electron-renderer',
 
     devtool: 'cheap-module-source-map',
 
     entry: [
-        'babel-polyfill',
         './src/main.js'
     ],
 
@@ -33,8 +30,6 @@ module.exports = validate(merge(baseConfig, {
             template: 'src/app.html',
             inject: false
         }),
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.optimize.DedupePlugin()
     ]
 
-}));
+});

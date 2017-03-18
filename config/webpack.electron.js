@@ -1,9 +1,8 @@
-const validate = require('webpack-validator');
 const merge = require('webpack-merge');
 
 const baseConfig = require('./webpack.base');
 
-module.exports = validate(merge(baseConfig, {
+module.exports = merge(baseConfig, {
     target: 'electron-main',
 
     entry: [
@@ -16,9 +15,4 @@ module.exports = validate(merge(baseConfig, {
         filename: '../src/mixnode.js'
     },
 
-    node: {
-        __dirname: false,
-        __filename: false
-    }
-
-}));
+});

@@ -1,9 +1,6 @@
-require('dotenv').load();
-
 const path = require('path');
-const validate = require('webpack-validator');
 
-module.exports = validate({
+module.exports = {
     entry: {
         app: './src/main.js',
         vendor: ['react', 'react-dom', 'react-router']
@@ -16,30 +13,25 @@ module.exports = validate({
     },
 
     module: {
-        loaders: [{
+        rules: [{
             test: /\.jsx?$/,
-            loader: 'babel',
+            use: 'babel-loader',
             exclude: /node_modules/
         }, {
             test: /\.scss$/,
-            loader: 'style!css!sass',
+            use: ['style-loader', 'css-loader', 'sass-loader'],
             exclude: /node_modules/
         }, {
             test: /\.json$/,
-            loader: 'json'
+            use: 'json-loader'
         }, {
             test: /\.(woff2?|ttf|eot|svg|otf).*$/,
-            loader: 'file?hash=sha512&digest=hex&name=fonts/[name]-[hash].[ext]'
+            use: 'file-loader?hash=sha512&digest=hex&name=fonts/[name]-[hash].[ext]'
         }]
-    },
-
-    resolve: {
-        extensions: ['', '.js', '.jsx', '.json'],
-        packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main']
     },
 
     plugins: [],
 
     externals: Object.keys(require('../package.json').dependencies) || {}
-});
+};
 

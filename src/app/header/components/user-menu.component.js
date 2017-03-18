@@ -1,6 +1,6 @@
 const {ipcRenderer} = require('electron');
 import React, {Component} from 'react';
-import Link from 'react-router/lib/Link';
+import { Link } from 'react-router';
 import {logOut} from '../../user/user.actions';
 
 class UserMenu extends Component {

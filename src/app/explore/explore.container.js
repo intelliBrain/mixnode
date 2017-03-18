@@ -10,15 +10,14 @@ class ExploreContainer extends Component {
     }
 
     componentWillMount () {
-        const {dispatch, routeParams} = this.props;
-        let type = routeParams.type || 'popular';
-        dispatch(getExplore(type));
+        const { dispatch } = this.props;
+        dispatch(getExplore('popular'));
     }
 
     componentWillReceiveProps(next) {
         const {dispatch} = this.props;
-        if(next.params.type !== this.props.params.type) {
-            dispatch(getExplore(next.params.type));
+        if(next.match.params.type !== this.props.match.params.type) {
+            dispatch(getExplore(next.match.params.type));
         }
     }
 

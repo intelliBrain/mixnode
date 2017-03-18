@@ -1,12 +1,10 @@
 const webpack = require('webpack');
-const validate = require('webpack-validator');
 const merge = require('webpack-merge');
 
 const port = process.env.PORT || 3000;
 const baseConfig = require('./webpack.base');
 
-module.exports = validate(merge(baseConfig, {
-    debug: true,
+module.exports = merge(baseConfig, {
     devtool: 'inline-source-map',
     target: 'electron-renderer',
 
@@ -21,20 +19,21 @@ module.exports = validate(merge(baseConfig, {
     },
 
     module: {
-        preLoaders: [{
+        rules: [{
             test: /\.jsx?$/,
-            loader: 'eslint',
+            loader: 'eslint-loader',
+            enforce: 'pre',
             exclude: /node_modules/
         }]
     },
 
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
         })
     ]
 
-}));
+});
 
