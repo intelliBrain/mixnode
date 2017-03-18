@@ -10,10 +10,15 @@
     <div id="app"></div>
     <script>
         {
-            const script = document.createElement('script');
             const port = process.env.PORT || 3000;
-            script.src = (process.env.NODE_ENV === 'development') ? 'http://localhost:' + port + '/dist/bundle.js' : './dist/bundle.js';
-            document.body.appendChild(script);
+            const app = document.createElement('script');
+            const vendor = document.createElement('script');
+
+            vendor.src = (process.env.NODE_ENV === 'development') ? 'http://localhost:' + port + '/dist/vendor.js' : './vendor.js';
+            app.src = (process.env.NODE_ENV === 'development') ? 'http://localhost:' + port + '/dist/main.js' : './app.js';
+
+            vendor.onload = () => document.body.appendChild(app);
+            document.body.appendChild(vendor);
         }
 
     </script>

@@ -1,14 +1,16 @@
+const webpack = require('webpack');
 const path = require('path');
+const DotEnv = require('webpack-dotenv-plugin');
 
 module.exports = {
     entry: {
         app: './src/main.js',
-        vendor: ['react', 'react-dom', 'react-router']
+        vendor: Object.keys(require('../package.json').dependencies)
     },
 
     output: {
         path: path.join(__dirname, '../src'),
-        filename: 'bundle.js',
+        filename: '[name].js',
         libraryTarget: 'commonjs2'
     },
 
@@ -26,12 +28,19 @@ module.exports = {
             use: 'json-loader'
         }, {
             test: /\.(woff2?|ttf|eot|svg|otf).*$/,
-            use: 'file-loader?hash=sha512&digest=hex&name=fonts/[name]-[hash].[ext]'
+            use: 'file-loader?name=fonts/[name].[ext]'
         }]
     },
 
-    plugins: [],
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['vendor'],
+            minChunks: Infinity
+        }),
+        new DotEnv({
+            sample: path.resolve(__dirname, '../.env.default')
+        })
+    ]
 
-    externals: Object.keys(require('../package.json').dependencies) || {}
 };
 

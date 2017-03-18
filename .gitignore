@@ -12,3 +12,5 @@ yarn-error.log
 coverage
 .nyc_output
 .directory
+/src/.yarn.lock/
+/src/node_modules/

@@ -1,12 +1,8 @@
-const merge = require('webpack-merge');
 
-const baseConfig = require('./webpack.base');
-
-module.exports = merge(baseConfig, {
+module.exports = {
     target: 'electron-main',
 
     entry: [
-        'babel-polyfill',
         './src/index.js'
     ],
 
@@ -15,4 +11,10 @@ module.exports = merge(baseConfig, {
         filename: '../src/mixnode.js'
     },
 
-});
+    node: {
+        __dirname: false,
+        __filename: false
+    },
+
+
+};
