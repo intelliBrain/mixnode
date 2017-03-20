@@ -1,7 +1,7 @@
 const {ipcRenderer} = require('electron');
 import lodash from 'lodash';
 import React, {Component} from 'react';
-import { Link } from 'react-router';
+import { push } from 'react-router-redux';
 import {logOut} from '../../user/user.actions';
 
 class UserMenu extends Component {
@@ -54,7 +54,7 @@ class UserMenu extends Component {
             <div className='menu-list'>
                 <div className='menu-list-item'>
                     <i className='material-icons'>person</i>
-                    <Link to={userLink}>Profile</Link>
+                    <a onClick={() => this.props.dispatch(push(userLink))}>Profile</a>
                 </div>
                 <div
                     className='menu-list-item'

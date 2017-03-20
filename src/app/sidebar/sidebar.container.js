@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
-// import { Link } from 'react-router';
+import { push } from 'react-router-redux';
 
 class Sidebar extends Component {
 
@@ -8,7 +8,7 @@ class Sidebar extends Component {
         return (
             <div className='sidebar-wrapper'>
                 <div className='sidebar-list'>
-                    <a className='sidebar-icon-wrapper' to='/explore/popular' >
+                    <a className='sidebar-icon-wrapper' onClick={() => this.props.dispatch(push('/'))} >
                         <span className='material-icons sidebar-icon'>home</span>
                     </a>
                     <a className='sidebar-icon-wrapper'>
