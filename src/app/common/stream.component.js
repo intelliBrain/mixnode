@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
-import {loadStream, addToQueue} from '../player/player.actions';
+import { push } from 'react-router-redux';
+import { loadStream, addToQueue } from '../player/player.actions';
 
 class Stream extends Component {
     constructor (props) {
@@ -79,7 +79,7 @@ class Stream extends Component {
                         {this.wrapText(data.name)}
                     </div>
                     <div className='stream-subtitle' >
-                        by <Link to={userLink}>{data.user.name}</Link>
+                        by <a onClick={() => this.props.dispatch(push(userLink))} >{data.user.name}</a>
                     </div>
                     <div className='stream-footer'>
                         <div className='stream-stats-block'>

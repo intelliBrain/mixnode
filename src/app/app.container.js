@@ -1,8 +1,7 @@
 const {ipcRenderer} = require('electron');
 import {connect} from 'react-redux';
-// import createBrowserHistory from 'history/createBrowserHistory';
 import React, {Component} from 'react';
-import { Route } from 'react-router-dom';
+import { Route } from 'react-router';
 import Axios from 'axios';
 
 import { logIn } from './user/user.actions';
@@ -11,8 +10,6 @@ import User from './user/user.container';
 import Header from './header/header.component';
 import Sidebar from './sidebar/sidebar.container';
 import PlayerContainer from './player/player.container';
-
-// const history = createBrowserHistory();
 
 export class AppContainer extends Component {
     constructor(props) {
@@ -52,7 +49,7 @@ export class AppContainer extends Component {
                 <div className='content-wrapper'>
                     <Sidebar />
                     <div className='content-view'>
-                        <Route path="/" component={ Explore } />
+                        <Route path="/" exact component={ Explore } />
                         <Route path="/user/:username" component={ User } />
                     </div>
                 </div>
@@ -63,8 +60,8 @@ export class AppContainer extends Component {
 }
 
 function mapState (state) {
-    const {explore, player, user} = state;
-    return {explore, player, user};
+    const { explore, player, user, router } = state;
+    return { explore, player, user, router };
 }
 
 export default connect(mapState)(AppContainer);

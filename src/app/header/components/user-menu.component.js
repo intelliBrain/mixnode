@@ -1,4 +1,5 @@
 const {ipcRenderer} = require('electron');
+import lodash from 'lodash';
 import React, {Component} from 'react';
 import { Link } from 'react-router';
 import {logOut} from '../../user/user.actions';
@@ -32,7 +33,7 @@ class UserMenu extends Component {
     }
 
     renderUserIcon() {
-        if(this.props.user.loggedIn) {
+        if(lodash.get(this.props.user, 'loggedIn')) {
             return (
                 <img
                     className='user-account-icon'

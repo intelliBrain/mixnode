@@ -1,3 +1,5 @@
+/* eslint no-console: 0 */
+
 const webpack = require('webpack');
 const express = require('express');
 const child = require('child_process');

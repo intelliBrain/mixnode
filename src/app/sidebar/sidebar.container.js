@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router';
 
 class Sidebar extends Component {
 
@@ -8,9 +8,9 @@ class Sidebar extends Component {
         return (
             <div className='sidebar-wrapper'>
                 <div className='sidebar-list'>
-                    <Link className='sidebar-icon-wrapper' to='/explore' >
+                    <a className='sidebar-icon-wrapper' to='/explore/popular' >
                         <span className='material-icons sidebar-icon'>home</span>
-                    </Link>
+                    </a>
                     <a className='sidebar-icon-wrapper'>
                         <span className='material-icons sidebar-icon'>explore</span>
                     </a>

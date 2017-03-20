@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
-import { hashHistory } from 'react-router';
 import { searchAction } from './search.actions';
 import Stream from '../common/stream.component';
 
@@ -68,10 +67,10 @@ class Search extends Component {
         }
     }
 
-    handleUserClick(name) {
-        hashHistory.push(`/user/${name}`);
-        this.setClosed();
-    }
+    // handleUserClick(name) {
+    //     hashHistory.push(`/user/${name}`);
+    //     this.setClosed();
+    // }
 
     render () {
         return (
