@@ -41,11 +41,5 @@ npm start
 npm run dev
 ```
 
-
-
-## Screenshots
-![search](http://i.imgur.com/JeqwVrI.png)
----
-![user](http://i.imgur.com/U6MDxMl.png)
----
-![popular](http://i.imgur.com/xfOJqLe.png)
+Screenshots
+-----------

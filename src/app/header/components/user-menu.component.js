@@ -1,8 +1,8 @@
-const {ipcRenderer} = require('electron');
+const { ipcRenderer } = require('electron');
 import lodash from 'lodash';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { push } from 'react-router-redux';
-import {logOut} from '../../user/user.actions';
+import { logOut } from '../../user/user.actions';
 
 class UserMenu extends Component {
     constructor (props) {
