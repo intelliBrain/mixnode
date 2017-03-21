@@ -1,11 +1,12 @@
-import test from 'ava';
 import React from 'react';
-import {AppContainer} from '../src/app/app.container';
-import { shallow } from 'enzyme';
+import {shallow} from 'enzyme';
 
-test('should', (t) => {
-    const comp = shallow(
+import { AppContainer } from '../src/app/app.container';
+
+test('TEST', () => {
+    const app = shallow(
         <AppContainer />
     );
-    t.is(comp.find('.content-wrapper').length, 1);
+
+    expect(app).toBeTruthy();
 });
