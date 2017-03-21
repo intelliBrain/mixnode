@@ -13,7 +13,7 @@
         "package": "build --linux",
         "server": "node ./server",
         "dev": "NODE_ENV=development npm run server -- --hot",
-        "test": "NODE_PATH=src nyc ava",
+        "test": "",
         "test:watch": ""
     },
     "build": {
@@ -38,14 +38,6 @@
     "bin": {
         "electron": "./node_modules/.bin/electron"
     },
-    "ava": {
-        "babel": "inherit",
-        "require": [
-            "babel-register",
-            "ignore-styles",
-            "./test/helpers/setup.js"
-        ]
-    },
     "keywords": [
         "mixnode",
         "mixcloud",
@@ -61,7 +53,6 @@
         "url": "https://github.com/imrvelj"
     },
     "devDependencies": {
-        "ava": "^0.18.2",
         "babel-core": "^6.24.0",
         "babel-eslint": "^7.1.1",
         "babel-loader": "^6.4.1",
