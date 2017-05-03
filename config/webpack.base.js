@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const DotEnv = require('webpack-dotenv-plugin');
 
 module.exports = {
     entry: {
@@ -24,11 +23,8 @@ module.exports = {
             use: ['style-loader', 'css-loader', 'sass-loader'],
             exclude: /node_modules/
         }, {
-            test: /\.json$/,
-            use: 'json-loader'
-        }, {
             test: /\.(woff2?|ttf|eot|svg|otf).*$/,
-            use: 'file-loader?name=fonts/[name].[ext]'
+            use: 'file-loader?hash=sha512&digest=hex&name=fonts/[name]-[hash].[ext]'
         }]
     },
 
@@ -36,11 +32,12 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: ['vendor'],
             minChunks: Infinity
-        }),
-        new DotEnv({
-            sample: path.resolve(__dirname, '../.env.default')
         })
-    ]
+    ],
+
+    resolve: {
+        extensions: ['.js', '.jsx']
+    }
 
 };
 

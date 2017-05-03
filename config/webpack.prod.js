@@ -11,7 +11,12 @@ module.exports = merge(baseConfig, {
     devtool: 'cheap-module-source-map',
 
     output: {
-        path: path.join(__dirname, '../src/dist'),
+        path: path.join(__dirname, '../src/dist')
+    },
+
+    node: {
+        __dirname: false,
+        __filename: false
     },
 
     plugins: [

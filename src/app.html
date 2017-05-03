@@ -13,14 +13,11 @@
             const port = process.env.PORT || 3000;
             const app = document.createElement('script');
             const vendor = document.createElement('script');
-
             vendor.src = (process.env.NODE_ENV === 'development') ? 'http://localhost:' + port + '/dist/vendor.js' : './vendor.js';
             app.src = (process.env.NODE_ENV === 'development') ? 'http://localhost:' + port + '/dist/main.js' : './app.js';
-
             vendor.onload = () => document.body.appendChild(app);
             document.body.appendChild(vendor);
         }
-
     </script>
 </body>
 

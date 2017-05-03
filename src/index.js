@@ -7,7 +7,7 @@ const BrowserWindow = electron.BrowserWindow;
 
 let mainWindow = null;
 let authWindow = null;
-const urlToLoad = `file://${__dirname}/dist/app.html`;
+const urlToLoad = process.env.NODE_ENV === 'development' ? `file://${__dirname}/app.html` : `file://${__dirname}/dist/app.html`;
 
 const createWindow = () => {
     mainWindow = new BrowserWindow(
