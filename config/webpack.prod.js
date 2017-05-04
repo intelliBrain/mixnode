@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const path = require('path');
 
@@ -25,6 +26,9 @@ module.exports = merge(baseConfig, {
             template: 'src/app.html',
             inject: false
         }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production')
+        })
     ]
 
 });

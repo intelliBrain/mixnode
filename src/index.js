@@ -59,7 +59,7 @@ ipcMain.on('user-auth', () => {
     authWindow.webContents.on('did-get-redirect-request', (e, oldUrl, newUrl) => {
         let redirectUrl = oldUrl.split('redirect_uri=')[1];
         let code = newUrl.split('code=')[1];
-        let url = `https://beta.mixcloud.com/oauth/access_token?client_id=${process.env.MIXNODE_ID}&redirect_uri=${redirectUrl}&client_secret=${process.env.MIXNODE_SECRET}&code=${code}`;
+        let url = `https://beta.mixcloud.com/oauth/access_token?client_id=${clientId}&redirect_uri=${redirectUrl}&client_secret=${process.env.MIXNODE_SECRET}&code=${code}`;
         Axios.get(url).then((res) => {
             mainWindow.webContents.send('user-log-in', res.data.access_token);
             authWindow.close();

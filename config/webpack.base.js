@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 const path = require('path');
 
 module.exports = {
@@ -29,6 +30,10 @@ module.exports = {
     },
 
     plugins: [
+        new Dotenv({
+            path: path.resolve(__dirname, '../.env'),
+            safe: true
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: ['vendor'],
             minChunks: Infinity

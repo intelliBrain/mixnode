@@ -23,7 +23,7 @@ class Player extends React.Component<any, any> {
                 dispatch(loadQueue(queueData));
                 dispatch(loadStream(queueData[0]));
             } else {
-                dispatch(loadStream({ key: '/spartacus/party-time/'}));
+                dispatch(loadStream({ key: '/spartacus/party-time/' }));
             }
         } else {
             localStorage.setItem('queueData', '[]');

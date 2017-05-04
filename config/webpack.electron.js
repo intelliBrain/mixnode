@@ -1,3 +1,5 @@
+const Dotenv = require('dotenv-webpack');
+
 module.exports = {
     target: 'electron-main',
 
@@ -13,6 +15,11 @@ module.exports = {
     node: {
         __dirname: false,
         __filename: false
-    }
+    },
 
+    plugins: [
+        new Dotenv({
+            safe: true
+        })
+    ]
 };
