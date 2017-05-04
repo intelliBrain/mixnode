@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
-export default class PlayerActions extends Component {
-    render() {
+export default class PlayerActions extends React.Component<any, any> {
+    public render() {
         return (
             <div className='stream-player-actions'>
                 <div className='stream-player-action'>

@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import React, {Component} from 'react';
+import * as React from 'react';
 
 import Search from '../search/search.container';
 import UserMenu from './components/user-menu.component';
 
-class Navigation extends Component {
-    render () {
+class Navigation extends React.Component<any, any> {
+    public render() {
         return (
             <header className='header-wrapper'>
                 <div className='header-logo-wrapper'>
@@ -18,7 +18,7 @@ class Navigation extends Component {
     }
 }
 
-function mapState (state) {
+function mapState(state: any) {
     const { user } = state;
     return { user };
 }

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
-export default class Info extends Component {
-    render() {
+export default class Info extends React.Component<any, any> {
+    public render() {
         return (
             <div className='player-info-wrapper'>
                 <div className='stream-player-cover'>

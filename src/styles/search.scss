@@ -36,9 +36,9 @@
     .search-results {
         position: absolute;
         top: 100%;
-        left: -70%;
-        height: 75vh;
-        width: 250%;
+        left: -133px;
+        max-height: 75vh;
+        width: 800px;
         z-index: 1000;
         display: flex;
         align-items: flex-start;

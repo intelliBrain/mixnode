@@ -1,9 +1,9 @@
-export const initPlayer = (playerWidget) => ({
+export const initPlayer = (playerWidget: any) => ({
     type: 'PLAYER_INIT',
     playerWidget
 });
 
-export const loadStream = (stream, autoplay) => {
+export const loadStream = (stream: any, autoplay?: boolean) => {
     return {
         type: 'PLAYER_LOAD',
         stream,
@@ -11,7 +11,7 @@ export const loadStream = (stream, autoplay) => {
     };
 };
 
-export const playerProgress = (progress) => ({
+export const playerProgress = (progress: any) => ({
     type: 'PLAYER_PROGRESS',
     progress
 });
@@ -32,27 +32,27 @@ export const playerPause = () => ({
     type: 'PLAYER_PAUSE'
 });
 
-export const playerSeek = (seekTo) => ({
+export const playerSeek = (seekTo: number) => ({
     type: 'PLAYER_SEEK',
     seekTo
 });
 
-export const playerVolume = (volume) => ({
+export const playerVolume = (volume: number) => ({
     type: 'PLAYER_SET_VOLUME',
     volume
 });
 
-export const loadQueue = (queueData) => ({
+export const loadQueue = (queueData: any) => ({
     type: 'QUEUE_LOAD',
-    queueData: queueData
+    queueData
 });
 
-export const removeFromQueue = (id) => ({
+export const removeFromQueue = (id: number) => ({
     type: 'QUEUE_REMOVE',
     id
 });
 
-export const addToQueue = (stream) => ({
+export const addToQueue = (stream: any) => ({
     type: 'QUEUE_ADD',
     stream
 });

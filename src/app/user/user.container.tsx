@@ -1,11 +1,17 @@
 import {connect} from 'react-redux';
-import React, {Component} from 'react';
+import { RouteComponentProps } from 'react-router';
+import * as React from 'react';
 import Axios from 'axios';
 
 import Stream from '../common/stream.component';
 
-class UserContainer extends Component {
-    constructor(props) {
+interface IProps extends RouteComponentProps<any> {
+    user: any;
+    dispatch: any;
+}
+
+class UserContainer extends React.Component<IProps, any> {
+    constructor(props: any) {
         super(props);
 
         this.state = {
@@ -14,22 +20,22 @@ class UserContainer extends Component {
         };
     }
 
-    componentDidMount() {
+    public componentDidMount() {
         const { get } = require('lodash');
-        if(this.props.match.params.username === get(this.props.user, 'data.username')) {
+        if (this.props.match.params.username === get(this.props.user, 'data.username')) {
             this.setState({ userData: this.props.user.data });
         } else {
             this.getUserData(this.props.match.params.username);
         }
     }
 
-    componentWillReceiveProps(next) {
-        if(next.match.params.username !== this.props.match.params.username) {
+    public componentWillReceiveProps(next: any) {
+        if (next.match.params.username !== this.props.match.params.username) {
             this.getUserData(next.match.params.username);
         }
     }
 
-    getUserData(username) {
+    public getUserData(username: string) {
         Axios.get(`https://api.mixcloud.com/${username}/`).then(
             (res) => {
                 this.setState({ userData: res.data });
@@ -37,13 +43,13 @@ class UserContainer extends Component {
             });
     }
 
-    getUserCloudcasts(username) {
+    public getUserCloudcasts(username: string) {
         Axios.get(`https://api.mixcloud.com/${username}/cloudcasts/`).then((res) => this.setState({ userCloudcasts: res.data.data }));
     }
 
-    render () {
-        let user = this.state.userData ? { ...this.state.userData } : null;
-        if(user) {
+    public render() {
+        const user = this.state.userData ? { ...this.state.userData } : null;
+        if (user) {
             return (
                 <div className='user-wrapper'>
                     <div className='user-bio-block'>
@@ -69,10 +75,10 @@ class UserContainer extends Component {
                     </div>
                     <div className='user-data-list'>
                         {
-                            this.state.userCloudcasts.map(cast => 
+                            this.state.userCloudcasts.map((cast: any) =>
                                 <Stream
                                     key={cast.key}
-                                    data={cast} 
+                                    data={cast}
                                     dispatch={this.props.dispatch} />
                             )
                         }
@@ -85,7 +91,7 @@ class UserContainer extends Component {
     }
 }
 
-function mapState(state) {
+function mapState(state: any) {
     const {user} = state;
     return {user};
 }

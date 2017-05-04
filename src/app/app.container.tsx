@@ -1,6 +1,6 @@
 const {ipcRenderer} = require('electron');
 import {connect} from 'react-redux';
-import React, {Component} from 'react';
+import * as React from 'react';
 import { Route } from 'react-router';
 import Axios from 'axios';
 
@@ -11,22 +11,22 @@ import Header from './header/header.component';
 import Sidebar from './sidebar/sidebar.container';
 import PlayerContainer from './player/player.container';
 
-export class AppContainer extends Component {
-    constructor(props) {
+export class AppContainer extends React.Component<any, any> {
+    constructor(props: any) {
         super(props);
         this.registerAuthListener = this.registerAuthListener.bind(this);
         this.bootstrapUser = this.bootstrapUser.bind(this);
     }
 
-    componentDidMount () {
+    public componentDidMount() {
         this.registerAuthListener();
-        if(localStorage.getItem('token')) {
+        if (localStorage.getItem('token')) {
             const token = localStorage.getItem('token');
             this.bootstrapUser(token);
         }
     }
 
-    bootstrapUser(token) {
+    public bootstrapUser(token: string) {
         const { dispatch } = this.props;
         Axios.get('https://api.mixcloud.com/me/?access_token=' + token).then(
             (res) => dispatch(logIn(res.data, token)),
@@ -34,7 +34,7 @@ export class AppContainer extends Component {
         );
     }
 
-    registerAuthListener() {
+    public registerAuthListener() {
         ipcRenderer.on('user-log-in', (event, args) => {
             const token = args;
             localStorage.setItem('token', token);
@@ -42,15 +42,15 @@ export class AppContainer extends Component {
         });
     }
 
-    render () {
+    public render() {
         return (
             <div id='mixnode'>
                 <Header />
                 <div className='content-wrapper'>
                     <Sidebar />
                     <div className='content-view'>
-                        <Route path="/" exact component={ Explore } />
-                        <Route path="/user/:username" component={ User } />
+                        <Route path='/' exact component={ Explore as any } />
+                        <Route path='/user/:username' component={ User as any } />
                     </div>
                 </div>
                 <PlayerContainer />
@@ -59,7 +59,7 @@ export class AppContainer extends Component {
     }
 }
 
-function mapState (state) {
+function mapState(state: any) {
     const { explore, player, user, router } = state;
     return { explore, player, user, router };
 }

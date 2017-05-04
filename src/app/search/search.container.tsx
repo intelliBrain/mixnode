@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
-import React, {Component} from 'react';
-import ReactDom from 'react-dom';
+import * as React from 'react';
+import * as ReactDom from 'react-dom';
+import { push } from 'react-router-redux';
 import { searchAction } from './search.actions';
 import Stream from '../common/stream.component';
 
-class Search extends Component {
-    constructor(props) {
+class Search extends React.Component<any, any> {
+    constructor(props: any) {
         super(props);
         this.state = {
             debouncer: null,
@@ -17,25 +18,26 @@ class Search extends Component {
         this.handleOutsideClick = this.handleOutsideClick.bind(this);
     }
 
-    componentDidMount() {
+    public componentDidMount() {
         document.addEventListener('click', this.handleOutsideClick, true);
     }
 
-    componentWillUnmount() {
+    public componentWillUnmount() {
         document.removeEventListener('click', this.handleOutsideClick, true);
     }
 
-    search (e) {
+    public search(e: React.ChangeEvent<any>) {
         e.persist();
         const { dispatch } = this.props;
-        const query = e.target.value;
-        let searcher = (searchQuery) => dispatch(searchAction(searchQuery));
+        const target = e.target as HTMLInputElement;
+        const query = target.value;
+        const searcher = (searchQuery: string) => dispatch(searchAction(searchQuery));
 
         if (this.state.debouncer) {
             clearTimeout(this.state.debouncer);
         }
 
-        if(query) {
+        if (query) {
             this.setState({
                 debouncer : setTimeout(() => {
                     searcher(query);
@@ -48,35 +50,35 @@ class Search extends Component {
         }
     }
 
-    setActive() {
+    public setActive() {
         this.setState({ active: true });
     }
 
-    setClosed() {
+    public setClosed() {
         this.setState({ active: false });
     }
 
-    
     /**
      * @param {Event} e
      */
-    handleOutsideClick(e) {
+    public handleOutsideClick(e: MouseEvent) {
         const domNode = ReactDom.findDOMNode(this);
-        if(!domNode.contains(e.target)) {
+        if (!domNode.contains(e.target as Node)) {
             this.setState({ active: false });
         }
     }
 
-    // handleUserClick(name) {
-    //     hashHistory.push(`/user/${name}`);
-    //     this.setClosed();
-    // }
+    public handleUserClick(name: string) {
+        const { dispatch } = this.props;
+        dispatch(push(`/user/${name}`));
+        this.setClosed();
+    }
 
-    render () {
+    public render() {
         return (
             <div className='search-wrapper'>
                 <div className='search-bar-icon-wrapper'>
-                    { this.state.debouncer ? 
+                    { this.state.debouncer ?
                         <div className='loader-spinner'></div> :
                         <span className='material-icons search-bar-icon'>search</span>
                     }
@@ -84,7 +86,7 @@ class Search extends Component {
                 <input
                     type='text'
                     className={'search-input' + ` ${this.state.active ? 'active' : ''}`}
-                    onChange={ this.search }
+                    onChange={ (e) => this.search(e) }
                     onClick={ this.setActive }
                     placeholder='Search' />
                 {
@@ -94,7 +96,7 @@ class Search extends Component {
                             <div className='column-title'>Streams</div>
                             {
                                 this.props.search.streams.map(
-                                    (stream) => <Stream data={stream} key={stream.key} dispatch={this.props.dispatch} mini={true} />
+                                    (stream: any) => <Stream data={stream} key={stream.key} dispatch={this.props.dispatch} mini={true} />
                                 )
                             }
                         </div>
@@ -102,7 +104,7 @@ class Search extends Component {
                             <div className='column-title'>Users</div>
                             {
                                 this.props.search.users.map(
-                                    (user) =>
+                                    (user: any) =>
                                         <div
                                             className='user-result-wrapper'
                                             key={user.key}
@@ -123,7 +125,7 @@ class Search extends Component {
     }
 }
 
-const mapState = (state) => {
+const mapState = (state: any) => {
     const { search } = state;
     return { search };
 };

@@ -1,12 +1,11 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 
-
-class QueueStream extends Component {
-    render () {
+class QueueStream extends React.Component<any, any> {
+    public render() {
         const { stream } = this.props;
-        let className = `player-queue-stream-wrapper ${this.props.active ? 'active' : ''}`;
+        const className = `player-queue-stream-wrapper ${this.props.active ? 'active' : ''}`;
         return (
-            <div className={className} > 
+            <div className={className}>
                 <span
                     className='material-icons remove-queue-stream'
                     onClick={() => this.props.remove(stream.id)}>

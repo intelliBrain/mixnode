@@ -1,40 +1,48 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 import {findDOMNode} from 'react-dom';
 
 import { loadStream, removeFromQueue } from '../player.actions';
 import QueueStream from './components/queue-stream.component';
 
-class Queue extends Component {
-    constructor(props) {
+class Queue extends React.Component<any, any> {
+    constructor(props: any) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.handleScroll = this.handleScroll.bind(this);
     }
 
-    handleClick(stream) {
+    public handleClick(stream: any) {
         const { dispatch } = this.props;
         dispatch(loadStream(stream, true));
     }
 
-    handleScroll(e) {
-        let element = findDOMNode(this).childNodes[0];
+    public handleScroll(e: React.WheelEvent<any>) {
+        const element: any = findDOMNode(this).childNodes[0];
         element.scrollLeft += e.deltaY;
         return e;
     }
 
-    removeStream(id) {
+    public removeStream(id: number) {
         const { dispatch } = this.props;
         dispatch(removeFromQueue(id));
     }
 
-    render () {
+    public render() {
         const { queue } = this.props.player;
         return (
             <div className='player-queue-wrapper'>
-                <div className='player-queue-list' onWheel={(e) => this.handleScroll(e)}>
+                <div
+                    className='player-queue-list'
+                    onWheel={(e: React.WheelEvent<any>) => this.handleScroll(e)}>
+                {
+                    !queue.length &&
+                    <span className='queue-full-message'>
+                        Queue is empty.
+                    </span>
+                }
                 {
                     queue.map(
-                        (stream, i) => 
+                        (stream: any, i: number) =>
                             <QueueStream
                                 key={i}
                                 active={this.props.player.currentStream.id === stream.id}

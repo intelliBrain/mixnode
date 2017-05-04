@@ -1,15 +1,14 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 import { push } from 'react-router-redux';
 import { loadStream, addToQueue } from '../player/player.actions';
 
-class Stream extends Component {
-    constructor (props) {
+class Stream extends React.Component<any, {}> {
+    constructor(props: any) {
         super(props);
         this.addToQueue = this.addToQueue.bind(this);
     }
 
-
-    formatStream(stream) {
+    public formatStream(stream: any) {
         return {
             key: stream.key,
             user: stream.user.name,
@@ -19,30 +18,30 @@ class Stream extends Component {
         };
     }
 
-    addToQueue (stream, play) {
-        const {dispatch} = this.props;
+    public addToQueue(stream: any, play?: boolean) {
+        const { dispatch } = this.props;
         stream = this.formatStream(stream);
 
         dispatch(addToQueue(stream));
-        if(play) {
+        if (play) {
             dispatch(loadStream(stream, true));
         }
     }
 
-    resizeImg(url) {
-        let tmp = url.split('100x100');
+    public resizeImg(url: string) {
+        const tmp = url.split('100x100');
         return tmp[0] + '150x150' + tmp[1];
     }
 
-    wrapText(text) {
-        if(text.length > 50) {
+    public wrapText(text: string) {
+        if (text.length > 50) {
             return `${text.slice(0, 50)}...`;
         }
         return text;
     }
 
-    getTime(time) {
-        const formatHours = (value) => {
+    public getTime(time: number) {
+        const formatHours = (value: number) => {
             const hours = Math.floor(value / 3600);
             const minutes = Math.floor((value - (hours * 3600)) / 60);
 
@@ -52,13 +51,13 @@ class Stream extends Component {
         return time >= 3600 ? formatHours(time) : `${Math.floor(time / 60)}m`;
     }
 
-    render () {
+    public render() {
         const { data } = this.props;
         const userLink = `/user/${data.user.username}`;
         const className = `stream-wrapper ${this.props.cls}`;
         return (
             <div className={className}>
-                <div 
+                <div
                     className='stream-cover-img'>
                     <div className='stream-cover-img-overlay'>
                         <span
@@ -74,7 +73,7 @@ class Stream extends Component {
                     </div>
                     <img src={this.resizeImg(data.pictures.medium)} />
                 </div>
-                <div className="stream-info">
+                <div className='stream-info'>
                     <div className='stream-title' >
                         {this.wrapText(data.name)}
                     </div>

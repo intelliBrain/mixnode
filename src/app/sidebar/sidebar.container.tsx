@@ -1,15 +1,15 @@
-import {connect} from 'react-redux';
-import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import * as React from 'react';
 import { push } from 'react-router-redux';
 
-class Sidebar extends Component {
+class Sidebar extends React.Component<any, any> {
 
-    render() {
+    public render() {
         return (
             <div className='sidebar-wrapper'>
                 <div className='sidebar-list'>
-                    <a className='sidebar-icon-wrapper' onClick={() => this.props.dispatch(push('/'))} >
-                        <span className='material-icons sidebar-icon'>home</span>
+                    <a className='sidebar-icon-wrapper' onClick={() => this.props.navigate('/')} >
+                        <span className='material-icons sidebar-icon'>poll</span>
                     </a>
                     <a className='sidebar-icon-wrapper'>
                         <span className='material-icons sidebar-icon'>explore</span>
@@ -26,10 +26,13 @@ class Sidebar extends Component {
     }
 }
 
-const mapState = (state) => {
-    const { user } = state;
-    return { user };
+const mapState = (state: any) => {
+    const { user, router } = state;
+    return { user, router };
 };
 
-export default connect(mapState)(Sidebar);
+const mapDispatch = (dispatch: any) => ({
+    navigate: (url: string) => dispatch(push(url))
+});
 
+export default connect(mapState, mapDispatch)(Sidebar);

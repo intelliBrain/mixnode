@@ -1,10 +1,10 @@
-const initialState = {
+const initialState: any = {
     loggedIn: false,
     token: null,
     data: null
 };
 
-export default function user (state = initialState, action) {
+export default function user(state = initialState, action: any) {
     switch (action.type) {
         case 'LOG_IN':
             return {
@@ -13,7 +13,7 @@ export default function user (state = initialState, action) {
                 token: action.token,
                 loggedIn: true
             };
-        case 'LOG_OUT': 
+        case 'LOG_OUT':
             localStorage.removeItem('token');
             return initialState;
         default:

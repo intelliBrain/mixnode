@@ -10,7 +10,7 @@ module.exports = merge(baseConfig, {
 
     entry: [
         `webpack-hot-middleware/client?path=http://localhost:${port}/__webpack_hmr&reload=true`,
-        './src/main.js'
+        './src/main.tsx'
     ],
 
     output: {
@@ -19,8 +19,8 @@ module.exports = merge(baseConfig, {
 
     module: {
         rules: [{
-            test: /\.jsx?$/,
-            loader: 'eslint-loader',
+            test: /\.tsx?$/,
+            loader: 'tslint-loader',
             enforce: 'pre',
             exclude: /node_modules/
         }]

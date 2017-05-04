@@ -1,8 +1,8 @@
-const initialState = {
+const initialState: any = {
     data: []
 };
 
-export default function explore (state = initialState, action) {
+export default function explore(state = initialState, action: any) {
     switch (action.type) {
         case 'EXPLORE_ADD_DATA':
             return {

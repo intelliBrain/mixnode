@@ -5,7 +5,7 @@
     background: white;
     border-radius: 4px;
     &.explore-stream {
-        padding: 10px;
+        height: 150px;
         box-shadow: 0 7px 32px rgba(0, 0, 0, 0.22);
         .stream-info {
             color: $slategray;
@@ -77,7 +77,7 @@
         .stream-footer {
             margin-top: auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             .stream-controls-wrapper {
                 display: flex;
                 .stream-control {
@@ -98,17 +98,17 @@
                 }
             }
             .stream-stats-block {
-                margin-bottom: 10px;
+                margin-bottom: 15px;
+                margin-right: 10px;
                 display: flex;
                 .stream-stat {
-                    margin-right: 12px;
+                    margin: 0 4px;
                     padding: 2px 4px;
                     display: flex;
                     align-items: center;
-                    border: 1px solid $slategray;
                     border-radius: 2px;
                     i {
-                        margin-right: 2px;
+                        margin-right: 4px;
                         font-size: 1em;
                     }
                     span {

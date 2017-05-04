@@ -1,6 +1,6 @@
 import { Provider } from 'react-redux';
-import React from 'react';
-import ReactDom from 'react-dom';
+import * as React from 'react';
+import * as ReactDom from 'react-dom';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import { createHashHistory as createHistory } from 'history';
 import { createStore, applyMiddleware } from 'redux';
@@ -12,12 +12,11 @@ const routingMiddleware = routerMiddleware(history);
 
 const store = createStore(
     rootReducer,
-    applyMiddleware(routingMiddleware, thunk)
+    applyMiddleware(thunk, routingMiddleware)
 );
 
 import App from './app/app.container';
 import './styles/main.scss';
-
 
 ReactDom.render(
     <Provider store={store}>

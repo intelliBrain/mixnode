@@ -1,6 +1,6 @@
-import lodash from 'lodash';
+import * as lodash from 'lodash';
 
-const initialState = {
+const initialState: any = {
     playerWidget: null,
     currentStream: { id: null, key: '/spartacus/party-time/'},
     status: {
@@ -11,7 +11,7 @@ const initialState = {
     queue: []
 };
 
-export default function player (state = initialState, action) {
+export default function player(state = initialState, action: any) {
     switch (action.type) {
         case 'PLAYER_INIT': {
             return {
@@ -83,9 +83,9 @@ export default function player (state = initialState, action) {
             };
         }
         case 'PLAYER_NEXT':  {
-            const currentStreamIndex = lodash.findIndex(state.queue, (stream) => stream.id === state.currentStream.id);
+            const currentStreamIndex = lodash.findIndex(state.queue, (stream: any) => stream.id === state.currentStream.id);
 
-            if(currentStreamIndex > -1 && state.queue[currentStreamIndex + 1]) {
+            if (currentStreamIndex > -1 && state.queue[currentStreamIndex + 1]) {
                 const nextStream = state.queue[currentStreamIndex + 1];
 
                 state.playerWidget.load(nextStream.key, true);
@@ -98,9 +98,9 @@ export default function player (state = initialState, action) {
             return state;
         }
         case 'PLAYER_PREV':  {
-            const currentStreamIndex = lodash.findIndex(state.queue, (stream) => stream.id === state.currentStream.id);
+            const currentStreamIndex = lodash.findIndex(state.queue, (stream: any) => stream.id === state.currentStream.id);
 
-            if(currentStreamIndex > -1 && state.queue[currentStreamIndex - 1]) {
+            if (currentStreamIndex > -1 && state.queue[currentStreamIndex - 1]) {
                 const nextStream = state.queue[currentStreamIndex - 1];
 
                 state.playerWidget.load(nextStream.key, true);
@@ -124,8 +124,8 @@ export default function player (state = initialState, action) {
             };
         }
         case 'QUEUE_REMOVE': {
-            const newQueue = lodash.filter(state.queue, (stream) => stream.id !== action.id);
-            localStorage.setItem('queueData', newQueue);
+            const newQueue = lodash.filter(state.queue, (stream: any) => stream.id !== action.id);
+            localStorage.setItem('queueData', JSON.stringify(newQueue));
             return {
                 ...state,
                 queue: newQueue
@@ -136,7 +136,7 @@ export default function player (state = initialState, action) {
                 ...state,
                 queue: action.queueData
             };
-        default: 
+        default:
             return state;
     }
 }

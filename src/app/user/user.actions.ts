@@ -1,4 +1,4 @@
-export const logIn = (data, token) => ({
+export const logIn = (data: any, token: any) => ({
     type: 'LOG_IN',
     data,
     token

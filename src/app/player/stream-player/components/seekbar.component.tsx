@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { duration } from 'moment';
 
 import { playerSeek } from '../../player.actions';
 
-export default class Seekbar extends Component {
-    constructor(props) {
+export default class Seekbar extends React.Component<any, any> {
+    constructor(props: any) {
         super(props);
         this.state = {
             hovered: null,
@@ -16,17 +16,20 @@ export default class Seekbar extends Component {
         this.handleHover = this.handleHover.bind(this);
     }
 
-    seek(offset, elWidth) {
+    public seek(offset: number, element: HTMLElement) {
         const { dispatch } = this.props;
-        const seekTo = (offset * this.props.duration) / elWidth;
+        const seekTo = (offset * this.props.duration) / element.offsetWidth;
         dispatch(playerSeek(seekTo));
     }
 
-    handleHover(event) {
+    public handleHover(event: React.MouseEvent<any>) {
         const offset = event.nativeEvent.offsetX;
-        const elWidth = event.target.offsetWidth;
+        const target = event.target as HTMLElement;
+        const elWidth = target.offsetWidth;
 
-        let hours, minutes, seconds;
+        let hours;
+        let minutes;
+        let seconds;
 
         const hoverValue = duration(1000 * (offset * this.props.duration) / elWidth);
         hours = hoverValue.hours();
@@ -39,16 +42,16 @@ export default class Seekbar extends Component {
         });
     }
 
-    handleHoverOut() {
+    public handleHoverOut() {
         this.setState({ hovered: null, mouseX: null });
     }
 
-    render() {
+    public render() {
         const style = { left: `${this.state.mouseX}px` };
         return (
             <div
                 className='seekbar-wrapper'
-                onClick={(e) => this.seek(e.nativeEvent.offsetX, e.target.offsetWidth)}
+                onClick={(e: React.MouseEvent<any>) => this.seek(e.nativeEvent.offsetX, e.target as HTMLElement)}
                 onMouseOut={this.handleHoverOut}
                 onMouseMove={this.handleHover}>
                 {

@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 import { playerVolume } from '../../player.actions';
 
-export default class VolumeControl extends Component {
-    constructor(props) {
+export default class VolumeControl extends React.Component<any, any> {
+    constructor(props: any) {
         super(props);
 
         this.setVolume = this.setVolume.bind(this);
     }
 
-    setVolume(offset, elWidth) {
+    public setVolume(offset: number, element: HTMLElement) {
         const { dispatch } = this.props;
-        const volume = offset / elWidth;
+        const volume = offset / element.offsetWidth;
         dispatch(playerVolume(volume));
     }
 
-    render() {
+    public render() {
         return (
             <div className='stream-player-volume-control-wrapper'>
                 <progress
@@ -23,7 +23,7 @@ export default class VolumeControl extends Component {
                     min='0'
                     max={100}
                     value={ this.props.volume * 100 }
-                    onClick={(e) => this.setVolume(e.nativeEvent.offsetX, e.target.offsetWidth)}
+                    onClick={(e) => this.setVolume(e.nativeEvent.offsetX, e.target as HTMLElement)}
                     />
                 <div className='stream-player-volume-icon'>
                     <span className='material-icons'>volume_up</span>

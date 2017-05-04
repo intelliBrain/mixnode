@@ -1,34 +1,34 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 import { playerPause, playerPlay, playerNext, playerPrev } from '../../player.actions';
 
-export default class PlayerControls extends Component {
-    constructor(props) {
+export default class PlayerControls extends React.Component<any, any> {
+    constructor(props: any) {
         super(props);
         this.next = this.next.bind(this);
         this.prev = this.prev.bind(this);
         this.togglePlay = this.togglePlay.bind(this);
     }
 
-    next() {
+    public next() {
         const { dispatch } = this.props;
         dispatch(playerNext());
     }
 
-    prev() {
+    public prev() {
         const { dispatch } = this.props;
         dispatch(playerPrev());
     }
 
-    togglePlay() {
+    public togglePlay() {
         const { dispatch } = this.props;
-        if(this.props.player.status.playing) {
+        if (this.props.player.status.playing) {
             return dispatch(playerPause());
         }
         return dispatch(playerPlay());
     }
 
-    render() {
+    public render() {
         return (
             <div className='stream-player-controls'>
                 <div

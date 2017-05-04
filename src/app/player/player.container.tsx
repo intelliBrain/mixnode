@@ -1,25 +1,25 @@
 import { connect } from 'react-redux';
-import React, { Component } from 'react';
+import * as React from 'react';
 
 import { loadQueue, loadStream } from './player.actions';
 import MixcloudWidget from './components/mixcloud-widget.component';
 import StreamPlayer from './stream-player/stream-player.component';
 import Queue from './queue/queue.component';
 
-class Player extends Component {
-    constructor (props) {
+class Player extends React.Component<any, any> {
+    constructor(props: any) {
         super(props);
 
         this.getInitialQueueData = this.getInitialQueueData.bind(this);
         this.postWidgetMount = this.postWidgetMount.bind(this);
     }
 
-    getInitialQueueData() {
-        let queueData = localStorage.getItem('queueData') || [];
-        if(queueData.length > 0) {
+    public getInitialQueueData() {
+        let queueData: any = localStorage.getItem('queueData') || [];
+        if (queueData.length > 0) {
             queueData = JSON.parse(queueData);
             const { dispatch } = this.props;
-            if(queueData.length) {
+            if (queueData.length) {
                 dispatch(loadQueue(queueData));
                 dispatch(loadStream(queueData[0]));
             } else {
@@ -30,12 +30,11 @@ class Player extends Component {
         }
     }
 
-    postWidgetMount(player) {
+    public postWidgetMount(player: any) {
         player.initPlayer().then(this.getInitialQueueData);
     }
 
-
-    render () {
+    public render() {
         return (
             <div className='player-wrapper'>
                 <Queue {...this.props} />
@@ -46,7 +45,7 @@ class Player extends Component {
     }
 }
 
-function mapState (state) {
+function mapState(state: any) {
     const {player} = state;
     return {player};
 }

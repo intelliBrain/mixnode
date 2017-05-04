@@ -1,11 +1,11 @@
 const { ipcRenderer } = require('electron');
-import lodash from 'lodash';
-import React, { Component } from 'react';
+import * as lodash from 'lodash';
+import * as React from 'react';
 import { push } from 'react-router-redux';
 import { logOut } from '../../user/user.actions';
 
-class UserMenu extends Component {
-    constructor (props) {
+class UserMenu extends React.Component<any, any> {
+    constructor(props: any) {
         super(props);
         this.state = {
             isMenuOpen: false
@@ -19,21 +19,23 @@ class UserMenu extends Component {
 
     }
 
-    toggleMenu () {
-        this.setState({isMenuOpen: !this.state.isMenuOpen});
+    public toggleMenu() {
+        this.setState({
+            isMenuOpen: !this.state.isMenuOpen
+        });
     }
 
-    logIn() {
+    public logIn() {
         ipcRenderer.send('user-auth');
     }
 
-    logOut() {
+    public logOut() {
         const { dispatch } = this.props;
         dispatch(logOut());
     }
 
-    renderUserIcon() {
-        if(lodash.get(this.props.user, 'loggedIn')) {
+    public renderUserIcon() {
+        if (lodash.get(this.props.user, 'loggedIn')) {
             return (
                 <img
                     className='user-account-icon'
@@ -48,7 +50,7 @@ class UserMenu extends Component {
         }
     }
 
-    renderAuthList() {
+    public renderAuthList() {
         const userLink = `/user/${this.props.user.data.username}`;
         return (
             <div className='menu-list'>
@@ -72,9 +74,9 @@ class UserMenu extends Component {
         );
     }
 
-    renderList() {
-        if(this.state.isMenuOpen) {
-            if(!this.props.user.loggedIn){
+    public renderList() {
+        if (this.state.isMenuOpen) {
+            if (!this.props.user.loggedIn) {
                 return (
                     <div className='menu-list'>
                         <div
@@ -97,7 +99,7 @@ class UserMenu extends Component {
         }
     }
 
-    render () {
+    public render() {
         return (
             <div className='user-menu-wrapper'
                 onClick={() => this.toggleMenu()} >

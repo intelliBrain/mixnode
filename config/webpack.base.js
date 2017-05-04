@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        app: './src/main.js',
+        app: './src/main.ts',
         vendor: Object.keys(require('../package.json').dependencies)
     },
 
@@ -15,8 +15,8 @@ module.exports = {
 
     module: {
         rules: [{
-            test: /\.jsx?$/,
-            use: 'babel-loader',
+            test: /\.tsx?$/,
+            use: 'awesome-typescript-loader',
             exclude: /node_modules/
         }, {
             test: /\.scss$/,
@@ -36,7 +36,7 @@ module.exports = {
     ],
 
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss', '.css']
     }
 
 };
