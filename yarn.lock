@@ -57,7 +57,7 @@
     "@types/react" "*"
     redux "^3.6.0"
 
-"@types/react-router-redux@next":
+"@types/react-router-redux@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@types/react-router-redux/-/react-router-redux-5.0.1.tgz#9e44fd3961b5aa1799acc7ddfec3d0ee45f746d2"
   dependencies:
@@ -600,14 +600,6 @@ babel-jest@^19.0.0:
     babel-core "^6.0.0"
     babel-plugin-istanbul "^4.0.0"
     babel-preset-jest "^19.0.0"
-
-babel-loader@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-7.0.0.tgz#2e43a66bee1fff4470533d0402c8a4532fafbaf7"
-  dependencies:
-    find-cache-dir "^0.1.1"
-    loader-utils "^1.0.2"
-    mkdirp "^0.5.1"
 
 babel-messages@^6.23.0:
   version "6.23.0"
