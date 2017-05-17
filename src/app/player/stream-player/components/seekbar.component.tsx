@@ -16,10 +16,13 @@ export default class Seekbar extends React.Component<any, any> {
         this.handleHover = this.handleHover.bind(this);
     }
 
+    public shouldComponentUpdate(nextProps: any) {
+        return nextProps.duration > 0;
+    }
+
     public seek(offset: number, element: HTMLElement) {
-        const { dispatch } = this.props;
         const seekTo = (offset * this.props.duration) / element.offsetWidth;
-        dispatch(playerSeek(seekTo));
+        this.props.playerSeek(seekTo);
     }
 
     public handleHover(event: React.MouseEvent<any>) {

@@ -1,3 +1,9 @@
+/*
+    This module can be a <stream-list> component
+    So it's only job is to display the stream objects
+    Dumb, because it's not really neccessary to have the whole state + bells & whistles replicated
+    in a lot of places where this kind of functionality is expected.
+*/
 import { Dispatch } from 'redux';
 import * as React from 'react';
 import { ConnectedRouterProps } from 'react-router-redux';

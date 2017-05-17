@@ -1,7 +1,6 @@
 import * as React from 'react';
-import {findDOMNode} from 'react-dom';
+import { findDOMNode } from 'react-dom';
 
-import { loadStream, removeFromQueue } from '../player.actions';
 import QueueStream from './components/queue-stream.component';
 
 class Queue extends React.Component<any, any> {
@@ -12,19 +11,14 @@ class Queue extends React.Component<any, any> {
     }
 
     public handleClick(stream: any) {
-        const { dispatch } = this.props;
-        dispatch(loadStream(stream, true));
+        const { loadStream } = this.props;
+        loadStream(stream, true);
     }
 
     public handleScroll(e: React.WheelEvent<any>) {
         const element: any = findDOMNode(this).childNodes[0];
         element.scrollLeft += e.deltaY;
         return e;
-    }
-
-    public removeStream(id: number) {
-        const { dispatch } = this.props;
-        dispatch(removeFromQueue(id));
     }
 
     public render() {
@@ -47,7 +41,7 @@ class Queue extends React.Component<any, any> {
                                 key={i}
                                 active={this.props.player.currentStream.id === stream.id}
                                 load={this.handleClick}
-                                remove={() => this.removeStream(stream.id)}
+                                remove={() => this.props.removeStream(stream.id)}
                                 stream={stream} />
                     )
                 }

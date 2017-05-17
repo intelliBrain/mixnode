@@ -9,22 +9,22 @@ import PlayerActions from './components/player-actions.component';
 export default class StreamPlayer extends React.Component<any, any> {
 
     public render() {
-        const { cover } = this.props.player.currentStream || '';
+        const { cover, user, title } = this.props.player.currentStream;
         return (
             <div className='stream-player-wrapper'>
                 <PlayerInfo
                     cover={ cover }
-                    user={ this.props.player.currentStream.user }
-                    title={ this.props.player.currentStream.title }/>
+                    user={ user }
+                    title={ title }/>
                 <PlayerActions />
                 <VolumeControl
-                    dispatch={ this.props.dispatch }
+                    playerVolume={ this.props.playerVolume }
                     volume={ this.props.player.status.volume } />
                 <Controls {...this.props}/>
                 <Seekbar
                     duration={this.props.player.currentStream.duration || 100}
                     progress={this.props.player.status.progress}
-                    dispatch={this.props.dispatch} />
+                    playerSeek={this.props.playerSeek} />
             </div>
         );
     }

@@ -10,9 +10,8 @@ export default class VolumeControl extends React.Component<any, any> {
     }
 
     public setVolume(offset: number, element: HTMLElement) {
-        const { dispatch } = this.props;
         const volume = offset / element.offsetWidth;
-        dispatch(playerVolume(volume));
+        this.props.playerVolume(volume);
     }
 
     public render() {

@@ -11,7 +11,7 @@ export const loadStream = (stream: any, autoplay?: boolean) => {
     };
 };
 
-export const playerProgress = (progress: any) => ({
+export const playerProgress = (progress: number) => ({
     type: 'PLAYER_PROGRESS',
     progress
 });

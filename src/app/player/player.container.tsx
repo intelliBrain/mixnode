@@ -1,7 +1,20 @@
+import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import * as React from 'react';
 
-import { loadQueue, loadStream } from './player.actions';
+import {
+    initPlayer,
+    playerNext,
+    playerPlay,
+    playerPause,
+    playerPrev,
+    playerProgress,
+    playerSeek,
+    playerVolume,
+    removeFromQueue,
+    loadQueue,
+    loadStream
+} from './player.actions';
 import MixcloudWidget from './components/mixcloud-widget.component';
 import StreamPlayer from './stream-player/stream-player.component';
 import Queue from './queue/queue.component';
@@ -18,12 +31,11 @@ class Player extends React.Component<any, any> {
         let queueData: any = localStorage.getItem('queueData') || [];
         if (queueData.length > 0) {
             queueData = JSON.parse(queueData);
-            const { dispatch } = this.props;
             if (queueData.length) {
-                dispatch(loadQueue(queueData));
-                dispatch(loadStream(queueData[0]));
+                this.props.loadQueue(queueData);
+                this.props.loadStream(queueData[0]);
             } else {
-                dispatch(loadStream({ key: '/spartacus/party-time/' }));
+                this.props.loadStream({ key: '/spartacus/party-time/' });
             }
         } else {
             localStorage.setItem('queueData', '[]');
@@ -45,9 +57,23 @@ class Player extends React.Component<any, any> {
     }
 }
 
-function mapState(state: any) {
-    const {player} = state;
-    return {player};
-}
+const mapState = (state: any) => {
+    const { player } = state;
+    return { player };
+};
 
-export default connect(mapState)(Player);
+const mapDispatch = (dispatch: Dispatch<any>) => ({
+    initPlayer: (widget: any) => dispatch(initPlayer(widget)),
+    playerPlay: () => dispatch(playerPlay()),
+    playerPause: () => dispatch(playerPause()),
+    playerNext: () => dispatch(playerNext()),
+    playerPrev: () => dispatch(playerPrev()),
+    playerProgress: (progress: number) => dispatch(playerProgress(progress)),
+    playerSeek: (n: number) => dispatch(playerSeek(n)),
+    playerVolume: (n: number) => dispatch(playerVolume(n)),
+    loadStream: (stream: any, play: boolean) => dispatch(loadStream(stream, play)),
+    loadQueue: (data: any) => dispatch(loadQueue(data)),
+    removeStream: (streamId: number) => dispatch(removeFromQueue(streamId))
+});
+
+export default connect(mapState, mapDispatch)(Player);

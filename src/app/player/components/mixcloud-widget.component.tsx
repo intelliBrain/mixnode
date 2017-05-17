@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import { playerNext, initPlayer, playerProgress, playerVolume } from '../player.actions';
-
 export default class PlayerWidget extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
@@ -33,21 +31,24 @@ export default class PlayerWidget extends React.Component<any, any> {
         const script = document.createElement('script');
         script.async = true;
         script.src = 'https://widget.mixcloud.com/media/js/footerWidgetApi.js';
-        script.onload = (d) => {
-            return d;
-        };
+        script.onload = (d) => d;
         document.body.appendChild(script);
         return script;
     }
 
     public postInitHook(widget: any) {
-        const { dispatch } = this.props;
+        const {
+            initPlayer,
+            playerNext,
+            playerProgress,
+            playerVolume
+        } = this.props;
 
-        widget.events.ended.on(() => dispatch(playerNext()));
-        widget.events.progress.on((p: any) => dispatch(playerProgress(p)));
-        widget.getVolume().then((vol: any) => dispatch(playerVolume(vol)));
+        widget.events.ended.on(() => playerNext());
+        widget.events.progress.on((p: any) => playerProgress(p));
+        widget.getVolume().then((vol: any) => playerVolume(vol));
 
-        dispatch(initPlayer(widget));
+        initPlayer(widget);
         return widget;
     }
 

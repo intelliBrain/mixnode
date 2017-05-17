@@ -91,6 +91,7 @@ export default function player(state = initialState, action: any) {
                 state.playerWidget.load(nextStream.key, true);
                 return {
                     ...state,
+                    status: { playing: true },
                     currentStream : nextStream
                 };
             }
@@ -106,6 +107,7 @@ export default function player(state = initialState, action: any) {
                 state.playerWidget.load(nextStream.key, true);
                 return {
                     ...state,
+                    status: { playing: true },
                     currentStream : nextStream
                 };
             }
