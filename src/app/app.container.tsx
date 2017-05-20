@@ -5,7 +5,7 @@ import { Route } from 'react-router';
 import Axios from 'axios';
 
 import { logIn } from './user/user.actions';
-import Explore from './explore/explore.container';
+import Charts from './charts/charts.container';
 import User from './user/user.container';
 import Header from './header/header.component';
 import Sidebar from './sidebar/sidebar.container';
@@ -49,7 +49,7 @@ export class AppContainer extends React.Component<any, any> {
                 <div className='content-wrapper'>
                     <Sidebar />
                     <div className='content-view'>
-                        <Route path='/' exact component={ Explore as any } />
+                        <Route path='/' exact component={ Charts as any } />
                         <Route path='/user/:username' component={ User as any } />
                     </div>
                 </div>
@@ -59,9 +59,9 @@ export class AppContainer extends React.Component<any, any> {
     }
 }
 
-function mapState(state: any) {
-    const { explore, player, user, router } = state;
-    return { explore, player, user, router };
-}
+const mapState = (state: any) => {
+    const { user, router } = state;
+    return { user, router };
+};
 
 export default connect(mapState)(AppContainer);

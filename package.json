@@ -11,7 +11,7 @@
         "build-main": "webpack --config ./config/webpack.electron.js",
         "build-client": "rimraf ./src/dist && webpack --config ./config/webpack.prod.js --progress --profile --colors",
         "build": "npm run build-main && npm run build-client",
-        "package": "npm run build && build --linux",
+        "package": "rimraf release/; npm run build && build --linux",
         "server": "node ./server",
         "dev": "npm run server -- --hot",
         "test": "jest --coverage",

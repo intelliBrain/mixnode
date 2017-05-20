@@ -13,10 +13,11 @@
         height: calc(100% - 130px);
         margin-top: $header-height;
         display: flex;
+        overflow-y: hidden;
         .content-view {
             height: 100%;
             width: calc(100% - 70px);
-            overflow-y: scroll;
+            overflow-y: hidden;
         }
     }
 }
